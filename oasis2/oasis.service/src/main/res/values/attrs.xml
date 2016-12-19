@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="label" format="reference|string" />
+    <attr name="name" format="string" />
+    <attr name="sink" format="string" />
+    <attr name="message" format="reference|string" />
+</resources>

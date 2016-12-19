@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OASISManifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:oasis="http://schemas.android.com/apk/lib/edu.umich.oasis.service">
+    <source oasis:name="test"
+             oasis:label="@string/taint_label">
+        <policy>
+            <allow oasis:sink="TOAST"/>
+            <!--<allow oasis:sink="NETWORK" filter="127.0.0.1"/>-->
+            <log   oasis:sink="NETWORK" oasis:message="%1$s -> Network"/>
+            <deny  oasis:sink="NETWORK" oasis:message="@string/network_deny_message"/>
+            <drop/>
+        </policy>
+    </source>
+    <event-channel oasis:name="testChannel" oasis:exported="both" />
+</OASISManifest>

@@ -1,0 +1,202 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             tools:context=".TestActivity">
+
+<ScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/root_layout"
+              android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reconnect to OASIS"
+            android:id="@+id/reconnect"
+            android:enabled="true"
+            android:onClick="connectToOASIS"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Perf Tests"
+        android:id="@+id/perf_tests"
+        android:onClick="launchPerfTests"
+        android:enabled="true"
+        android:layout_below="@+id/reconnect"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Run Test"
+            android:id="@+id/run_test"
+            android:onClick="runTest"
+            android:enabled="false"
+            android:layout_below="@+id/perf_tests"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/kvs_value"
+                android:layout_below="@+id/run_test"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/is_tainted"
+                android:hint="KVS Value"
+                android:layout_alignTop="@+id/put_value"
+                android:layout_alignBottom="@+id/put_value"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tainted?"
+                android:id="@+id/is_tainted"
+                android:layout_below="@+id/run_test"
+                android:layout_toStartOf="@+id/put_value"
+                android:layout_alignTop="@+id/put_value"
+                android:layout_alignBottom="@+id/put_value"
+                android:gravity="center_vertical"/>
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Put Value"
+            android:id="@+id/put_value"
+            android:onClick="putValue"
+            android:enabled="false"
+            android:layout_below="@+id/run_test"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="true"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Toast Value"
+            android:id="@+id/toast_value"
+            android:onClick="toastValue"
+            android:enabled="false"
+            android:layout_below="@+id/put_value"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Push Value"
+        android:id="@+id/push_value"
+        android:onClick="pushValue"
+        android:enabled="false"
+        android:layout_below="@+id/toast_value"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toast ECU Data"
+        android:id="@+id/toast_speed"
+        android:onClick="toastECU"
+        android:enabled="false"
+        android:layout_below="@+id/push_value"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Push ECU Data"
+        android:id="@+id/push_speed"
+        android:onClick="pushECU"
+        android:enabled="false"
+        android:layout_below="@+id/toast_speed"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Push Non-ECU Data"
+        android:id="@+id/push_other"
+        android:onClick="pushOther"
+        android:enabled="false"
+        android:layout_below="@+id/push_speed"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/push_other"
+        android:id="@+id/sandbox_count_frame">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sandbox_count"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/sandbox_count"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sandbox_count_type"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set"
+            android:id="@+id/set_sandboxes"
+            android:onClick="setSandboxCount"
+            android:layout_weight="0"/>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/perf_pass_count"
+        android:layout_below="@+id/sandbox_count_frame"
+        android:layout_alignParentStart="true"
+        android:hint="Number of Passes"
+        android:layout_toStartOf="@+id/perf_taint"
+        android:layout_alignBottom="@+id/perf_run"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Run Perf Tests"
+        android:onClick="doPerfTest"
+        android:id="@+id/perf_run"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/sandbox_count_frame"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tainted"
+        android:id="@+id/perf_taint"
+        android:layout_toStartOf="@+id/perf_run"
+        android:layout_alignBottom="@+id/perf_run"
+        android:layout_below="@+id/sandbox_count_frame"/>
+
+
+</RelativeLayout>
+</ScrollView>
+</FrameLayout>
