@@ -1,3 +1,38 @@
+-----------
+Basic Steps
+-----------
+
+1. Install JDK7 (Oracle), and make sure JAVA_HOME is set correctly to point to this. Update gradle if it asks you.
+
+1a. make sure you have a working android studio env (flowfence uses Android SDK Platform 22, build tools 22.0.1)
+1b. Startup Android studio and let a gradle build proceed. Open project "flowfence"
+We need to do this so that the studio system fixes up SDK dir locations etc.
+
+2. Build flowfence.service manually from cmd line
+cd flowfence.service
+../gradlew assembleDebug
+
+(if running for first time, it will download and install a bunch of stuff. This is okay.)
+
+The flowfence.service APK will be inside build/outputs/apk
+
+Install this apk manually to a device
+
+adb install -r <apk_name>
+
+3. Start Android Studio and launch flowfence.test
+This will bring up a client config app where you can control various flowfence params like number of sandboxes etc.
+
+At this point, flowfence is deployed and ready.
+
+
+--------------------
+Running a sample app
+--------------------
+
+
+
+
 OASIS policy file is in OASIService/res/raw/oasis_policy.xml
 The policy is loaded when the service is started explicitly and/or when a client binds to the service. (oasis behaves as a started service if started explicitly via the gui or as a bound service if it's started by the binding of a client).
 
