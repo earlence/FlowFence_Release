@@ -31,13 +31,13 @@ android {
     }
     // Task to manually use ndk-build, assuming ndkFolder has the path
     // to the ndk
-    task ndkBuild(type: Exec) {
+    /*task ndkBuild(type: Exec) {
         def ndkDir = android.ndkDirectory
         assert ndkDir != null: "NDK directory not set. Please set ndk.dir in local.properties."
         commandLine "$ndkDir/ndk-build", '-C', file('src/main/jni').absolutePath
-    }
+    }*/
     tasks.withType(JavaCompile).all {
-        dependsOn ndkBuild
+        //dependsOn ndkBuild
     }
     sourceSets.main {
         jniLibs.srcDir 'src/main/libs'
