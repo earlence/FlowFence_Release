@@ -2,7 +2,7 @@
 Basic Steps
 -----------
 
-1. Install JDK7 (Oracle), and make sure JAVA_HOME is set correctly to point to this. Update gradle if it asks you.
+1. Install JDK8 (Oracle), and make sure JAVA_HOME is set correctly to point to this. Update gradle if it asks you.
 
 1a. make sure you have a working android studio env (flowfence uses Android SDK Platform 22, build tools 22.0.1)
 1b. Startup Android studio and let a gradle build proceed. Open project "flowfence"
