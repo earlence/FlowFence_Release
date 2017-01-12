@@ -22,8 +22,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     provided 'org.apache.commons:commons-lang3:3.4'
+    compile project(':oasis.common')
     compile project(':oasis.client')
-    provided project(path: ':oasis.common', configuration: 'api')
+    //provided project(path: ':oasis.common', configuration: 'api')
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:gridlayout-v7:22.2.1'
 }

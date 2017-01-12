@@ -285,14 +285,14 @@ import edu.umich.oasis.internal.ISodaCallback;
     }
 
     public ResolvedSoda(SandboxService sandbox, SodaDescriptor descriptor, boolean bestMatch) throws Exception {
-        if (localLOGD) {
+        //if (localLOGD) {
             Log.d(TAG, "Resolving " + descriptor.toString());
-        }
+        //}
         mSandbox = sandbox;
         mContext = mSandbox.getContextForPackage(descriptor.definingClass.getPackageName());
-        if (localLOGD) {
+        //if (localLOGD) {
             Log.d(TAG, "Got package context");
-        }
+        //}
         final ClassLoader loader = mContext.getClassLoader();
 
         mDefiningClass = ClassUtils.getClass(loader, descriptor.definingClass.getClassName(), true);
