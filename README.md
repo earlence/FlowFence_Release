@@ -1,37 +1,52 @@
 -----------
+Intro
+-----------
+A previous iteration of this system was called OASIS. We will refactor class names to 
+FlowFence and update the repo soon. For now, all of the classes will be named "oasis"
+
+Terminology Map (this will not be needed after refactor is complete):
+Quarantined Module (QM in FlowFence): Sensitive Operation Defined By The Application (SODA in OASIS)
+
+The refactor will simply change SODA to QM and OASIS to FlowFence
+
+-----------
 Basic Steps
 -----------
 
 1. Install JDK8 (Oracle), and make sure JAVA_HOME is set correctly to point to this. Update gradle if it asks you.
 
 1a. make sure you have a working android studio env (flowfence uses Android SDK Platform 22, build tools 22.0.1)
-1b. Startup Android studio and let a gradle build proceed. Open project "flowfence"
+1b. Startup Android studio and let a gradle build proceed. Open project "oasis2"
 We need to do this so that the studio system fixes up SDK dir locations etc.
 
-2. Build flowfence.service manually from cmd line
-cd flowfence.service
+2. Build oasis.service manually from cmd line
+cd oasis.service
 ../gradlew assembleDebug
 
 (if running for first time, it will download and install a bunch of stuff. This is okay.)
 
-The flowfence.service APK will be inside build/outputs/apk
+The oasis.service APK will be inside build/outputs/apk
 
 Install this apk manually to a device
 
 adb install -r <apk_name>
 
-3. Start Android Studio and launch flowfence.test
-This will bring up a client config app where you can control various flowfence params like number of sandboxes etc.
+3. Start Android Studio and launch oasis.test
+This will bring up a client config app where you can control various params like number of sandboxes etc.
 
-At this point, flowfence is deployed and ready.
-
+At this point, flowfence (oasis) is deployed and ready.
 
 --------------------
 Running a sample app
 --------------------
+1. Start with trying to run the oasis.test app. This is currently where you can run basic perf tests.
+oasis.test contains sample Quarantined Modules (or SODAs).
 
+2. externalapps/ contains the original source code of the apps that were ported to the framework.
 
-
+--------------------------
+Miscellaenous Design Notes
+--------------------------
 
 OASIS policy file is in OASIService/res/raw/oasis_policy.xml
 The policy is loaded when the service is started explicitly and/or when a client binds to the service. (oasis behaves as a started service if started explicitly via the gui or as a bound service if it's started by the binding of a client).
@@ -47,7 +62,6 @@ I will add more methods while making BarcodeScanner use OASIS.
 I've added a "do test 1" button to the testclient: this call first gets the IMEI via oasis, then uses the token to send the IMEI via http POST to a webserver (address and port specified as constants in OASISTestClient/src/com/temporary/oasistestclient/MainActivity.java). Of course this is uses permissions IMEI+INTERNET that can be regulated via the policy file.
 
 testserver.py is a sample webserver in python that prints the values sent.
-
 
 STILL TODO:
  - sandbox pooling criteria
