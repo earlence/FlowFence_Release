@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sd-sdk-facial-processing">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/oasis.study.fencedfrdc/libs/sd-sdk-facial-processing.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
