@@ -44,6 +44,16 @@ oasis.test contains sample Quarantined Modules (or SODAs).
 
 2. externalapps/ contains the original source code of the apps that were ported to the framework.
 
+------------------
+SmartThings Bridge
+------------------
+
+The SmartThings bridge enables oasis to communicate with physical devices that are managed by
+smartthings. We built a webservices smartapp that exposes various methods that can be called
+remotely from the oasis framework. This requires negotiating an OAuth token. The current code
+directly embeds this token (which is unsafe). A more production ready implementation has to
+negotiate this token at runtime and store it securely (e.g., encrypted under a password when at rest).
+
 --------------------------
 Miscellaenous Design Notes
 --------------------------
