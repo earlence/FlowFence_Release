@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2017 The Regents of the University of Michigan
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package edu.umich.oasis.testapp;
 
 import android.content.Context;
@@ -9,9 +25,6 @@ import edu.umich.oasis.common.OASISContext;
 import edu.umich.oasis.common.TaintSet;
 import edu.umich.oasis.common.TaintableSharedPreferencesEditor;
 
-/**
- * Created by jpaupore on 10/4/15.
- */
 public class KeyValueTest {
     private static final String STORE_NAME = "KeyValueTestStore";
     private static final String KEY_NAME = "testValue";

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="firebase-client-jvm-2.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.0/c0af904657634f7ab9cc21e75d80250570033321/firebase-client-jvm-2.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.0/e9a5a32cf5580d345d0fe8d490a2a36f8e9c8cba/firebase-client-jvm-2.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

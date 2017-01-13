@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/oasis.client/oasis.client.iml" filepath="$PROJECT_DIR$/oasis.client/oasis.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.common/oasis.common.iml" filepath="$PROJECT_DIR$/oasis.common/oasis.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.service/oasis.service.iml" filepath="$PROJECT_DIR$/oasis.service/oasis.service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.caminjector/oasis.study.caminjector.iml" filepath="$PROJECT_DIR$/oasis.study.caminjector/oasis.study.caminjector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.fencedfrdc/oasis.study.fencedfrdc.iml" filepath="$PROJECT_DIR$/oasis.study.fencedfrdc/oasis.study.fencedfrdc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.fencedhr/oasis.study.fencedhr.iml" filepath="$PROJECT_DIR$/oasis.study.fencedhr/oasis.study.fencedhr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.frameinjector/oasis.study.frameinjector.iml" filepath="$PROJECT_DIR$/oasis.study.frameinjector/oasis.study.frameinjector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.presencebasedcontrol/oasis.study.presencebasedcontrol.iml" filepath="$PROJECT_DIR$/oasis.study.presencebasedcontrol/oasis.study.presencebasedcontrol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.skeleton/oasis.study.skeleton.iml" filepath="$PROJECT_DIR$/oasis.study.skeleton/oasis.study.skeleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.study.smartdevresponder/oasis.study.smartdevresponder.iml" filepath="$PROJECT_DIR$/oasis.study.smartdevresponder/oasis.study.smartdevresponder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis.test/oasis.test.iml" filepath="$PROJECT_DIR$/oasis.test/oasis.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oasis2.iml" filepath="$PROJECT_DIR$/oasis2.iml" />
+    </modules>
+  </component>
+</project>

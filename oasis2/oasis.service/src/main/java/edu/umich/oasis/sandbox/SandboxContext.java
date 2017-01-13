@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2017 The Regents of the University of Michigan
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package edu.umich.oasis.sandbox;
 
 import android.content.ComponentName;
@@ -36,9 +52,6 @@ import edu.umich.oasis.kvs.IRemoteSharedPrefs;
 import edu.umich.oasis.service.BuildConfig;
 import edu.umich.oasis.service.OASISService;
 
-/**
- * Created by jpaupore on 2/2/15.
- */
 /*package*/ final class SandboxContext extends OASISContext {
     private static final String TAG = "OASIS.Context";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);

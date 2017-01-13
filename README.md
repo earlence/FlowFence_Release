@@ -9,6 +9,7 @@ Quarantined Module (QM in FlowFence): Sensitive Operation Defined By The Applica
 
 The refactor will simply change SODA to QM and OASIS to FlowFence
 
+
 -----------
 Basic Steps
 -----------
@@ -43,6 +44,8 @@ Running a sample app
 oasis.test contains sample Quarantined Modules (or SODAs).
 
 2. externalapps/ contains the original source code of the apps that were ported to the framework.
+
+3. oasis.skeleton contains examples on how to build apps with SODAs (also known as QMs)
 
 ------------------
 SmartThings Bridge
