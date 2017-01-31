@@ -47,6 +47,28 @@ oasis.test contains sample Quarantined Modules (or SODAs).
 
 3. oasis.skeleton contains examples on how to build apps with SODAs (also known as QMs)
 
+-------------------
+Running SmartLights
+-------------------
+1. Install LocationBeacon from externalapps/
+2. Install SmartDevResponder from oasis2/ and click on Connect
+3. Install PresenceBasedControl from oasis2/ and click on Connect
+4. Navigate to LocationBeacon, click Login to FireBase. Wait for a toast that says login was OK
+5. Click on Home and watch the logcat
+6. Click on Away and watch the logcat
+
+There should be messages indicating what is happening. You'd have to replace the URLs for your
+own SmartThings setup if you want to see a switch physically toggle its state. Right now, we are
+working on a more generic way to get this config done, but for now its manual...
+
+-------------------
+Policy Files
+-------------------
+Right now, oasis_manifest.xml inside xml/ in an app lists the flow policies. Currently, we only
+have publisher policies and are working to commit some updates for consumer policies. If you see
+the policy code, it is fairly straightforward to implement a consumer policy (i.e., you can add
+such support yourself; we do accept pull requests!)
+
 ------------------
 SmartThings Bridge
 ------------------
