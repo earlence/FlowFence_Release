@@ -7,7 +7,7 @@ FlowFence and update the repo soon. For now, all of the classes will be named "o
 Terminology Map (this will not be needed after refactor is complete):
 Quarantined Module (QM in FlowFence): Sensitive Operation Defined By The Application (SODA in OASIS)
 
-The refactor will simply change SODA to QM and OASIS to FlowFence
+The refactor will simply change SODA to QM and OASIS to FlowFence.
 
 
 -----------
