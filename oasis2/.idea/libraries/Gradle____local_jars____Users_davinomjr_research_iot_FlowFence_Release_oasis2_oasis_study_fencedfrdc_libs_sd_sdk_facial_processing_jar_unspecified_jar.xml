@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_jars__:/Users/davinomjr/research/iot/FlowFence_Release/oasis2/oasis.study.fencedfrdc/libs/sd-sdk-facial-processing.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/oasis.study.fencedfrdc/libs/sd-sdk-facial-processing.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
