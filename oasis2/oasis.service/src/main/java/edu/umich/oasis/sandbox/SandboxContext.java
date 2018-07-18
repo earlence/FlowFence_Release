@@ -20,6 +20,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -38,12 +39,14 @@ import java.util.WeakHashMap;
 
 import edu.umich.oasis.common.IEventChannelAPI;
 import edu.umich.oasis.common.IOASISService;
+import edu.umich.oasis.common.ISensitiveViewAPI;
 import edu.umich.oasis.common.ITaintAPI;
 import edu.umich.oasis.common.IDynamicAPI;
 import edu.umich.oasis.common.OASISContext;
 import edu.umich.oasis.common.ParceledPayload;
 import edu.umich.oasis.common.RemoteCallException;
 import edu.umich.oasis.common.TaintSet;
+import edu.umich.oasis.common.TaintableSharedPreferencesEditor;
 import edu.umich.oasis.common.smartthings.ISmartSwitchAPI;
 import edu.umich.oasis.common.smartthings.SmartDevice;
 import edu.umich.oasis.events.IEventChannelSender;
@@ -299,6 +302,26 @@ import edu.umich.oasis.service.OASISService;
         }
     }
 
+    public class SensitiveViewAPI extends APIBase implements ISensitiveViewAPI {
+
+        private static final String STORE_NAME = "SensitiveViewSTORE";
+
+        @Override
+        public void addSensitiveValue(String viewId, String value) {
+            SharedPreferences prefs = OASISContext.getInstance().getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(viewId, value);
+            editor.apply();
+        }
+
+        @Override
+        public String readSensitiveValue(String viewId, TaintSet taint) throws RemoteException {
+            SharedPreferences prefs = OASISContext.getInstance().getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
+            mCallout.taintSelf(taint);
+            return prefs.getString(viewId, "");
+        }
+    }
+
     @Override
     public Object getTrustedAPI(String apiName) {
         if (localLOGD) {
@@ -315,8 +338,12 @@ import edu.umich.oasis.service.OASISService;
                 return new SmartSwitchAPI();
             case "event":
                 return new EventChannelAPI();
+            case "ui":
+                return new SensitiveViewAPI();
             default:
                 return null;
         }
     }
 }
+
+
