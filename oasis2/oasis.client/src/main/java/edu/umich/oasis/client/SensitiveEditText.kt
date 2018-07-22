@@ -49,7 +49,10 @@ class SensitiveEditText: EditText {
 
     // Set value via Quarentine Module
     fun setValue(value: String){
-        if(connection != null) {
+        if(connection == null){
+            Log.i(TAG, "Please bind the FlowFence connection to this component.")
+        }
+        else {
             val constructor = connection!!.resolveConstructor(SensitiveViewQM::class.java)
             val setValue = connection!!.resolveInstance(Void.TYPE, SensitiveViewQM::class.java, "setValue", String::class.java, String::class.java)
             constructor.call().buildCall(setValue).arg(id.toString()).arg(value).call()

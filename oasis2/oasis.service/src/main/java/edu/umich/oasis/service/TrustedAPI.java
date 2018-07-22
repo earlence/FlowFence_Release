@@ -39,6 +39,7 @@ import edu.umich.oasis.common.smartthings.SmartDevice;
 import edu.umich.oasis.events.IEventChannelSender;
 import edu.umich.oasis.internal.ITrustedAPI;
 import edu.umich.oasis.kvs.IRemoteSharedPrefs;
+import edu.umich.oasis.policy.NetworkSinkRequest;
 import edu.umich.oasis.policy.Policy;
 import edu.umich.oasis.policy.Sink;
 import edu.umich.oasis.policy.SinkRequest;
@@ -141,7 +142,7 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
         if (localLOGD) {
             Log.d(TAG, "Sending push with title '" + title + "'");
         }
-        if (Policy.checkCallerSink(new SinkRequest("NETWORK"))) {
+        if (Policy.checkCallerSink(new NetworkSinkRequest("NETWORK", PUSH_ENDPOINT))) {
             try {
                 JSONObject push = new JSONObject();
                 push.put("type", "note");

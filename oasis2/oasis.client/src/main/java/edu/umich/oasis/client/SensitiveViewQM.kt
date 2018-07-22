@@ -10,7 +10,7 @@ import edu.umich.oasis.common.OASISContext
  * at 07/17/2018 21:42
  */
  
-class SensitiveViewQM (parcel: Parcel?) : Parcelable {
+class SensitiveViewQM() : Parcelable {
 
     fun setValue(viewId: String, value: String){
         val api: ISensitiveViewAPI = OASISContext.getInstance().getTrustedAPI("ui") as ISensitiveViewAPI
@@ -20,6 +20,7 @@ class SensitiveViewQM (parcel: Parcel?) : Parcelable {
     // Boilerplate parcel
     override fun describeContents(): Int = 0
     override fun writeToParcel(parcel: Parcel?, i: Int) {}
+    constructor(parcel: Parcel?) : this()
     companion object {
         val CREATOR: Parcelable.Creator<SensitiveViewQM> = object: Parcelable.Creator<SensitiveViewQM> {
             override fun createFromParcel(p0: Parcel?): SensitiveViewQM {

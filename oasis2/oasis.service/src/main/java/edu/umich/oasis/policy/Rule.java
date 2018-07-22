@@ -21,6 +21,8 @@ import android.content.res.XmlResourceParser;
 import android.util.Log;
 
 import static org.xmlpull.v1.XmlPullParser.*;
+
+import org.apache.commons.lang3.StringUtils;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -116,6 +118,8 @@ public abstract class Rule {
         return policy;
     }
 
+    public final Filter getFilter() { return filter; }
+
     /**
      * Check whether a request should be processed by this rule.
      * <p/>
@@ -132,7 +136,7 @@ public abstract class Rule {
      * Execute a rule on a request.
      *
      * @param request The request to run this rule on. May be mutated by the rule.
-     * @return True to continue running rules in this palicy; false to stop.
+     * @return True to continue running rules in this policy; false to stop.
      */
     public final boolean process(SinkRequest request) {
         if (!shouldProcess(request)) {
@@ -160,10 +164,23 @@ public abstract class Rule {
         return ruleName+'('+filter+')';
     }
 
+    protected boolean hasFilterValue(){
+        return this.getFilter() != null && this.getFilter().getFilterValue() != null;
+    }
+
     private static final class AllowRule extends Rule {
         @Override
         protected boolean onProcess(SinkRequest request) {
-            // We're done with this chain.
+            if(request.getSinkName().equals("NETWORK") && this.hasFilterValue()){
+                // Filter URL defined, should evaluate whether the request is accepted or not.
+                boolean accepted  = this.getFilter().filter(request);
+                if(!accepted){
+                    Log.i(TAG, "Blocking network request");
+                    String message = String.format("Request to URL %s blocked.", this.getFilter().getFilterValue());
+                    request.addErrorMessage(this.getPolicy().getSource(), message);
+                }
+            }
+
             return false;
         }
 
@@ -225,7 +242,6 @@ public abstract class Rule {
                             .getString(R.string.default_permission_denied_message);
                 }
                 Filter filter = Filter.parseFilter(parser, resources);
-
                 return new DenyRule(policy, ruleName, filter, message);
             }
         };

@@ -43,6 +43,16 @@ public abstract class Filter {
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
     public abstract boolean shouldAccept(SinkRequest request);
 
+    private String filterValue;
+
+    protected String getFilterValue() {
+        return filterValue;
+    }
+
+    protected void setFilterValue(String filterValue){
+        this.filterValue = filterValue;
+    }
+
     public static final Filter ALWAYS = new Filter() {
         @Override
         public boolean shouldAccept(SinkRequest request) {
@@ -67,6 +77,21 @@ public abstract class Filter {
         }
     };
 
+    /**
+     * Filter the request, checking whether it should be accepted or not.
+     * @param request Request to be filtered
+     * @return True if accepted, false otherwise.
+     */
+    public boolean filter(SinkRequest request){
+        String filter = getFilterValue();
+        if(filter != null && !filter.isEmpty()){
+            String requestUrl = ((NetworkSinkRequest)request).getUrl();
+            return filter.equals(requestUrl);
+        }
+
+        return true;
+    }
+
     public static abstract class Typed<TRequest extends SinkRequest> extends Filter {
         @SuppressWarnings("rawtypes")
         private static final TypeVariable<Class<Typed>> g_tRequestToken =
@@ -80,7 +105,14 @@ public abstract class Filter {
          * @param sinkName The sink name to restrict to. If null, allow any sink matching TRequest.
          */
         protected Typed(String sinkName) {
+            this(sinkName, "");
+        }
+
+        protected Typed(String sinkName, String filterValue){
+            Log.i(TAG, String.format("Creating Filtered rule with sinkName = %s and filterValue = %s", sinkName, filterValue));
             this.sinkName = sinkName;
+            this.setFilterValue(filterValue);
+
             Map<TypeVariable<?>, Type> typeMap = TypeUtils.getTypeArguments(getClass(), Typed.class);
             if (localLOGV) {
                 Log.v(TAG, "Assignments for "+getClass()+":");
@@ -131,7 +163,6 @@ public abstract class Filter {
 
         try {
             String sinkName = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "sink");
-
             if (sinkName != null) {
                 // This rule is scoped to a sink. Try to look it up.
                 Sink sink = Sink.forName(sinkName);

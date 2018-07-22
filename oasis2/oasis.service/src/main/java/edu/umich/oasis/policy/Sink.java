@@ -18,14 +18,18 @@ package edu.umich.oasis.policy;
 
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
+import edu.umich.oasis.common.OASISConstants;
 import edu.umich.oasis.helpers.Utils;
 import edu.umich.oasis.service.TrustedAPI;
+
+import static android.app.ActivityThread.TAG;
 
 public abstract class Sink {
     public interface Factory {
@@ -40,8 +44,10 @@ public abstract class Sink {
                     @Override
                     public Filter newFilter(XmlResourceParser parser, Resources resources)
                             throws XmlPullParserException, IOException {
+
+                        String filterValue = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "filter");
                         Utils.skip(parser);
-                        return new Filter.Typed<SinkRequest>(sinkName) { };
+                        return new Filter.Typed<SinkRequest>(sinkName, filterValue) { };
                     }
                 };
             }
