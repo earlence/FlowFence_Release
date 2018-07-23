@@ -54,7 +54,6 @@ public class GMTest {
     public static void toastValue() {
         State s = getState();
         IDynamicAPI toast = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("toast");
-
         toast.invoke("showText", String.format("%.1f mph @ %.1f deg", s.speed, s.heading), Toast.LENGTH_LONG);
     }
 
@@ -86,7 +85,6 @@ public class GMTest {
 
     public static void pushNonValue() {
         IDynamicAPI push = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("push");
-
         push.invoke("sendPush", "Hello, world!", "This data is not tainted.");
     }
 }

@@ -11,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.jetbrains.anko.wifiManager
 import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
 
 
 /*
@@ -28,7 +29,7 @@ class WifiConnectionManager (context: Context) {
     val wifiReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent!!.action == WifiManager.SCAN_RESULTS_AVAILABLE_ACTION) {
-                scanResults = wifiManager.scanResults
+                scanResults = wifiManager.scanResults.distinct().toMutableList()
                 Log.i(TAG, "Received ${scanResults.size} WiFi(s)")
             }
         }
@@ -39,8 +40,6 @@ class WifiConnectionManager (context: Context) {
         return Observable.timer(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.newThread())
-                .flatMap {
-                    Observable.just(scanResults)
-                }
+                .concatMap { Observable.just(scanResults) }
     }
 }

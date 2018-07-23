@@ -21,16 +21,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.util.Log;
-
 import org.apache.commons.lang3.StringUtils;
-
 import java.util.Objects;
-
-import edu.umich.oasis.annotations.MayContain;
-import edu.umich.oasis.annotations.PreserveThis;
-import edu.umich.oasis.annotations.TaintedWith;
 import edu.umich.oasis.common.IEventChannelAPI;
 import edu.umich.oasis.common.IDynamicAPI;
+import edu.umich.oasis.common.ITaintAPI;
 import edu.umich.oasis.common.OASISContext;
 import edu.umich.oasis.common.TaintSet;
 
@@ -84,8 +79,7 @@ public class TestSoda implements Parcelable {
     public String getState() {
         trace("getState", this);
         IEventChannelAPI eventApi = (IEventChannelAPI)OASISContext.getInstance().getTrustedAPI("event");
-        eventApi.fireEvent(ComponentName.unflattenFromString("edu.umich.oasis.testapp/testChannel"),
-                "Channel Test", state);
+        eventApi.fireEvent(ComponentName.unflattenFromString("edu.umich.oasis.testapp/testChannel"), "Channel Test", state);
         return state;
     }
 

@@ -33,3 +33,8 @@ proguard/
 
 #Memory captures
 captures/
+
+# MAC
+*.DS_Store
+
+# idea

@@ -40,6 +40,8 @@ import android.widget.Toast;
 
 import org.apache.commons.lang3.time.StopWatch;
 
+import java.lang.reflect.Method;
+
 import edu.umich.oasis.client.CallRunner;
 import edu.umich.oasis.client.OASISConnection;
 import edu.umich.oasis.client.Sealed;
@@ -127,6 +129,7 @@ public class TestActivity extends Activity {
             Log.i(TAG, "Constructing with init1");
             Sealed<TestSoda> obj2 = init1.arg("<foobar>").call();
             Sealed<String> obj2State = getState.arg(obj2).call();
+
             logStatic.arg("obj2State").arg(obj2State).call();
 
             Log.i(TAG, "Calling static method");

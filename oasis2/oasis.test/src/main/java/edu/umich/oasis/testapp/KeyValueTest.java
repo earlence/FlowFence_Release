@@ -37,6 +37,7 @@ public class KeyValueTest {
 
     private static final String TAINT = "edu.umich.oasis.testapp/test";
     private static final TaintSet TAINT_SET = new TaintSet.Builder().addTaint(TAINT).build();
+
     public static void setValue(String value, boolean addTaint) {
         SharedPreferences prefs = OASISContext.getInstance()
                 .getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
@@ -54,7 +55,6 @@ public class KeyValueTest {
     public static void toastValue() {
         String value = getValue();
         IDynamicAPI toast = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("toast");
-
         toast.invoke("showText", "KVS value: '" + value + "'", Toast.LENGTH_LONG);
     }
 

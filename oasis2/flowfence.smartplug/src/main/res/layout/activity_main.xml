@@ -22,20 +22,56 @@
             />
 
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/pairing_button"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Start Pairing"/>
+            android:id="@+id/buttons_pairing">
 
-        <edu.umich.oasis.client.SensitiveEditText
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/pairing_button"
-            android:id="@+id/sensitiveEditText"
-            android:hint="test something here"
-            android:layout_centerInParent="true" />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/pairing_no_qm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pair w/o Flowfence)"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/pairing_qm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pair /w Flowfence)"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/sensitive_ui"
+            android:layout_below="@id/buttons_pairing"
+            android:orientation="vertical">
+
+            <edu.umich.oasis.client.SensitiveEditText
+                android:id="@+id/sensitiveEditText"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:hint="Sensitive data" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/toast_qm_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Toast value (Flowfence)" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/send_network"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Send text to network" />
+
+
+        </LinearLayout>
+
 
 
     </RelativeLayout>

@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 project.ext {
+    rxJava_version = "2.1.17"
     rxAndroid_version = "2.0.2"
     anko_version = "0.10.5"
 }
@@ -14,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "br.ufpe.cin.flowfence.smartplug"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -43,12 +44,14 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // RxJava
+    compile "io.reactivex.rxjava2:rxjava:$project.rxJava_version"
     compile "io.reactivex.rxjava2:rxandroid:$project.rxAndroid_version"
 
     // Anko
     compile "org.jetbrains.anko:anko:$project.anko_version"
     compile "org.jetbrains.anko:anko-design:$project.anko_version"
 
+    // Flowfence dependencies
     compile project(':oasis.common')
     compile project(':oasis.client')
 

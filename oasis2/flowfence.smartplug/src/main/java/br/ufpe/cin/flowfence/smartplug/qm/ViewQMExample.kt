@@ -1,4 +1,4 @@
-package br.ufpe.cin.flowfence.smartplug.component
+package br.ufpe.cin.flowfence.smartplug.qm
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -28,11 +28,15 @@ open class ViewQMExample : Parcelable {
         toastMethod.invoke("showText", "Value tainted = ${value}", Toast.LENGTH_LONG)
     }
 
+    fun makeFakeNetworkcall(viewId: Int, text: String){
+        val value = getValue(viewId)
+        // Continue
+    }
+
     fun getValue(viewId: Int) : String {
         val api: ISensitiveViewAPI = OASISContext.getInstance().getTrustedAPI("ui") as ISensitiveViewAPI
         val value = api.readSensitiveValue(viewId.toString(), TAINT_SET)
-        val x: String = if(value == null) { ""} else {value}
-        return x
+        return value
     }
 
     // Boilerplate parcel

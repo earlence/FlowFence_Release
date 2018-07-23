@@ -17,6 +17,7 @@
         oasis:label="TAINT_UI">
 
         <policy>
+            <allow oasis:sink="TOAST" />
             <allow oasis:sink="NETWORK" oasis:filter="http://google.com"/>
             <drop/>
         </policy>
