@@ -151,6 +151,7 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
         if (localLOGD) {
             Log.d(TAG, "Sending push with title '" + title + "'");
         }
+
         if (Policy.checkCallerSink(new NetworkSinkRequest("NETWORK", PUSH_ENDPOINT))) {
             try {
                 JSONObject push = new JSONObject();
@@ -175,7 +176,7 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
                 return null;
             }
         } else {
-            return null;
+            return String.format("Flow to %s not allowed.", PUSH_ENDPOINT);
         }
     }
 
@@ -251,15 +252,24 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
     }
 
     private String executeNetworkRequest(ANRequest request){
-        ANResponse<String> response = request.executeForString();
-        String resultResponse;
-        if (response.isSuccess()) {
-            resultResponse = response.getResult();
-        } else {
-            resultResponse = "Network request failed";
-        }
+        if(Policy.checkCallerSink(new NetworkSinkRequest("NETWORK", request.getUrl()))){
+            ANResponse<String> response = request.executeForString();
+            String resultResponse;
+            if(response.isSuccess())
 
-        Log.i(TAG, "Finished GET request");
-        return resultResponse;
+            {
+                resultResponse = response.getResult();
+            } else
+
+            {
+                resultResponse = "Network request failed";
+            }
+
+            Log.i(TAG,"Finished GET request");
+            return resultResponse;
+        }
+        else{
+            return String.format("Flow to %s not allowed.", request.getUrl());
+        }
     }
 }

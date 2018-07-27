@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OASISManifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:oasis="http://schemas.android.com/apk/lib/edu.umich.oasis.service">
-     <source
-             oasis:name="test"
-             oasis:label="TAINT_TEST">
-        <policy>
-            <allow oasis:sink="TOAST"/>
-            <log   oasis:sink="NETWORK" oasis:message="%1$s -> Network"/>
-            <deny  oasis:sink="NETWORK" oasis:message="Network error"/>
-            <drop/>
-        </policy>
-    </source>
 
     <source
         oasis:name="UI"
         oasis:label="TAINT_UI">
-
         <policy>
             <allow oasis:sink="TOAST" />
-            <allow oasis:sink="NETWORK" oasis:filter="http://google.com"/>
+            <allow oasis:sink="NETWORK" oasis:filter="https://flowfence-testserver-211220.appspot.com"/>
             <drop/>
         </policy>
     </source>
 
-    <event-channel oasis:name="testChannel" oasis:exported="both" />
+
 </OASISManifest>

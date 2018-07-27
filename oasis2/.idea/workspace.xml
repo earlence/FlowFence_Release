@@ -11,98 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d95ad3e-08b7-41e2-aff6-481fb4ab21d5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_jars____Users_davinomjr_research_iot_FlowFence_Release_oasis2_libs_android_4_4_nohide_core_jar_unspecified_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_jars____Users_davinomjr_research_iot_FlowFence_Release_oasis2_libs_android_4_4_nohide_framework_jar_unspecified_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_jars____Users_davinomjr_research_iot_FlowFence_Release_oasis2_oasis_study_fencedfrdc_libs_sd_sdk_facial_processing_jar_unspecified_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_22_2_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_2_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_gridlayout_v7_22_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_22_2_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_27_1_1_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_22_2_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_22_2_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_2_2_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_2_2_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_2_2_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebase_firebase_client_android_2_5_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebase_firebase_client_jvm_2_5_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebase_tubesock_0_0_12_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp_okhttp_2_5_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_2.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_1_17_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_lang3_3_4_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_appcompat_v7_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_appcompat_v7_commons_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_appcompat_v7_coroutines_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_commons_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_coroutines_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_design_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_sdk25_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_sdk25_coroutines_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_sqlite_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_support_v4_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_support_v4_commons_0_10_5_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_2_51_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_2_51_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_2_51_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_android_0_15_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_0_15_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/build.gradle" afterPath="$PROJECT_DIR$/flowfence.smartplug/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/flowfence.smartplug.iml" afterPath="$PROJECT_DIR$/flowfence.smartplug/flowfence.smartplug.iml" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/smartplug/extension/Context.kt" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/smartplug/extension/Context.kt" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/smartplug/qm/ViewQMExample.kt" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/smartplug/qm/ViewQMExample.kt" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/res/layout/activity_main.xml" />
-      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/res/values/styles.xml" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change beforePath="$PROJECT_DIR$/oasis.client/build.gradle" afterPath="$PROJECT_DIR$/oasis.client/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.common/build.gradle" afterPath="$PROJECT_DIR$/oasis.common/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.common/src/main/java/edu/umich/oasis/common/ISensitiveViewAPI.java" afterPath="$PROJECT_DIR$/oasis.common/src/main/java/edu/umich/oasis/common/ISensitiveViewAPI.java" />
-      <change beforePath="$PROJECT_DIR$/oasis.service/build.gradle" afterPath="$PROJECT_DIR$/oasis.service/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.service/oasis.service.iml" afterPath="$PROJECT_DIR$/oasis.service/oasis.service.iml" />
-      <change beforePath="$PROJECT_DIR$/oasis.service/src/main/aidl/edu/umich/oasis/internal/ITrustedAPI.aidl" afterPath="$PROJECT_DIR$/oasis.service/src/main/aidl/edu/umich/oasis/internal/ITrustedAPI.aidl" />
-      <change beforePath="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/sandbox/SandboxContext.java" afterPath="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/sandbox/SandboxContext.java" />
-      <change beforePath="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/OASISApplication.java" afterPath="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/OASISApplication.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml" afterPath="$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml" />
       <change beforePath="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java" afterPath="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.caminjector/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.caminjector/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.fencedfrdc/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.fencedfrdc/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.fencedhr/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.fencedhr/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.frameinjector/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.frameinjector/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.presencebasedcontrol/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.presencebasedcontrol/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.skeleton/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.skeleton/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.study.smartdevresponder/build.gradle" afterPath="$PROJECT_DIR$/oasis.study.smartdevresponder/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/oasis.test/build.gradle" afterPath="$PROJECT_DIR$/oasis.test/build.gradle" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -128,9 +39,10 @@
       <file leaf-file-name="SandboxContext.java" pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/sandbox/SandboxContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+            <state relative-caret-position="861">
+              <caret line="323" column="13" lean-forward="false" selection-start-line="323" selection-start-column="13" selection-end-line="323" selection-end-column="13" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#11268#11269#0" expanded="true" />
                 <element signature="e#11322#11323#0" expanded="true" />
                 <marker date="1532709154765" expanded="true" signature="11597:11847" ph="..." />
@@ -159,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrustedAPI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TrustedAPI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="256" column="50" lean-forward="false" selection-start-line="256" selection-start-column="50" selection-end-line="256" selection-end-column="50" />
+            <state relative-caret-position="-259">
+              <caret line="118" column="34" lean-forward="true" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,11 +83,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="105" column="113" lean-forward="false" selection-start-line="105" selection-start-column="113" selection-end-line="105" selection-end-column="113" />
+            <state relative-caret-position="341">
+              <caret line="106" column="5" lean-forward="false" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oasis_manifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -189,16 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="319">
               <caret line="82" column="44" lean-forward="false" selection-start-line="82" selection-start-column="44" selection-end-line="82" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Soda.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oasis.client/src/main/java/edu/umich/oasis/client/Soda.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="389" column="50" lean-forward="false" selection-start-line="389" selection-start-column="50" selection-end-line="389" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -11548,7 +11460,6 @@
         <option value="$PROJECT_DIR$/oasis.test/src/main/res/xml/oasis_manifest.xml" />
         <option value="$PROJECT_DIR$/oasis.test/src/main/java/edu/umich/oasis/testapp/TestSoda.java" />
         <option value="$PROJECT_DIR$/oasis.test/src/main/java/edu/umich/oasis/testapp/TestActivity.java" />
-        <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml" />
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/INetworkRequestAPI.java" />
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/Application.kt" />
@@ -11591,10 +11502,11 @@
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/smartplug/qm/ViewQMExample.kt" />
         <option value="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/sandbox/SandboxContext.java" />
         <option value="$PROJECT_DIR$/oasis.common/src/main/java/edu/umich/oasis/common/ISensitiveViewAPI.java" />
-        <option value="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java" />
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/smartplug/qm/NetworkQMExample.kt" />
         <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml" />
+        <option value="$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java" />
       </list>
     </option>
   </component>
@@ -11674,6 +11586,12 @@
             </path>
             <path>
               <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="xml" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
               <item name="oasis.common" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
@@ -11686,65 +11604,6 @@
               <item name="oasis.common" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-              <item name="oasis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-              <item name="oasis" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-              <item name="oasis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="oasis.common" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-              <item name="oasis" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oasis2" type="1abcf292:AndroidViewProjectNode" />
@@ -13013,12 +12872,12 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.286578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.286578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31801692" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28397712" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28397712" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769045" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -13045,17 +12904,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="51" lean-forward="false" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flowfence.smartplug/proguard-rules.pro">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -13681,18 +13529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/sandbox/SandboxContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="47" column="42" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-          <folding>
-            <element signature="e#11268#11269#0" expanded="true" />
-            <element signature="e#11322#11323#0" expanded="true" />
-            <marker date="1532709154765" expanded="true" signature="11597:11847" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oasis.common/src/main/java/edu/umich/oasis/common/NetworkException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -13714,16 +13550,6 @@
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="5" selection-end-column="3" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="256" column="50" lean-forward="false" selection-start-line="256" selection-start-column="50" selection-end-line="256" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -13750,9 +13576,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="105" column="113" lean-forward="false" selection-start-line="105" selection-start-column="113" selection-end-line="105" selection-end-column="113" />
+        <state relative-caret-position="341">
+          <caret line="106" column="5" lean-forward="false" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/sandbox/SandboxContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="323" column="13" lean-forward="false" selection-start-line="323" selection-start-column="13" selection-end-line="323" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11268#11269#0" expanded="true" />
+            <element signature="e#11322#11323#0" expanded="true" />
+            <marker date="1532709154765" expanded="true" signature="11597:11847" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oasis.service/src/main/java/edu/umich/oasis/service/TrustedAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-259">
+          <caret line="118" column="34" lean-forward="true" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
