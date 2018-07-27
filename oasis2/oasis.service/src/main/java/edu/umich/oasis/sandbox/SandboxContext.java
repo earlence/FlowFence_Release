@@ -20,13 +20,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+
 import org.apache.commons.lang3.reflect.MethodUtils;
+import org.json.JSONObject;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -38,6 +41,7 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import edu.umich.oasis.common.IEventChannelAPI;
+import edu.umich.oasis.common.INetworkAPI;
 import edu.umich.oasis.common.IOASISService;
 import edu.umich.oasis.common.ISensitiveViewAPI;
 import edu.umich.oasis.common.ITaintAPI;
@@ -46,7 +50,6 @@ import edu.umich.oasis.common.OASISContext;
 import edu.umich.oasis.common.ParceledPayload;
 import edu.umich.oasis.common.RemoteCallException;
 import edu.umich.oasis.common.TaintSet;
-import edu.umich.oasis.common.TaintableSharedPreferencesEditor;
 import edu.umich.oasis.common.smartthings.ISmartSwitchAPI;
 import edu.umich.oasis.common.smartthings.SmartDevice;
 import edu.umich.oasis.events.IEventChannelSender;
@@ -303,22 +306,50 @@ import edu.umich.oasis.service.OASISService;
     }
 
     public class SensitiveViewAPI extends APIBase implements ISensitiveViewAPI {
-
-        private static final String STORE_NAME = "SensitiveViewSTORE";
-
         @Override
         public void addSensitiveValue(String viewId, String value) {
-            SharedPreferences prefs = OASISContext.getInstance().getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(viewId, value);
-            editor.apply();
+            try {
+                mCallout.addSensitiveValue(viewId, value);
+            } catch(Exception e) {
+                throw translateException(e);
+            }
         }
 
         @Override
-        public String readSensitiveValue(String viewId, TaintSet taint) throws RemoteException {
-            SharedPreferences prefs = OASISContext.getInstance().getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
-            mCallout.taintSelf(taint);
-            return prefs.getString(viewId, "");
+        public String readSensitiveValue(String viewId, TaintSet taint) {
+            try {
+                return mCallout.readSensitiveValue(viewId, taint);
+            } catch(Exception e) {
+                throw translateException(e);
+            }
+        }
+    }
+
+    public class NetworkAPI extends APIBase implements INetworkAPI {
+
+        @Override
+        public String get(String url) {
+            return getWithQuery(url, null);
+        }
+
+        @Override
+        public String getWithQuery(String url, Map query) {
+            try{
+                return mCallout.getWithQuery(url, query);
+            }
+            catch (Exception ex){
+               throw translateException(ex);
+            }
+        }
+
+        @Override
+        public String post(String url, Map body) {
+            try{
+                return mCallout.post(url, body);
+            }
+            catch (Exception ex){
+               throw translateException(ex);
+            }
         }
     }
 
@@ -340,10 +371,10 @@ import edu.umich.oasis.service.OASISService;
                 return new EventChannelAPI();
             case "ui":
                 return new SensitiveViewAPI();
+            case "network":
+                return new NetworkAPI();
             default:
                 return null;
         }
     }
 }
-
-

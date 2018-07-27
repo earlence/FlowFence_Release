@@ -2,6 +2,7 @@ package br.ufpe.cin.flowfence
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.wifi.WifiManager
@@ -9,18 +10,19 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.AppCompatButton
 import android.text.InputType
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import br.ufpe.cin.flowfence.smartplug.R
 import br.ufpe.cin.flowfence.smartplug.extension.showToast
+import br.ufpe.cin.flowfence.smartplug.qm.NetworkQMExample
 import br.ufpe.cin.flowfence.smartplug.qm.ViewQMExample
 import br.ufpe.cin.smartplug.network.WifiConnectionManager
 import edu.umich.oasis.client.SensitiveEditText
 import edu.umich.oasis.client.OASISConnection
 import edu.umich.oasis.client.Sealed
-import edu.umich.oasis.client.Soda
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -39,10 +41,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var progressDialog: ProgressDialog
     var connection: OASISConnection? = null
 
-    var qm: Soda.S0<SensitiveEditText>? = null
-    var readValue: Soda.S1<SensitiveEditText, String>? = null
-    var handle: Sealed<String>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -60,8 +58,14 @@ class MainActivity : AppCompatActivity() {
             toastTextWithFlowfence()
         }
 
-        send_network.setOnClickListener {
-            sendTextNetwork()
+        get_state.setOnClickListener {
+            getPlugState()
+        }
+
+        turn_on_off.setOnClickListener {
+            val turnOn = (it as AppCompatButton).text == "Turn on"
+            turn_on_off.text = "Turn ${if(turnOn) "off" else "on"}"
+            setPlugState(turnOn)
         }
     }
 
@@ -85,14 +89,25 @@ class MainActivity : AppCompatActivity() {
         //qm.buildCall(setValue).arg("TESTE").call()
     }
 
-    fun sendTextNetwork(){
-        val constructor = connection!!.resolveConstructor(ViewQMExample::class.java)
-        val qm: Sealed<ViewQMExample> = constructor.call()
-        //TODO()
+    fun getPlugState() {
+        val qmNetwork: Sealed<NetworkQMExample> = connection!!.resolveConstructor(NetworkQMExample::class.java).call()
+        val getState = connection!!.resolveInstance(String::class.java, NetworkQMExample::class.java, "getState", String::class.java)
+        val response: Sealed<String> = qmNetwork.buildCall(getState).arg("https://flowfence-testserver-211220.appspot.com").call()
+
+        val qmView: Sealed<ViewQMExample> = connection!!.resolveConstructor(ViewQMExample::class.java).call()
+        val showToast = connection!!.resolveInstance(Void::class.java, ViewQMExample::class.java, "showToast", String::class.java)
+        qmView.buildCall(showToast).arg(response).call()
     }
 
-    fun initiateFlowFence(){
-        Log.i(TAG, "Binding to OASIS...");
+    fun setPlugState(turnOn: Boolean){
+        val qmNetwork: Sealed<NetworkQMExample> = connection!!.resolveConstructor(NetworkQMExample::class.java).call()
+        val changeState = connection!!.resolveInstance(String::class.java, NetworkQMExample::class.java, "changeState", String::class.java, String::class.java)
+        val state = if(turnOn) "on" else "off"
+        qmNetwork.buildCall(changeState).arg("https://flowfence-testserver-211220.appspot.com").arg(state).call()
+    }
+
+    private fun initiateFlowFence(){
+        Log.i(TAG, "Binding to OASIS...")
         OASISConnection.bind(this, object: OASISConnection.Callback {
             override fun onConnect(conn: OASISConnection?) {
                 Log.i(TAG, "Connected to OASIS")
@@ -115,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         Observable.timer(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe({ showProgressBar("Looking for the smart plug on the network...") })
+                .doOnSubscribe{ showProgressBar("Looking for the smart plug on the network...") }
                 .subscribe {
                     hideProgressBar()
                     showAlert("Found device and connected to its created WIFi hotspot.")
@@ -226,5 +241,11 @@ class MainActivity : AppCompatActivity() {
     fun hasPermissions(): Boolean {
         val permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
         return permissions.all { t -> ContextCompat.checkSelfPermission(this@MainActivity, t) == PackageManager.PERMISSION_GRANTED }
+    }
+
+    companion object {
+        fun getContext() : Context{
+            return this.getContext()
+        }
     }
 }

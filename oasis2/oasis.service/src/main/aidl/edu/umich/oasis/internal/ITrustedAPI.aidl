@@ -24,6 +24,7 @@ import edu.umich.oasis.common.smartthings.SmartDevice;
 import edu.umich.oasis.events.IEventChannelSender;
 import android.content.ComponentName;
 import java.util.List;
+import java.util.Map;
 
 interface ITrustedAPI {
     void taintSelf(in TaintSet taint);
@@ -39,4 +40,13 @@ interface ITrustedAPI {
     void switchOp(String op, String switchId);
 
     IEventChannelSender getEventChannel(in ComponentName channelName);
+
+    // SensitiveView API
+    void addSensitiveValue(String viewId, String value);
+    String readSensitiveValue(String viewId, in TaintSet taint);
+
+    // Network API
+    String get(String url);
+    String getWithQuery(String url, in Map query);
+    String post(String url, in Map body);
 }

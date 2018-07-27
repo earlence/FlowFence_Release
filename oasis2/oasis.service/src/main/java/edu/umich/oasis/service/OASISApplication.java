@@ -28,6 +28,9 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.util.Log;
 
+
+import com.androidnetworking.AndroidNetworking;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -51,6 +54,7 @@ import edu.umich.oasis.common.SodaExceptionResult;
 import edu.umich.oasis.common.TaintSet;
 import edu.umich.oasis.policy.PackageManifest;
 import edu.umich.oasis.policy.PolicyParseException;
+import okhttp3.OkHttpClient;
 
 public class OASISApplication extends ContextWrapper {
     private static final String TAG = "OASIS.Application";
@@ -94,7 +98,13 @@ public class OASISApplication extends ContextWrapper {
 
     private void onCreate()
     {
+        initializeNetwork();
+    }
 
+    private void initializeNetwork()
+    {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        AndroidNetworking.initialize(getApplicationContext(), client);
     }
 
     /* package */ void onServiceCreate(OASISService service)

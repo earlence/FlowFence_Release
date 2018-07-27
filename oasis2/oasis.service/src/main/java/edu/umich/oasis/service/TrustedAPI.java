@@ -17,10 +17,16 @@
 package edu.umich.oasis.service;
 
 import android.content.ComponentName;
-import android.os.IBinder;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.ANRequest;
+import com.androidnetworking.common.ANResponse;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -33,7 +39,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
+import edu.umich.oasis.common.IEventChannelAPI;
+import edu.umich.oasis.common.OASISContext;
 import edu.umich.oasis.common.TaintSet;
 import edu.umich.oasis.common.smartthings.SmartDevice;
 import edu.umich.oasis.events.IEventChannelSender;
@@ -187,5 +196,70 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
     @Override
     public synchronized IEventChannelSender getEventChannel(ComponentName channelName) {
         return mApplication.getChannel(channelName).getSender();
+    }
+
+    private static final String STORE_NAME = "SensitiveViewSTORE";
+
+    // Sensitive View API
+    @Override
+    public void addSensitiveValue(String viewId, String value){
+        SharedPreferences prefs = mApplication.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(viewId, value);
+        editor.apply();
+    }
+
+    @Override
+    public String readSensitiveValue(String viewId, TaintSet taint) {
+        SharedPreferences prefs = mApplication.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
+        this.taintSelf(taint);
+        return prefs.getString(viewId, "");
+    }
+
+    // Network API
+    @Override
+    public String get(String url) {
+        Log.i(TAG, "get()");
+        return getWithQuery(url, null);
+    }
+
+    @Override
+    public String getWithQuery(String url, Map query) {
+        Log.i(TAG, "get() request to URL: " + url);
+        ANRequest.GetRequestBuilder builder = AndroidNetworking.get(url);
+
+        if (query != null) {
+            for (Object queryParameter : query.entrySet()) {
+                builder.addQueryParameter(((Map.Entry<String, String>) queryParameter).getKey(), ((Map.Entry<String, String>) queryParameter).getValue());
+            }
+        }
+
+        return executeNetworkRequest(builder.build());
+    }
+
+    @Override
+    public String post(String url, Map body) {
+        Log.i(TAG, "post()");
+        ANRequest.PostRequestBuilder builder = AndroidNetworking.post(url);
+        if(body != null){
+            for (Object queryParameter : body.entrySet()) {
+                builder.addBodyParameter(((Map.Entry<String, String>)queryParameter).getKey(), ((Map.Entry<String, String>)queryParameter).getValue());
+            }
+        }
+
+        return executeNetworkRequest(builder.build());
+    }
+
+    private String executeNetworkRequest(ANRequest request){
+        ANResponse<String> response = request.executeForString();
+        String resultResponse;
+        if (response.isSuccess()) {
+            resultResponse = response.getResult();
+        } else {
+            resultResponse = "Network request failed";
+        }
+
+        Log.i(TAG, "Finished GET request");
+        return resultResponse;
     }
 }

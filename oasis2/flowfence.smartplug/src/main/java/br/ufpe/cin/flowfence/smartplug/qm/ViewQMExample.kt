@@ -2,30 +2,26 @@ package br.ufpe.cin.flowfence.smartplug.qm
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
 import android.widget.Toast
 import edu.umich.oasis.common.*
-import org.json.JSONObject
 
 /*
  * Created by Davino Junior - dmtsj@{cin.ufpe.br, gmail.com}
  * at 07/17/2018 16:42
  */
 
-open class TestQMExample : Parcelable {
+open class ViewQMExample : Parcelable {
 
     constructor()
-    val TAG = TestQMExample::class.java.simpleName
 
+    val TAG = ViewQMExample::class.java.simpleName
     val TAINT: String = "br.ufpe.cin.flowfence.smartplug/UI"
     val TAINT_SET = TaintSet.Builder().addTaint(TAINT).build()
 
-    constructor(parcel: Parcel) : this() {
-    }
 
     fun toastValue(viewId: Int){
         val value = getValue(viewId)
-        showToast(value)
+        showToast("Value = $value")
     }
 
     fun getValue(viewId: Int) : String {
@@ -46,12 +42,13 @@ open class TestQMExample : Parcelable {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<TestQMExample> {
-        override fun createFromParcel(parcel: Parcel): TestQMExample {
-            return TestQMExample(parcel)
+    constructor(parcel: Parcel)
+    companion object CREATOR : Parcelable.Creator<ViewQMExample> {
+        override fun createFromParcel(parcel: Parcel): ViewQMExample {
+            return ViewQMExample(parcel)
         }
 
-        override fun newArray(size: Int): Array<TestQMExample?> {
+        override fun newArray(size: Int): Array<ViewQMExample?> {
             return arrayOfNulls(size)
         }
     }
