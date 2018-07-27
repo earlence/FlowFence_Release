@@ -62,12 +62,12 @@ own SmartThings setup if you want to see a switch physically toggle its state. R
 working on a more generic way to get this config done, but for now its manual...
 
 --------------------------
-Running SmartPlug APP
+Running SmartPlug app
 --------------------------
 1. Run flowfence.smartplug app located on oasis2/. 
 2. Click on "Pair w/o or /w" to simulate pairing with a smart plug without/with Flowfence.
 3. Click on "Toast Value" to  toast sensitive data written via Flowfence.
-4. Click on "GET PLUG STATE/TURN OFF" to make network requests to a webserver (located on https://flowfence-testserver-211220.appspot.com/) which simulates a cloud manufacturer server responsible for controlling IoT devices in a IoT cloud architecture. The requests are made using Flowfence Network API enforcing policy to the endpoint only.
+4. Click on "GET PLUG STATE/TURN OFF" to make network requests to a webserver (located on https://flowfence-testserver-211220.appspot.com/) which simulates a cloud manufacturer server responsible for controlling IoT devices in a IoT cloud architecture. The requests are made using Flowfence Network API enforcing policy to the endpoint manufacturer's URL only.
 
 The app demonstrates implemented features on this forked version of Flowfence simulating a off-the-shelf Smart Plug app like Kasa (https://play.google.com/store/apps/details?id=com.tplink.kasa_android&hl=en_US). The idea is to present some case scenarios on the IoT Cloud Architecture and how to use Flowfence within this domain. Some already implemented features includes: 
 
