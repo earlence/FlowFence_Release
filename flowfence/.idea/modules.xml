@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/flowfence.iml" filepath="$PROJECT_DIR$/flowfence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.client/flowfence.client.iml" filepath="$PROJECT_DIR$/flowfence.client/flowfence.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.common/flowfence.common.iml" filepath="$PROJECT_DIR$/flowfence.common/flowfence.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.service/flowfence.service.iml" filepath="$PROJECT_DIR$/flowfence.service/flowfence.service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.smartplug/flowfence.smartplug.iml" filepath="$PROJECT_DIR$/flowfence.smartplug/flowfence.smartplug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.caminjector/flowfence.study.caminjector.iml" filepath="$PROJECT_DIR$/flowfence.study.caminjector/flowfence.study.caminjector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.fencedfrdc/flowfence.study.fencedfrdc.iml" filepath="$PROJECT_DIR$/flowfence.study.fencedfrdc/flowfence.study.fencedfrdc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.fencedhr/flowfence.study.fencedhr.iml" filepath="$PROJECT_DIR$/flowfence.study.fencedhr/flowfence.study.fencedhr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.frameinjector/flowfence.study.frameinjector.iml" filepath="$PROJECT_DIR$/flowfence.study.frameinjector/flowfence.study.frameinjector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.presencebasedcontrol/flowfence.study.presencebasedcontrol.iml" filepath="$PROJECT_DIR$/flowfence.study.presencebasedcontrol/flowfence.study.presencebasedcontrol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.skeleton/flowfence.study.skeleton.iml" filepath="$PROJECT_DIR$/flowfence.study.skeleton/flowfence.study.skeleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.study.smartdevresponder/flowfence.study.smartdevresponder.iml" filepath="$PROJECT_DIR$/flowfence.study.smartdevresponder/flowfence.study.smartdevresponder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flowfence.test/flowfence.test.iml" filepath="$PROJECT_DIR$/flowfence.test/flowfence.test.iml" />
+    </modules>
+  </component>
+</project>

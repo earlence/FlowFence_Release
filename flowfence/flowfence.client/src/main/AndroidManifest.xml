@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.umich.flowfence.client">
+
+    <uses-permission android:name="edu.umich.oasis.permission.BIND_OASIS_SERVICE" />
+
+    <application android:name="edu.umich.flowfence.client.OASISApplication">
+        
+    </application>
+
+</manifest>
