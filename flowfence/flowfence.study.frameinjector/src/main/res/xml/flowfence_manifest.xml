@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FlowfenceManifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flowfence="http://schemas.android.com/apk/lib/edu.umich.flowfence.service">
+    <source flowfence:name="camFrameTaint"
+        flowfence:label="This is a cam frame Taint tag">
+        <policy>
+            <allow flowfence:sink="TOAST" />
+            <deny  flowfence:sink="NETWORK" flowfence:message="can't network it"/>
+
+            <drop/>
+        </policy>
+    </source>
+
+    <event-channel flowfence:name="camFrameChannel" flowfence:exported="both" />
+</FlowfenceManifest>

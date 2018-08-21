@@ -22,7 +22,7 @@ import br.ufpe.cin.flowfence.smartplug.qm.NetworkQMExample
 import br.ufpe.cin.flowfence.smartplug.qm.ViewQMExample
 import br.ufpe.cin.smartplug.network.WifiConnectionManager
 import edu.umich.flowfence.client.SensitiveEditText
-import edu.umich.flowfence.client.OASISConnection
+import edu.umich.flowfence.client.FlowfenceConnection
 import edu.umich.flowfence.client.Sealed
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     var alert: android.support.v7.app.AlertDialog? = null
 
     lateinit var progressDialog: ProgressDialog
-    var connection: OASISConnection? = null
+    var connection: FlowfenceConnection? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,10 +108,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initiateFlowFence(){
-        Log.i(TAG, "Binding to OASIS...")
-        OASISConnection.bind(this, object: OASISConnection.Callback {
-            override fun onConnect(conn: OASISConnection?) {
-                Log.i(TAG, "Connected to OASIS")
+        Log.i(TAG, "Binding to FlowFence...")
+        FlowfenceConnection.bind(this, object: FlowfenceConnection.Callback {
+            override fun onConnect(conn: FlowfenceConnection?) {
+                Log.i(TAG, "Connected to FlowFence")
                 connection = conn
                 sensitiveEditText.connection = conn
             }

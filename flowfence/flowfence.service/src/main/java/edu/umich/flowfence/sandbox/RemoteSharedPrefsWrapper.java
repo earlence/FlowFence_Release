@@ -35,7 +35,7 @@ import edu.umich.flowfence.kvs.IRemoteSharedPrefsEditor;
 import edu.umich.flowfence.kvs.IRemoteSharedPrefsListener;
 
 /*package*/ final class RemoteSharedPrefsWrapper implements SharedPreferences {
-    private static final String TAG = "OASIS.SharedPrefs.Proxy";
+    private static final String TAG = "FF.SharedPrefs.Proxy";
     private final IRemoteSharedPrefs mRemote;
 
     public static final class Editor implements TaintableSharedPreferencesEditor {

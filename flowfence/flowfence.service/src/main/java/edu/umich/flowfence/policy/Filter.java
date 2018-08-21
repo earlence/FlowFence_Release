@@ -20,8 +20,6 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.util.Log;
 
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -37,7 +35,7 @@ import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
 
 public abstract class Filter {
-    private static final String TAG = "OASIS.Filter";
+    private static final String TAG = "FF.Filter";
 
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
@@ -162,7 +160,7 @@ public abstract class Filter {
         int depth = parser.getDepth();
 
         try {
-            String sinkName = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "sink");
+            String sinkName = parser.getAttributeValue(Utils.FLOWFENCE_NAMESPACE, "sink");
             if (sinkName != null) {
                 // This rule is scoped to a sink. Try to look it up.
                 Sink sink = Sink.forName(sinkName);

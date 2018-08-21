@@ -38,7 +38,7 @@ import java.util.WeakHashMap;
 import edu.umich.flowfence.common.TaintSet;
 
 public class NamespaceSharedPrefs {
-    private static final String TAG = "OASIS.SharedPrefs.Base";
+    private static final String TAG = "FF.SharedPrefs.Base";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
     private static final char SEPARATOR = ':';

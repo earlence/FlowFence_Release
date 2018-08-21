@@ -8,15 +8,15 @@
 #include "IBinder.h"
 //#include "android_util_Binder.h"
 
-#define	TAG		"OASIS.ParcelHelper"
+#define	TAG		"FF.ParcelHelper"
 
 //keep this in sync with ParcelHelper.java
-#define	OASIS_BINDER_TYPE_FAIL			-1
-#define	OASIS_BINDER_TYPE_BINDER		0
-#define	OASIS_BINDER_TYPE_WEAK_BINDER	1
-#define	OASIS_BINDER_TYPE_HANDLE		2
-#define	OASIS_BINDER_TYPE_WEAK_HANDLE	3
-#define	OASIS_BINDER_TYPE_FD			4
+#define	FLOWFENCE_BINDER_TYPE_FAIL			-1
+#define	FLOWFENCE_BINDER_TYPE_BINDER		0
+#define	FLOWFENCE_BINDER_TYPE_WEAK_BINDER	1
+#define	FLOWFENCE_BINDER_TYPE_HANDLE		2
+#define	FLOWFENCE_BINDER_TYPE_WEAK_HANDLE	3
+#define	FLOWFENCE_BINDER_TYPE_FD			4
 
 #define	LOGI(TAG, MSG)	__android_log_print(ANDROID_LOG_INFO, TAG, MSG)
 
@@ -34,7 +34,7 @@ BINDER_TYPE_FD = B_PACK_CHARS('f', 'd', '*', B_TYPE_LARGE),
 namespace android {
 //extern sp<IServiceManager> gDefaultServiceManager;
 
-extern "C" JNIEXPORT void JNICALL Java_edu_umich_oasis_api_ParcelHelper_rewriteGDefaultServiceManager(JNIEnv *env, jclass clazz, jobject obj)
+extern "C" JNIEXPORT void JNICALL Java_edu_umich_flowfence_api_ParcelHelper_rewriteGDefaultServiceManager(JNIEnv *env, jclass clazz, jobject obj)
 	{
 		/*void *convHandle = dlopen("/system/lib/libandroid_runtime.so", RTLD_NOW);
 		sp<IBinder> (*toIBinder)(JNIEnv*, jobject);
@@ -44,17 +44,17 @@ extern "C" JNIEXPORT void JNICALL Java_edu_umich_oasis_api_ParcelHelper_rewriteG
 			toIBinder = dlsym(convHandle, "ibinderForJavaObject");
 			if(toIBinder != NULL)
 			{
-				sp<IBinder> oasisBinder = toIBinder(env, obj);
-				gDefaultServiceManager =  interface_cast<IServiceManager>(oasisBinder);
-				LOGI(TAG, "gDefaultServiceManager reset to Oasis");
+				sp<IBinder> flowfenceBinder = toIBinder(env, obj);
+				gDefaultServiceManager =  interface_cast<IServiceManager>(flowfenceBinder);
+				LOGI(TAG, "gDefaultServiceManager reset to Flowfence");
 			}
 		}
 		else
 			LOGI(TAG, "could not load libandroid_runtime.so");*/
 
-//		sp<IBinder> oasisBinder = ibinderForJavaObject(env, obj);
-//		gDefaultServiceManager = interface_cast<IServiceManager>(oasisBinder);
-//		LOGI(TAG, "gDefaultServiceManager reset to Oasis");
+//		sp<IBinder> flowfenceBinder = ibinderForJavaObject(env, obj);
+//		gDefaultServiceManager = interface_cast<IServiceManager>(flowfenceBinder);
+//		LOGI(TAG, "gDefaultServiceManager reset to Flowfence");
 	}
 }
 
@@ -79,7 +79,7 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved)
     return JNI_VERSION_1_6;
 }
 
-extern "C" JNIEXPORT jint JNICALL Java_edu_umich_oasis_api_ParcelHelper_getNumObjects(JNIEnv *env, jclass clazz, jlong nativePtr)
+extern "C" JNIEXPORT jint JNICALL Java_edu_umich_flowfence_api_ParcelHelper_getNumObjects(JNIEnv *env, jclass clazz, jlong nativePtr)
 {
 	android::Parcel *p = parcelFromJavaObj(env, nativePtr);
 	if(p != NULL)
@@ -88,7 +88,7 @@ extern "C" JNIEXPORT jint JNICALL Java_edu_umich_oasis_api_ParcelHelper_getNumOb
 		return -1;
 }
 
-extern "C" JNIEXPORT jint JNICALL Java_edu_umich_oasis_api_ParcelHelper_getDataPos(JNIEnv *env, jclass clazz, jlong nativePtr)
+extern "C" JNIEXPORT jint JNICALL Java_edu_umich_flowfence_api_ParcelHelper_getDataPos(JNIEnv *env, jclass clazz, jlong nativePtr)
 {
 	android::Parcel *p = parcelFromJavaObj(env, nativePtr);
 	if(p != NULL)
@@ -97,7 +97,7 @@ extern "C" JNIEXPORT jint JNICALL Java_edu_umich_oasis_api_ParcelHelper_getDataP
 		return -1;
 }
 
-extern "C" JNIEXPORT jboolean JNICALL Java_edu_umich_oasis_api_ParcelHelper_setDataPos(JNIEnv *env, jclass clazz, jlong nativePtr, jint pos)
+extern "C" JNIEXPORT jboolean JNICALL Java_edu_umich_flowfence_api_ParcelHelper_setDataPos(JNIEnv *env, jclass clazz, jlong nativePtr, jint pos)
 {
 	android::Parcel *p = parcelFromJavaObj(env, nativePtr);
 	if(p != NULL)
@@ -111,10 +111,10 @@ extern "C" JNIEXPORT jboolean JNICALL Java_edu_umich_oasis_api_ParcelHelper_setD
 
 
 //seeks to an offset of a flat_binder_object, reads it, computes the type, seeks back and returns type
-extern "C" JNIEXPORT jint JNICALL Java_edu_umich_oasis_api_ParcelHelper_seekToBinder(JNIEnv *env, jclass clazz, jlong obj, jint objectPos)
+extern "C" JNIEXPORT jint JNICALL Java_edu_umich_flowfence_api_ParcelHelper_seekToBinder(JNIEnv *env, jclass clazz, jlong obj, jint objectPos)
 {
 	android::Parcel *p = parcelFromJavaObj(env, obj);
-	int binder_type = OASIS_BINDER_TYPE_FAIL;
+	int binder_type = FLOWFENCE_BINDER_TYPE_FAIL;
 
 	if(p != NULL)
 	{
@@ -131,23 +131,23 @@ extern "C" JNIEXPORT jint JNICALL Java_edu_umich_oasis_api_ParcelHelper_seekToBi
 			switch(binder_obj->type)
 			{
 			case BINDER_TYPE_BINDER:
-				binder_type = OASIS_BINDER_TYPE_BINDER;
+				binder_type = FLOWFENCE_BINDER_TYPE_BINDER;
 				break;
 			case BINDER_TYPE_WEAK_BINDER:
-				binder_type = OASIS_BINDER_TYPE_WEAK_BINDER;
+				binder_type = FLOWFENCE_BINDER_TYPE_WEAK_BINDER;
 				break;
 			case BINDER_TYPE_HANDLE:
-				binder_type = OASIS_BINDER_TYPE_HANDLE;
+				binder_type = FLOWFENCE_BINDER_TYPE_HANDLE;
 				break;
 			case BINDER_TYPE_WEAK_HANDLE:
-				binder_type = OASIS_BINDER_TYPE_WEAK_HANDLE;
+				binder_type = FLOWFENCE_BINDER_TYPE_WEAK_HANDLE;
 				break;
 			case BINDER_TYPE_FD:
-				binder_type = OASIS_BINDER_TYPE_FD;
+				binder_type = FLOWFENCE_BINDER_TYPE_FD;
 				break;
 			}
 
-			if(binder_type != OASIS_BINDER_TYPE_FAIL)
+			if(binder_type != FLOWFENCE_BINDER_TYPE_FAIL)
 				p->setDataPosition(offset); //reset out seek so that the Java code can read correctly
 		}
 	}

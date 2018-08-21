@@ -16,7 +16,7 @@
 
 package edu.umich.flowfence.common;
 
-public class WrappedRemoteException extends OASISException {
+public class WrappedRemoteException extends FlowfenceException {
     private static final long serialVersionUID = 1L;
     public WrappedRemoteException() {
     }

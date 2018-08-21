@@ -25,11 +25,11 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
-import edu.umich.flowfence.client.OASISConnection;
-import edu.umich.flowfence.client.Soda;
+import edu.umich.flowfence.client.FlowfenceConnection;
+import edu.umich.flowfence.client.QuarentineModule;
 
-// This service pushes a bitmap into CamSoda.
-// CamSoda then fires an event with that bitmap
+// This service pushes a bitmap into CamQM.
+// CamQM then fires an event with that bitmap
 public class CamInjector extends Service {
     private static final String TAG = "CamInjector";
 
@@ -37,9 +37,9 @@ public class CamInjector extends Service {
     private static final String TIMING_TAG_END = "timeEnd";
     private static final boolean DEBUG_TIME = true;
 
-    OASISConnection oconn = null;
+    FlowfenceConnection oconn = null;
 
-    Soda.S4<Bitmap, Integer, Integer, Long, Void> sendBMPStatic = null;
+    QuarentineModule.S4<Bitmap, Integer, Integer, Long, Void> sendBMPStatic = null;
 
     public DataSource ds = null;
 
@@ -60,18 +60,18 @@ public class CamInjector extends Service {
 
     public void init()
     {
-        connectToOASIS();
+        connectToQM();
         ds = new DataSource(numImages);
     }
 
-    public void connectToOASIS()
+    public void connectToQM()
     {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.Callback() {
+        Log.i(TAG, "Binding to QM...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.Callback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnect(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to QM");
+                onQMConnect(conn);
             }
         });
     }
@@ -81,7 +81,7 @@ public class CamInjector extends Service {
         if(oconn != null)
         {
             try {
-                sendBMPStatic = oconn.resolveStatic(void.class, CamSoda.class, "sendBMP", Bitmap.class, int.class, int.class, long.class);
+                sendBMPStatic = oconn.resolveStatic(void.class, CamQM.class, "sendBMP", Bitmap.class, int.class, int.class, long.class);
             } catch(Exception e)
             {
                 Log.e(TAG, "error: " + e);
@@ -89,10 +89,10 @@ public class CamInjector extends Service {
         }
     }
 
-    private void onOASISConnect(OASISConnection conn)
+    private void onQMConnect(FlowfenceConnection conn)
     {
         oconn = conn;
-        Toast t = Toast.makeText(getApplicationContext(), "connected to OASIS", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(getApplicationContext(), "connected to QM", Toast.LENGTH_SHORT);
         t.show();
 
         resolve();
@@ -117,10 +117,10 @@ public class CamInjector extends Service {
     public void _newBmp()
     {
         //read in a bitmap from wherever
-        //pass that bitmap to CamSoda
+        //pass that bitmap to CamQM
 
         //Operation Order is VERY IMPORTANT
-        //CamSoda expects things to arrive in this order
+        //CamQM expects things to arrive in this order
 
         //first transfer the ref images
         //ref image is opcode 2

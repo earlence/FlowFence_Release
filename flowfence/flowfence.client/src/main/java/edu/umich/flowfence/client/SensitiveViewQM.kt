@@ -3,7 +3,7 @@ package edu.umich.flowfence.client
 import android.os.Parcel
 import android.os.Parcelable
 import edu.umich.flowfence.common.ISensitiveViewAPI
-import edu.umich.flowfence.common.OASISContext
+import edu.umich.flowfence.common.FlowfenceContext
 
 /*
  * Created by Davino Junior - dmtsj@{cin.ufpe.br, gmail.com}
@@ -13,7 +13,7 @@ import edu.umich.flowfence.common.OASISContext
 class SensitiveViewQM() : Parcelable {
 
     fun setValue(viewId: String, value: String){
-        val api: ISensitiveViewAPI = OASISContext.getInstance().getTrustedAPI("ui") as ISensitiveViewAPI
+        val api: ISensitiveViewAPI = FlowfenceContext.getInstance().getTrustedAPI("ui") as ISensitiveViewAPI
         api.addSensitiveValue(viewId, value)
     }
 

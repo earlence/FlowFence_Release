@@ -25,7 +25,7 @@ import org.apache.commons.lang3.ClassUtils;
 
 public final class CallParam implements Parcelable {
 
-    private static final String TAG = "OASIS.CallParam";
+    private static final String TAG = "FF.CallParam";
 
 	public static final int TYPE_NULL        = 0x00;
 	public static final int TYPE_DATA        = 0x01;

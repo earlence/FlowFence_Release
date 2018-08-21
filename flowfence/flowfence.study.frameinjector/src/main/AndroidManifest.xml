@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
-    <uses-permission android:name="edu.umich.oasis.permission.BIND_OASIS_SERVICE" />
+    <uses-permission android:name="edu.umich.flowfence.permission.BIND_FLOWFENCE_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="edu.umich.flowfence.manifest" android:resource="@xml/oasis_manifest"/>
+        <meta-data android:name="edu.umich.flowfence.manifest" android:resource="@xml/flowfence_manifest"/>
 
     </application>
 

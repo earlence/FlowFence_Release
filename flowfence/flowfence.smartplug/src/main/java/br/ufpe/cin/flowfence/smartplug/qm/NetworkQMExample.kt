@@ -1,21 +1,8 @@
 package br.ufpe.cin.flowfence.smartplug.qm
 
-import android.annotation.SuppressLint
-import android.arch.lifecycle.MutableLiveData
-import android.os.Handler
-import android.os.Looper
 import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
-import android.widget.Toast
-import edu.umich.flowfence.client.OASISConnection
-import edu.umich.flowfence.client.Sealed
 import edu.umich.flowfence.common.*
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import org.json.JSONObject
 
 /*
  * Created by Davino Junior - dmtsj@{cin.ufpe.br, gmail.com}
@@ -31,12 +18,12 @@ class NetworkQMExample : Parcelable {
     var response: String = ""
 
     fun getState(url: String) : String {
-        val api: INetworkAPI = OASISContext.getInstance().getTrustedAPI("network") as INetworkAPI
+        val api: INetworkAPI = FlowfenceContext.getInstance().getTrustedAPI("network") as INetworkAPI
         return api.get(url)
     }
 
     fun changeState(url: String, state: String): String {
-        val api: INetworkAPI = OASISContext.getInstance().getTrustedAPI("network") as INetworkAPI
+        val api: INetworkAPI = FlowfenceContext.getInstance().getTrustedAPI("network") as INetworkAPI
         var map = HashMap<String, String>()
         map["state"] = state
         return api.post(url, map)

@@ -17,7 +17,6 @@
 package edu.umich.flowfence.testapp;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.ServiceConnection;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -26,13 +25,11 @@ import android.os.Debug;
 import android.os.Message;
 import android.os.OperationCanceledException;
 import android.os.PowerManager;
-import android.os.RemoteException;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -53,20 +50,19 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import edu.umich.flowfence.client.OASISConnection;
-import edu.umich.flowfence.client.Soda;
-import edu.umich.flowfence.common.IOASISService;
-import edu.umich.flowfence.common.OASISConstants;
+import edu.umich.flowfence.client.FlowfenceConnection;
+import edu.umich.flowfence.client.QuarentineModule;
+import edu.umich.flowfence.common.IFlowfenceService;
+import edu.umich.flowfence.common.FlowfenceConstants;
 
 public class PerfActivity extends Activity implements CompoundButton.OnCheckedChangeListener,
                                                       View.OnClickListener,
-                                                      OASISConnection.DisconnectCallback {
+                                                      FlowfenceConnection.DisconnectCallback {
 
-    private static final String TAG = "OASIS.PerfTest";
+    private static final String TAG = "FF.PerfTest";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -95,16 +91,16 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
     private EditText memorySandboxesMin;
     private EditText memorySandboxesMax;
 
-    private OASISConnection conn;
+    private FlowfenceConnection conn;
     private ServiceConnection sc;
     private PerfTask task;
 
     private Resources res;
-    private Soda.S2<Boolean, byte[], Void> execSoda;
+    private QuarentineModule.S2<Boolean, byte[], Void> execQM;
 
     public static int getClampedSandboxCount(EditText text) {
         int count = Integer.parseInt(text.getText().toString());
-        return Math.max(0, Math.min(count, OASISConstants.NUM_SANDBOXES));
+        return Math.max(0, Math.min(count, FlowfenceConstants.NUM_SANDBOXES));
     }
 
     @Override
@@ -160,7 +156,7 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
     public void onClick(View v) {
         if (task == null) {
             task = new PerfTask();
-            OASISConnection.bind(this, this);
+            FlowfenceConnection.bind(this, this);
             paramsView.setEnabled(false);
             executeButton.setText(R.string.perf_cancel);
         } else {
@@ -199,11 +195,11 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
     }
 
     @Override
-    public void onConnect(OASISConnection conn) throws Exception {
+    public void onConnect(FlowfenceConnection conn) throws Exception {
         this.conn = conn;
         if (this.task != null) {
             try {
-                execSoda = conn.resolveStatic(void.class, PerfSoda.class, "execSoda",
+                execQM = conn.resolveStatic(void.class, PerfQM.class, "execQM",
                                               boolean.class, byte[].class);
                 task.execute(
                         memorySwitch.isChecked() ? new MemoryTest() : null,
@@ -217,14 +213,14 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
     }
 
     @Override
-    public void onDisconnect(OASISConnection conn) throws Exception {
+    public void onDisconnect(FlowfenceConnection conn) throws Exception {
         this.conn = null;
     }
 
     private final class LatencyTest extends PerfSubtest {
         private final int loops, trials, sandboxesLow, sandboxesHigh;
         private final boolean tainted, untainted;
-        private IOASISService svc;
+        private IFlowfenceService svc;
 
         public LatencyTest() {
             super("LatencyTest");
@@ -246,18 +242,18 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
             // Reset to a known state.
             svc.setMinHotSpare(numSpares);
             svc.setSandboxCount(0);
-            svc.setSandboxCount(OASISConstants.NUM_SANDBOXES);
+            svc.setSandboxCount(FlowfenceConstants.NUM_SANDBOXES);
 
             // Get all of the sandboxes into steady state.
-            for (int i = 0; i < OASISConstants.NUM_SANDBOXES; i++) {
-                execSoda.arg(shouldTaint).argNull().call();
+            for (int i = 0; i < FlowfenceConstants.NUM_SANDBOXES; i++) {
+                execQM.arg(shouldTaint).argNull().call();
             }
 
             svc.forceGarbageCollection();
 
             stopWatch.start();
             for (int i = 0; i < loops; i++) {
-                execSoda.arg(shouldTaint).argNull().call();
+                execQM.arg(shouldTaint).argNull().call();
                 task.throwIfCancelled();
             }
             stopWatch.stop();
@@ -291,10 +287,10 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
             task.publishProgress(-1, -1, describe()+": Initializing...");
             svc = conn.getRawInterface();
 
-            final int oldSandboxCount = svc.setSandboxCount(/*0*/OASISConstants.NUM_SANDBOXES);
+            final int oldSandboxCount = svc.setSandboxCount(/*0*/FlowfenceConstants.NUM_SANDBOXES);
             final int oldMinSpare = svc.setMinHotSpare(0);
-            final int oldMaxSpare = svc.setMaxHotSpare(OASISConstants.NUM_SANDBOXES);
-            final int oldMaxIdle = svc.setMaxIdleCount(OASISConstants.NUM_SANDBOXES);
+            final int oldMaxSpare = svc.setMaxHotSpare(FlowfenceConstants.NUM_SANDBOXES);
+            final int oldMaxIdle = svc.setMaxIdleCount(FlowfenceConstants.NUM_SANDBOXES);
 
             try (PrintWriter out = new PrintWriter(openRunOutput("csv"), true)) {
                 out.println("Tainted,Number of Spares,Trial,Loops,Total Latency (ns),Average Latency (ns)");
@@ -364,7 +360,7 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
 
         public void execute(PerfTask task) throws Exception {
             final StopWatch stopWatch = new StopWatch();
-            final IOASISService svc = conn.getRawInterface();
+            final IFlowfenceService svc = conn.getRawInterface();
             final byte[] emptyByteArray = new byte[0];
             try (FileInputStream urandom = new FileInputStream("/dev/urandom");
                  PrintWriter out = new PrintWriter(openRunOutput("csv"), true)) {
@@ -391,12 +387,12 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
                         int oldSandboxes = svc.setSandboxCount(0);
                         svc.setSandboxCount(oldSandboxes);
 
-                        execSoda.arg(false).arg(emptyByteArray).call();
+                        execQM.arg(false).arg(emptyByteArray).call();
                         svc.forceGarbageCollection();
 
                         stopWatch.start();
                         for (int loop = 0; loop < loops; loop++) {
-                            execSoda.arg(false).arg(buf).call();
+                            execQM.arg(false).arg(buf).call();
                         }
                         stopWatch.stop();
 
@@ -426,13 +422,13 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
 
         public void execute(PerfTask task) throws Exception {
             task.publishProgress(-1, -1, describe()+": Initializing...");
-            IOASISService svc = conn.getRawInterface();
-            List<Debug.MemoryInfo> sandboxMemInfo = new ArrayList<>(OASISConstants.NUM_SANDBOXES);
+            IFlowfenceService svc = conn.getRawInterface();
+            List<Debug.MemoryInfo> sandboxMemInfo = new ArrayList<>(FlowfenceConstants.NUM_SANDBOXES);
             Debug.MemoryInfo serviceMemInfo;
             final int oldSandboxCount = svc.setSandboxCount(0);
             final int oldMinSpare = svc.setMinHotSpare(0);
             final int oldMaxSpare = svc.setMaxHotSpare(0);
-            final int oldMaxIdle = svc.setMaxIdleCount(OASISConstants.NUM_SANDBOXES);
+            final int oldMaxIdle = svc.setMaxIdleCount(FlowfenceConstants.NUM_SANDBOXES);
 
             try (PrintWriter out = new PrintWriter(openRunOutput("csv"), true)) {
                 out.println("Number of Sandboxes,Trusted Service PSS,Sandboxes PSS,Total PSS");
@@ -446,7 +442,7 @@ public class PerfActivity extends Activity implements CompoundButton.OnCheckedCh
                     svc.setSandboxCount(sbCount);
 
                     for (int i = 0; i < sbCount; i++) {
-                        execSoda.arg(false)
+                        execQM.arg(false)
                                 .argNull()
                                 .forceSandbox(i)
                                 .call();

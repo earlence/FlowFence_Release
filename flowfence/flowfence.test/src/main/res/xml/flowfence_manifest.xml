@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FlowfenceManifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flowfence="http://schemas.android.com/apk/lib/edu.umich.flowfence.service">
+    <source
+        flowfence:name="test"
+        flowfence:label="@string/taint_label">
+        <policy>
+            <allow flowfence:sink="TOAST"/>
+            <!--<allow flowfence:sink="NETWORK" filter="127.0.0.1"/>-->
+            <log   flowfence:sink="NETWORK" flowfence:message="%1$s -> Network"/>
+            <deny  flowfence:sink="NETWORK" flowfence:message="@string/network_deny_message"/>
+            <drop/>
+        </policy>
+    </source>
+    <event-channel flowfence:name="testChannel" flowfence:exported="both" />
+</FlowfenceManifest>

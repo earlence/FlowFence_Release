@@ -42,20 +42,20 @@ import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
 import edu.umich.flowfence.common.ExceptionResult;
-import edu.umich.flowfence.common.IOASISService;
-import edu.umich.flowfence.common.ISoda;
-import edu.umich.flowfence.common.OASISConstants;
+import edu.umich.flowfence.common.FlowfenceConstants;
+import edu.umich.flowfence.common.IFlowfenceService;
+import edu.umich.flowfence.common.IQM;
+import edu.umich.flowfence.common.QMDescriptor;
+import edu.umich.flowfence.common.QMDetails;
+import edu.umich.flowfence.common.QMExceptionResult;
 import edu.umich.flowfence.common.ResolveFlags;
-import edu.umich.flowfence.common.SodaDescriptor;
-import edu.umich.flowfence.common.SodaDetails;
-import edu.umich.flowfence.common.SodaExceptionResult;
 import edu.umich.flowfence.common.TaintSet;
 import edu.umich.flowfence.policy.PackageManifest;
 import edu.umich.flowfence.policy.PolicyParseException;
 import okhttp3.OkHttpClient;
 
 public class FlowfenceApplication extends ContextWrapper {
-    private static final String TAG = "OASIS.Application";
+    private static final String TAG = "FF.Application";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -77,7 +77,7 @@ public class FlowfenceApplication extends ContextWrapper {
 
     private final Object mSync = new Object();
     private final HashMap<String, PackageManifest> mManifestMap = new HashMap<>();
-    private final HashMap<SodaDescriptor, SodaRef> mResolvedMap = new HashMap<>();
+    private final HashMap<QMDescriptor, QMRef> mResolvedMap = new HashMap<>();
     private final SandboxManager mSandboxManager;
 
     private final Handler mUIHandler = new Handler(getMainLooper());
@@ -121,7 +121,7 @@ public class FlowfenceApplication extends ContextWrapper {
         return mService;
     }
 
-    private static Pattern PACKAGE_NAME_PATTERN = Pattern.compile("^" + OASISConstants.JAVA_PACKAGE_PATTERN + "$");
+    private static Pattern PACKAGE_NAME_PATTERN = Pattern.compile("^" + FlowfenceConstants.JAVA_PACKAGE_PATTERN + "$");
 
     public String checkPackageName(String packageName) {
         if (!PACKAGE_NAME_PATTERN.matcher(packageName).matches()) {
@@ -130,22 +130,22 @@ public class FlowfenceApplication extends ContextWrapper {
         return packageName;
     }
 
-    public IOASISService.Stub getBinder()
+    public IFlowfenceService.Stub getBinder()
     {
         return mBinder;
     }
 
-    /* package */ SodaRef resolveSODA(SodaDescriptor descriptor, int flags) throws Exception {
-        return resolveSODA(descriptor, flags, null);
+    /* package */ QMRef resolveQM(QMDescriptor descriptor, int flags) throws Exception {
+        return resolveQM(descriptor, flags, null);
     }
 
-    /* package */ SodaRef resolveSODA(SodaDescriptor descriptor, int flags, SodaDetails details)
+    /* package */ QMRef resolveQM(QMDescriptor descriptor, int flags, QMDetails details)
             throws Exception {
         synchronized (mSync) {
-            SodaRef ref = mResolvedMap.get(descriptor);
+            QMRef ref = mResolvedMap.get(descriptor);
             if (ref == null) {
                 boolean bestMatch = (flags & ResolveFlags.BEST_MATCH) != 0;
-                ref = new SodaRef(descriptor, bestMatch, details);
+                ref = new QMRef(descriptor, bestMatch, details);
                 mResolvedMap.put(descriptor, ref);
             } else if ((flags & ResolveFlags.FORCE_RESOLVE) != 0) {
                 Sandbox sb = getSandboxForResolve(descriptor.definingClass.getPackageName());
@@ -160,20 +160,20 @@ public class FlowfenceApplication extends ContextWrapper {
         }
     }
 
-    //this is the public interface of OASIS to client apps
-    private final IOASISService.Stub mBinder = new IOASISService.Stub()
+    //this is the public interface of FlowFence to client apps
+    private final IFlowfenceService.Stub mBinder = new IFlowfenceService.Stub()
     {
-        //call into the sandbox and call a method on a created SODA
+        //call into the sandbox and call a method on a created QM
         @Override
-        public SodaExceptionResult resolveSODA(SodaDescriptor descriptor, int flags, SodaDetails details)
+        public QMExceptionResult resolveQM(QMDescriptor descriptor, int flags, QMDetails details)
         {
             if (localLOGD) {
                 String callingPackage = getPackageManager().getNameForUid(Binder.getCallingUid());
-                Log.d(TAG, String.format("resolveSODA [%s] from package %s", descriptor, callingPackage));
+                Log.d(TAG, String.format("resolveQM [%s] from package %s", descriptor, callingPackage));
             }
-            SodaExceptionResult xr = new SodaExceptionResult();
+            QMExceptionResult xr = new QMExceptionResult();
             try {
-                xr.setResult(FlowfenceApplication.this.resolveSODA(descriptor, flags, details));
+                xr.setResult(FlowfenceApplication.this.resolveQM(descriptor, flags, details));
             } catch (Throwable t) {
                 Log.e(TAG, "Failed to resolve", t);
                 xr.setException(t);
@@ -215,7 +215,7 @@ public class FlowfenceApplication extends ContextWrapper {
         @Override
         public void forceGarbageCollection() throws RemoteException {
             System.gc();
-            for (int i = 0; i < OASISConstants.NUM_SANDBOXES; i++) {
+            for (int i = 0; i < FlowfenceConstants.NUM_SANDBOXES; i++) {
                 Sandbox.get(i).gc();
             }
             System.gc();
@@ -224,7 +224,7 @@ public class FlowfenceApplication extends ContextWrapper {
         @Override
         public Debug.MemoryInfo dumpMemoryInfo(List<Debug.MemoryInfo> sandboxInfo) throws RemoteException {
             sandboxInfo.clear();
-            for (int i = 0; i < OASISConstants.NUM_SANDBOXES; i++) {
+            for (int i = 0; i < FlowfenceConstants.NUM_SANDBOXES; i++) {
                 sandboxInfo.add(Sandbox.get(i).getMemoryInfo());
             }
 
@@ -240,9 +240,9 @@ public class FlowfenceApplication extends ContextWrapper {
         }
 
         @Override
-        public ExceptionResult<Boolean> subscribeEventChannel(ComponentName name, SodaDescriptor desc) {
+        public ExceptionResult<Boolean> subscribeEventChannel(ComponentName name, QMDescriptor desc) {
             try {
-                SodaRef ref = FlowfenceApplication.this.resolveSODA(desc, 0);
+                QMRef ref = FlowfenceApplication.this.resolveQM(desc, 0);
                 return resultFor(FlowfenceApplication.this.subscribeEventChannel(
                         name, desc, null, Sandbox.getCallingTaint()));
             } catch (Throwable t) {
@@ -251,7 +251,7 @@ public class FlowfenceApplication extends ContextWrapper {
         }
 
         @Override
-        public ExceptionResult<Boolean> unsubscribeEventChannel(ComponentName name, SodaDescriptor desc) {
+        public ExceptionResult<Boolean> unsubscribeEventChannel(ComponentName name, QMDescriptor desc) {
             try {
                 return resultFor(FlowfenceApplication.this.unsubscribeEventChannel(
                         name, desc, null, Sandbox.getCallingTaint()));
@@ -261,10 +261,10 @@ public class FlowfenceApplication extends ContextWrapper {
         }
 
         @Override
-        public ExceptionResult<Boolean> subscribeEventChannelHandle(ComponentName channel, ISoda hRef) {
+        public ExceptionResult<Boolean> subscribeEventChannelHandle(ComponentName channel, IQM hRef) {
             try {
-                SodaRef ref = (hRef instanceof SodaRef) ? (SodaRef)hRef : null;
-                SodaDescriptor desc = hRef.getDescriptor();
+                QMRef ref = (hRef instanceof QMRef) ? (QMRef)hRef : null;
+                QMDescriptor desc = hRef.getDescriptor();
                 return resultFor(FlowfenceApplication.this.subscribeEventChannel(
                         channel, desc, ref, Sandbox.getCallingTaint()));
             } catch (Throwable t) {
@@ -273,10 +273,10 @@ public class FlowfenceApplication extends ContextWrapper {
         }
 
         @Override
-        public ExceptionResult<Boolean> unsubscribeEventChannelHandle(ComponentName channel, ISoda hRef) {
+        public ExceptionResult<Boolean> unsubscribeEventChannelHandle(ComponentName channel, IQM hRef) {
             try {
-                SodaRef ref = (hRef instanceof SodaRef) ? (SodaRef)hRef : null;
-                SodaDescriptor desc = hRef.getDescriptor();
+                QMRef ref = (hRef instanceof QMRef) ? (QMRef)hRef : null;
+                QMDescriptor desc = hRef.getDescriptor();
                 return resultFor(FlowfenceApplication.this.unsubscribeEventChannel(
                         channel, desc, ref, Sandbox.getCallingTaint()));
             } catch (Throwable t) {
@@ -331,7 +331,7 @@ public class FlowfenceApplication extends ContextWrapper {
         Sandbox.forgetKnownPackage(packageName);
         synchronized (mSync) {
             mManifestMap.remove(packageName);
-            for (SodaDescriptor descriptor : new HashSet<>(mResolvedMap.keySet())) {
+            for (QMDescriptor descriptor : new HashSet<>(mResolvedMap.keySet())) {
                 if (descriptor.definingClass.getPackageName().equals(packageName)) {
                     mResolvedMap.remove(descriptor);
                 }
@@ -349,7 +349,7 @@ public class FlowfenceApplication extends ContextWrapper {
         return channel;
     }
 
-    /* package */ boolean subscribeEventChannel(ComponentName eventChannel, SodaDescriptor desc, SodaRef ref, TaintSet ts) throws Exception {
+    /* package */ boolean subscribeEventChannel(ComponentName eventChannel, QMDescriptor desc, QMRef ref, TaintSet ts) throws Exception {
         EventChannel ch = getChannel(eventChannel);
         if (ch != null) {
             ch.subscribe(desc, ref, ts);
@@ -359,7 +359,7 @@ public class FlowfenceApplication extends ContextWrapper {
         }
     }
 
-    /* package */ boolean unsubscribeEventChannel(ComponentName eventChannel, SodaDescriptor desc, SodaRef ref, TaintSet ts) throws Exception {
+    /* package */ boolean unsubscribeEventChannel(ComponentName eventChannel, QMDescriptor desc, QMRef ref, TaintSet ts) throws Exception {
         EventChannel ch = getChannel(eventChannel);
         if (ch != null) {
             ch.unsubscribe(desc, ref, ts);

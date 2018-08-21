@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.umich.flowfence.study.oasisstudyskeleton" >
+    package="edu.umich.flowfence.study.flowfencestudyskeleton" >
 
-    <uses-permission android:name="edu.umich.oasis.permission.BIND_OASIS_SERVICE" />
+    <uses-permission android:name="edu.umich.flowfence.permission.BIND_FLOWFENCE_SERVICE" />
 
     <application
         android:allowBackup="true"

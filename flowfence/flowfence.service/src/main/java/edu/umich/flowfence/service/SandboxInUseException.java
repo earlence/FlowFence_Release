@@ -16,9 +16,9 @@
 
 package edu.umich.flowfence.service;
 
-import edu.umich.flowfence.common.OASISException;
+import edu.umich.flowfence.common.FlowfenceException;
 
-public class SandboxInUseException extends OASISException {
+public class SandboxInUseException extends FlowfenceException {
     private static final long serialVersionUID = 0x5BC0111DEDL;
     public SandboxInUseException() {
     }

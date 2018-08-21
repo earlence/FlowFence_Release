@@ -29,8 +29,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import edu.umich.flowfence.client.OASISConnection;
-import edu.umich.flowfence.client.Soda;
+import edu.umich.flowfence.client.FlowfenceConnection;
+import edu.umich.flowfence.client.QuarentineModule;
 
 public class PresenceInjector extends Service {
 
@@ -44,8 +44,8 @@ public class PresenceInjector extends Service {
     private static String LOC_KEY = "location";
     Firebase firebaseRef;
 
-    OASISConnection oconn = null;
-    Soda.S1<String, Void> putLocStatic = null;
+    FlowfenceConnection oconn = null;
+    QuarentineModule.S1<String, Void> putLocStatic = null;
 
     public PresenceInjector()
     {
@@ -54,21 +54,21 @@ public class PresenceInjector extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        connectToOASIS();
+        connectToFlowfence();
         init();
 
         // If we get killed, after returning from here, restart
         return START_STICKY;
     }
 
-    public void connectToOASIS()
+    public void connectToFlowfence()
     {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.Callback() {
+        Log.i(TAG, "Binding to FlowFence...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.Callback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnect(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to FlowFence");
+                onFlowfenceConnect(conn);
             }
         });
     }
@@ -78,7 +78,7 @@ public class PresenceInjector extends Service {
         if(oconn != null)
         {
             try {
-                putLocStatic = oconn.resolveStatic(void.class, PresenceSoda.class, "putLoc", String.class);
+                putLocStatic = oconn.resolveStatic(void.class, PresenceQM.class, "putLoc", String.class);
             } catch(Exception e)
             {
                 Log.e(TAG, "error: " + e);
@@ -86,10 +86,10 @@ public class PresenceInjector extends Service {
         }
     }
 
-    private void onOASISConnect(OASISConnection conn)
+    private void onFlowfenceConnect(FlowfenceConnection conn)
     {
         oconn = conn;
-        Toast t = Toast.makeText(getApplicationContext(), "connected to OASIS", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(getApplicationContext(), "connected to FlowFence", Toast.LENGTH_SHORT);
         t.show();
 
         resolve();
@@ -126,8 +126,8 @@ public class PresenceInjector extends Service {
                 String loc = (String) dataSnapshot.getValue();
                 Log.i(TAG, "updating loc to: " + loc);
 
-                //update the OASIS KV store with new loc
-                updateOasisKV(loc);
+                //update the FlowFence KV store with new loc
+                updateFlowFenceKV(loc);
 
 
             }
@@ -139,7 +139,7 @@ public class PresenceInjector extends Service {
         });
     }
 
-    private void updateOasisKV(String newloc)
+    private void updateFlowFenceKV(String newloc)
     {
         if(putLocStatic != null)
         {

@@ -24,7 +24,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PerSandboxMap<T> extends Hashtable<Sandbox, T> {
-    private static final String TAG = "OASIS.PerSandboxMap";
+    private static final String TAG = "FF.PerSandboxMap";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 

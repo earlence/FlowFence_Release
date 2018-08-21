@@ -22,19 +22,19 @@ import android.util.Log;
 
 import edu.umich.flowfence.common.HandleDestroyedException;
 import edu.umich.flowfence.common.ParceledPayload;
-import edu.umich.flowfence.internal.IResolvedSoda;
+import edu.umich.flowfence.internal.IResolvedQM;
 import edu.umich.flowfence.internal.ISandboxObject;
 import edu.umich.flowfence.common.ParceledPayloadExceptionResult;
 
 /*package*/ class SandboxObject extends ISandboxObject.Stub {
-    private static final String TAG = "OASIS.Handle";
+    private static final String TAG = "FF.Handle";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
     private Object mObject;
-    private ResolvedSoda mCreator;
+    private ResolvedQM mCreator;
 
-    private SandboxObject(ResolvedSoda creator, Object obj) {
+    private SandboxObject(ResolvedQM creator, Object obj) {
         mCreator = creator;
         mObject = obj;
     }
@@ -58,7 +58,7 @@ import edu.umich.flowfence.common.ParceledPayloadExceptionResult;
     }
 
     @Override
-    public synchronized IResolvedSoda getCreator() {
+    public synchronized IResolvedQM getCreator() {
         return mCreator;
     }
 
@@ -88,7 +88,7 @@ import edu.umich.flowfence.common.ParceledPayloadExceptionResult;
         return (mCreator == null);
     }
 
-    public static IBinder binderForObject(ResolvedSoda creator, Object obj) {
+    public static IBinder binderForObject(ResolvedQM creator, Object obj) {
         if (creator == null) {
             throw new NullPointerException();
         } else if (obj == null) {

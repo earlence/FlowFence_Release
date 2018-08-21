@@ -21,12 +21,8 @@ import android.os.DeadObjectException;
 import android.os.RemoteException;
 import android.util.Log;
 
-import org.apache.commons.lang3.ObjectUtils;
-
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import edu.umich.flowfence.common.CallParam;
@@ -38,13 +34,13 @@ import edu.umich.flowfence.common.IHandleDebug;
 import edu.umich.flowfence.common.ParamInfo;
 import edu.umich.flowfence.common.ParceledPayload;
 import edu.umich.flowfence.common.ParceledThrowable;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.common.QMDescriptor;
 import edu.umich.flowfence.common.TaintSet;
 import edu.umich.flowfence.internal.ISandboxObject;
 import edu.umich.flowfence.common.ParceledPayloadExceptionResult;
 
 public class Handle extends IHandle.Stub {
-    private static final String TAG = "OASIS.TSHandle";
+    private static final String TAG = "FF.TSHandle";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -105,7 +101,7 @@ public class Handle extends IHandle.Stub {
     private ParceledPayload mMarshaled = null;
     // The taint of the value.
     private TaintSet mTaint = TaintSet.EMPTY;
-    // The exception that occurred when running the SODA. Null if no exception.
+    // The exception that occurred when running the QM. Null if no exception.
     private Throwable mThrowable = null;
     private Sandbox.EventHandler mHandler;
     private boolean mValueNull;
@@ -203,8 +199,8 @@ public class Handle extends IHandle.Stub {
 
     // About refcounting:
     // All handles start with one reference (the handle returned to the app).
-    // When a handle is passed to a later SODA to use it, that CallRecord takes a reference.
-    // If, when a SODA is about to execute, there is only 1 reference on it, we can reuse any
+    // When a handle is passed to a later QM to use it, that CallRecord takes a reference.
+    // If, when a QM is about to execute, there is only 1 reference on it, we can reuse any
     // live copy of it and don't need to worry about marshaling it out.
     // If a handle hits 0 references, we mark it dead.
     // References are 1 ref if not released, +1 for every successor.
@@ -445,10 +441,10 @@ public class Handle extends IHandle.Stub {
     }
 
     @Override
-    public SodaDescriptor getSodaDescriptor() {
+    public QMDescriptor getQMDescriptor() {
         synchronized (mSyncRoot) {
             checkNotDestroyed();
-            return mCallRecord.getSODA().getDescriptor();
+            return mCallRecord.getQM().getDescriptor();
         }
     }
 
@@ -465,11 +461,11 @@ public class Handle extends IHandle.Stub {
         synchronized (mSyncRoot) {
             checkNotDestroyed();
             if (mParamInfo == null) {
-                SodaRef soda = mCallRecord.getSODA();
+                QMRef qm = mCallRecord.getQM();
                 if (mParamIndex == CallResult.RETURN_VALUE) {
-                    mParamInfo = new ParamInfo(soda.getResultType(), mParamIndex, Direction.OUT);
+                    mParamInfo = new ParamInfo(qm.getResultType(), mParamIndex, Direction.OUT);
                 } else {
-                    mParamInfo = soda.getParamInfo().get(mParamIndex);
+                    mParamInfo = qm.getParamInfo().get(mParamIndex);
                 }
             }
             return mParamInfo;

@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-// SodaDescriptor.aidl
 package edu.umich.flowfence.common;
 
 // Declare any non-default types here with import statements

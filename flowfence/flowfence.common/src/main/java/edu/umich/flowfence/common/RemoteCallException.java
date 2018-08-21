@@ -16,7 +16,7 @@
 
 package edu.umich.flowfence.common;
 
-public class RemoteCallException extends OASISException {
+public class RemoteCallException extends FlowfenceException {
 
 	private static final long serialVersionUID = -8373310407197822685L;
 

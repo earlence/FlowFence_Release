@@ -25,13 +25,13 @@ open class ViewQMExample : Parcelable {
     }
 
     fun getValue(viewId: Int) : String {
-        val api: ISensitiveViewAPI = OASISContext.getInstance().getTrustedAPI("ui") as ISensitiveViewAPI
+        val api: ISensitiveViewAPI = FlowfenceContext.getInstance().getTrustedAPI("ui") as ISensitiveViewAPI
         val value = api.readSensitiveValue(viewId.toString(), TAINT_SET)
         return value
     }
 
     fun showToast(message: String){
-        val toastMethod: IDynamicAPI = OASISContext.getInstance().getTrustedAPI("toast") as IDynamicAPI
+        val toastMethod: IDynamicAPI = FlowfenceContext.getInstance().getTrustedAPI("toast") as IDynamicAPI
         toastMethod.invoke("showText", message, Toast.LENGTH_LONG)
     }
 

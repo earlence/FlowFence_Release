@@ -27,7 +27,7 @@ import java.io.ObjectOutputStream;
 
 public final class ParceledThrowable implements Parcelable {
 
-    public static final class MarshalFailedException extends OASISException {
+    public static final class MarshalFailedException extends FlowfenceException {
         public static final long serialVersionUID = 1L;
         private final String typeName;
         private final byte[] payload;

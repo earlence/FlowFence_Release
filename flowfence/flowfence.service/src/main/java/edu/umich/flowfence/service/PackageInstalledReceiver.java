@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.util.Log;
 
 public class PackageInstalledReceiver extends BroadcastReceiver {
-    private static final String TAG = "OASIS.PackageReceiver";
+    private static final String TAG = "FF.PackageReceiver";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
     @Override

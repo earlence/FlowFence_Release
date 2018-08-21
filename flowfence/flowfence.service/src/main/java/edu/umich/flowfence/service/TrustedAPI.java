@@ -51,7 +51,7 @@ import edu.umich.flowfence.policy.SinkRequest;
 import edu.umich.flowfence.smartthings.SmartThingsService;
 
 public final class TrustedAPI extends ITrustedAPI.Stub {
-    private static final String TAG = "OASIS.TrustedAPI";
+    private static final String TAG = "FF.TrustedAPI";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -78,7 +78,7 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
     private CallRecord callerRecord() {
         CallRecord record = callerSandbox().getRunningCallRecord();
         if (record == null) {
-            throw new IllegalStateException("Sandbox not running a SODA");
+            throw new IllegalStateException("Sandbox not running a QM");
         }
         return record;
     }

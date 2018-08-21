@@ -37,7 +37,7 @@ import edu.umich.flowfence.kvs.IRemoteSharedPrefsEditor;
 import edu.umich.flowfence.kvs.IRemoteSharedPrefsListener;
 
 public final class KVSSharedPrefs extends IRemoteSharedPrefs.Stub implements AutoCloseable {
-    private static final String TAG = "OASIS.SharedPrefs.Impl";
+    private static final String TAG = "FF.SharedPrefs.Impl";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 

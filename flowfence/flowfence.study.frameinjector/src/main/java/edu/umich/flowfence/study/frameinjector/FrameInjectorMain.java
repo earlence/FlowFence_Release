@@ -39,8 +39,8 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import edu.umich.flowfence.client.OASISConnection;
-import edu.umich.flowfence.client.Soda;
+import edu.umich.flowfence.client.FlowfenceConnection;
+import edu.umich.flowfence.client.QuarentineModule;
 
 public class FrameInjectorMain extends Activity {
 
@@ -87,9 +87,9 @@ public class FrameInjectorMain extends Activity {
 
     private static final boolean DEBUG_TPUT = true;
 
-    //OASIS stuff
-    OASISConnection oconn = null;
-    static Soda.S4<byte [], Integer, Integer, Long, Void> newFrameStatic = null;
+    //FlowFence stuff
+    FlowfenceConnection oconn = null;
+    static QuarentineModule.S4<byte [], Integer, Integer, Long, Void> newFrameStatic = null;
 
     /**
      * {@inheritDoc}
@@ -117,22 +117,22 @@ public class FrameInjectorMain extends Activity {
         finishTask = new FinishTask();
     }
 
-    public void connectToOASIS()
+    public void connectToFlowfence()
     {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.Callback() {
+        Log.i(TAG, "Binding to FlowFence...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.Callback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnect(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to FlowFence");
+                onFlowfenceConnect(conn);
             }
         });
     }
 
-    private void onOASISConnect(OASISConnection conn)
+    private void onFlowfenceConnect(FlowfenceConnection conn)
     {
         oconn = conn;
-        Toast t = Toast.makeText(getApplicationContext(), "connected to OASIS", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(getApplicationContext(), "connected to FlowFence", Toast.LENGTH_SHORT);
         t.show();
 
         resolve();
@@ -143,7 +143,7 @@ public class FrameInjectorMain extends Activity {
         if(oconn != null)
         {
             try {
-                newFrameStatic = oconn.resolveStatic(void.class, FrameSoda.class, "newFrame", byte [].class, int.class, int.class, long.class);
+                newFrameStatic = oconn.resolveStatic(void.class, FrameQM.class, "newFrame", byte [].class, int.class, int.class, long.class);
             } catch(Exception e)
             {
                 Log.e(TAG, "error: " + e);
@@ -170,7 +170,7 @@ public class FrameInjectorMain extends Activity {
 
         camera = Camera.open();
 
-        connectToOASIS();
+        connectToFlowfence();
 
         startTime = System.currentTimeMillis();
 
@@ -218,7 +218,7 @@ public class FrameInjectorMain extends Activity {
 
             long deliveryTime = SystemClock.elapsedRealtimeNanos();
 
-            //send frame to FrameSoda
+            //send frame to FrameQM
             if(newFrameStatic != null)
             {
                 try {

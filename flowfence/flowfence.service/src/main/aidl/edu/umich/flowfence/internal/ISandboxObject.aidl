@@ -18,13 +18,13 @@
 package edu.umich.flowfence.internal;
 
 // Declare any non-default types here with import statements
-import edu.umich.flowfence.internal.IResolvedSoda;
+import edu.umich.flowfence.internal.IResolvedQM;
 import edu.umich.flowfence.common.ParceledPayloadExceptionResult;
 
 interface ISandboxObject {
     String getDeclaredClassName();
     String getActualClassName();
-    IResolvedSoda getCreator();
+    IResolvedQM getCreator();
 
     ParceledPayloadExceptionResult marshalOut();
     void destroy();

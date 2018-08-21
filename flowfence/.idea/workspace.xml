@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="35625a80-1554-4a00-b4b8-ca9b0e966a35" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,82 +31,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SandboxObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SandboxService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CallRecord.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/CallRecord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventChannel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/EventChannel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="49" column="19" lean-forward="false" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Handle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Handle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KVSSharedPrefs.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/KVSSharedPrefs.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlowfenceService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlowfenceApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FlowfenceApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2833">
-              <caret line="67" column="13" lean-forward="false" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="-438">
+              <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,8 +46,70 @@
       <file leaf-file-name="Sandbox.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Sandbox.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="261" column="20" lean-forward="false" selection-start-line="261" selection-start-column="20" selection-end-line="261" selection-end-column="20" />
+            <state relative-caret-position="209">
+              <caret line="333" column="79" lean-forward="false" selection-start-line="333" selection-start-column="79" selection-end-line="333" selection-end-column="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SandboxService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlowfenceFramework.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/FlowfenceFramework.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1380">
+              <caret line="85" column="32" lean-forward="false" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QMDescriptor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.common/src/main/java/edu/umich/flowfence/common/QMDescriptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="370">
+              <caret line="128" column="9" lean-forward="false" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuarentineModule.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/QuarentineModule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="383" column="13" lean-forward="true" selection-start-line="383" selection-start-column="13" selection-end-line="383" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SensitiveEditText.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/SensitiveEditText.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ISandboxService.aidl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/aidl/edu/umich/flowfence/internal/ISandboxService.aidl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,8 +121,18 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="17" />
+            <state relative-caret-position="-221">
+              <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SandboxManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/SandboxManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="46" column="32" lean-forward="false" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -130,10 +142,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BuildConfig</find>
-      <find>buildconfig</find>
-      <find>oasis2</find>
+      <find>sodQM</find>
+      <find>resolvedsoda</find>
+      <find>IResolvedSoda</find>
+      <find>IREsolvedsoda</find>
+      <find>resolve</find>
+      <find>IResolvedsoda</find>
+      <find>getsoda</find>
+      <find>s</find>
+      <find>qm</find>
+      <find>SODA</find>
+      <find>sod</find>
+      <find>&lt;uses-permission android:name=&quot;edu.umich.flowfence.permission.BIND_FLOWFENCE_SERVICE&quot; /&gt;</find>
+      <find>oasisflow</find>
+      <find>o```</find>
+      <find>FlowfenceManifest</find>
+      <find>oasisF</find>
+      <find>Fl</find>
+      <find>OASIS</find>
+      <find>soda</find>
       <find>oasis</find>
+      <find>flowfence</find>
+      <find>Flowfence Trusted</find>
+      <find>isLoggabl</find>
+      <find>Flowfence.</find>
+      <find>edu.umich.flowfence.sandbox</find>
+      <find>SandboxService$Impl</find>
+      <find>TAG</find>
+      <find>FlowFence</find>
+      <find>FlowFence.</find>
+      <find>Please bind</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -11392,12 +11430,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/flowfence.service/build.gradle" />
-        <option value="$PROJECT_DIR$/flowfence.service/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/Source.java" />
-        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceService.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/RemoteSharedPrefsWrapper.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxContext.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/NamespaceSharedPrefs.java" />
         <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceApplication.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/CallRecord.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/PerSandboxMap.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/EventChannel.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Sandbox.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceService.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/PackageInstalledReceiver.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/KVSSharedPrefs.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Handle.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/TrustedAPI.java" />
+        <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/oasis_manifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/flowfence.study.caminjector/src/main/res/xml/oasis_manifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.study.caminjector/src/main/java/edu/umich/flowfence/study/caminjector/CamQM.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.caminjector/src/main/java/edu/umich/flowfence/study/caminjector/CamInjector.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.fencedfrdc/src/main/java/edu/umich/flowfence/study/fencedfrdc/FaceOpsService.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.fencedhr/src/main/java/edu/umich/flowfence/study/fencedhr/HRService.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.frameinjector/src/main/res/xml/oasis_manifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.study.frameinjector/src/main/java/edu/umich/flowfence/study/frameinjector/FrameQM.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.frameinjector/src/main/java/edu/umich/flowfence/study/frameinjector/FrameInjectorMain.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/res/xml/oasis_manifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/java/edu/umich/flowfence/study/presencebasedcontrol/PresenceQM.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/java/edu/umich/flowfence/study/presencebasedcontrol/MainActivity.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/java/edu/umich/flowfence/study/presencebasedcontrol/PresenceInjector.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.skeleton/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/flowfence.study.skeleton/src/main/java/edu/umich/flowfence/study/oasisstudyskeleton/MainActivity.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.skeleton/src/main/java/edu/umich/flowfence/study/flowfencestudyskeleton/MainActivity.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.smartdevresponder/src/main/java/edu/umich/flowfence/study/smartdevresponder/ResponderQM.java" />
+        <option value="$PROJECT_DIR$/flowfence.study.smartdevresponder/src/main/java/edu/umich/flowfence/study/smartdevresponder/ResponderService.java" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/res/xml/oasis_manifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/res/layout/activity_test.xml" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/GMTest.java" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/TestActivity.java" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/PerfActivity.java" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/PerfQM.java" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/TestQM.java" />
+        <option value="$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/KeyValueTest.java" />
+        <option value="$PROJECT_DIR$/flowfence.ui/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.ui/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/flowfence.ui/src/main/java/edu/umich/flowfence/ui/OasisView.java" />
+        <option value="$PROJECT_DIR$/flowfence.ui/src/main/java/edu/umich/flowfence/ui/FlowfenceView.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/jni/parcelhelper.cpp" />
+        <option value="$PROJECT_DIR$/flowfence.test/build/intermediates/exploded-aar/flowfence/flowfence.client/unspecified/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/SandboxManager.java" />
+        <option value="$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxService.java" />
+        <option value="$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/QuarentineModule.java" />
+        <option value="$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/SensitiveEditText.kt" />
       </list>
     </option>
   </component>
@@ -11428,12 +11511,26 @@
           <expand>
             <path>
               <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
-              <item name="flowfence.service" type="feadf853:AndroidModuleNode" />
+              <item name="flowfence.client" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.client" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.client" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.common" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
               <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
               <item name="flowfence.service" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
@@ -11503,29 +11600,263 @@
               <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="umich" type="462c0819:PsiDirectoryNode" />
               <item name="flowfence" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
-              <item name="flowfence.service" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
               <item name="internal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
               <item name="flowfence.service" type="feadf853:AndroidModuleNode" />
-              <item name="aidl" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="umich" type="462c0819:PsiDirectoryNode" />
-              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
-              <item name="kvs" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
-              <item name="flowfence.test" type="feadf853:AndroidModuleNode" />
+              <item name="flowfence.service" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="br" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="br" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ufpe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="br" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ufpe" type="462c0819:PsiDirectoryNode" />
+              <item name="cin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="br" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ufpe" type="462c0819:PsiDirectoryNode" />
+              <item name="cin" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.smartplug" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="xml" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.caminjector" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.caminjector" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.caminjector" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="xml" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.fencedfrdc" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.fencedfrdc" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.fencedfrdc" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.fencedhr" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.fencedhr" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.fencedhr" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.frameinjector" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.frameinjector" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.frameinjector" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="xml" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+              <item name="presencebasedcontrol" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.presencebasedcontrol" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="xml" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="edu" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="umich" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfence" type="462c0819:PsiDirectoryNode" />
+              <item name="study" type="462c0819:PsiDirectoryNode" />
+              <item name="flowfencestudyskeleton" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.skeleton" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.smartdevresponder" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.smartdevresponder" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
+              <item name="flowfence.study.smartdevresponder" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="flowfence" type="1abcf292:AndroidViewProjectNode" />
@@ -11546,6 +11877,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.2.3" />
+    <property name="device.picker.selection" value="G2AZB60142892LC" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -11559,7 +11891,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.flowfence.test">
+  <component name="RunManager" selected="Android App.flowfence.smartplug">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -11628,7 +11960,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
     </configuration>
-    <configuration name="flowfence.smartplug" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="flowfence.smartplug" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="flowfence.smartplug" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -12130,23 +12462,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="814" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32823366" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32823366" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -12170,271 +12504,355 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/NamespaceSharedPrefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.test/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="41" column="43" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.client/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.common/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="71" column="66" lean-forward="true" selection-start-line="71" selection-start-column="66" selection-end-line="71" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/build/generated/source/buildConfig/debug/edu/umich/oasis/service/BuildConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/helpers/ParcelHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/helpers/Utils.java">
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/KVSSharedPrefs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/internal/ResolvedSodaExceptionResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/Filter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/NetworkSinkRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/PackageManifest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/Policy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/PolicyParseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/Rule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/Sink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/SinkRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/policy/Source.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-211">
-          <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/RemoteSharedPrefsWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/ResolvedSoda.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="54" column="24" lean-forward="false" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="57" column="25" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="46" column="22" lean-forward="false" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/CallRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/EventChannel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="49" column="19" lean-forward="false" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+          <caret line="39" column="48" lean-forward="false" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Handle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+        <state relative-caret-position="105">
+          <caret line="42" column="48" lean-forward="false" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/KVSSharedPrefs.java">
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/TrustedAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="53" column="48" lean-forward="false" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/res/xml/flowfence_manifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="38" column="19" lean-forward="false" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <caret line="6" column="35" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceService.java">
+    <entry file="file://$PROJECT_DIR$/flowfence.study.caminjector/src/main/res/xml/flowfence_manifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="120">
+          <caret line="8" column="58" lean-forward="false" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Sandbox.java">
+    <entry file="file://$PROJECT_DIR$/flowfence.study.caminjector/src/main/java/edu/umich/flowfence/study/caminjector/CamQM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="261" column="20" lean-forward="false" selection-start-line="261" selection-start-column="20" selection-end-line="261" selection-end-column="20" />
+        <state relative-caret-position="-114">
+          <caret line="32" column="67" lean-forward="false" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.caminjector/src/main/java/edu/umich/flowfence/study/caminjector/CamInjector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.fencedfrdc/src/main/java/edu/umich/flowfence/study/fencedfrdc/FaceOpsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="88" column="65" lean-forward="false" selection-start-line="88" selection-start-column="65" selection-end-line="88" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.fencedhr/src/main/java/edu/umich/flowfence/study/fencedhr/HRService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="105" column="65" lean-forward="false" selection-start-line="105" selection-start-column="65" selection-end-line="105" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.frameinjector/src/main/java/edu/umich/flowfence/study/frameinjector/FrameQM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="31" column="73" lean-forward="true" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.frameinjector/src/main/java/edu/umich/flowfence/study/frameinjector/FrameInjectorMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="134" column="88" lean-forward="false" selection-start-line="134" selection-start-column="88" selection-end-line="134" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/java/edu/umich/flowfence/study/presencebasedcontrol/PresenceQM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/java/edu/umich/flowfence/study/presencebasedcontrol/PresenceInjector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="129" column="31" lean-forward="false" selection-start-line="129" selection-start-column="31" selection-end-line="129" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.skeleton/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="e#385#403#0" expanded="false" />
+            <element signature="e#531#549#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/java/edu/umich/flowfence/study/presencebasedcontrol/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.skeleton/src/main/java/edu/umich/flowfence/study/flowfencestudyskeleton/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="90" column="22" lean-forward="false" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.smartdevresponder/src/main/java/edu/umich/flowfence/study/smartdevresponder/ResponderQM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="38" column="62" lean-forward="false" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.smartdevresponder/src/main/java/edu/umich/flowfence/study/smartdevresponder/ResponderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="108" column="65" lean-forward="false" selection-start-line="108" selection-start-column="65" selection-end-line="108" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/res/layout/activity_test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="89" column="30" lean-forward="false" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/GMTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="33" column="57" lean-forward="false" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/TestActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="190" column="20" lean-forward="false" selection-start-line="190" selection-start-column="20" selection-end-line="190" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/PerfActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="64" column="48" lean-forward="false" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/PerfQM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/TestQM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="86" column="16" lean-forward="false" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/java/edu/umich/flowfence/testapp/KeyValueTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="37" column="60" lean-forward="false" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.ui/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.ui/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.ui/src/main/java/edu/umich/flowfence/ui/FlowfenceView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/jni/parcelhelper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/build/intermediates/exploded-aar/flowfence/flowfence.client/unspecified/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="80" lean-forward="false" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/build/generated/source/r/debug/edu/umich/flowfence/testapp/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="2233" column="32" lean-forward="false" selection-start-line="2233" selection-start-column="32" selection-end-line="2233" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.skeleton/build/generated/source/r/debug/edu/umich/flowfence/study/flowfencestudyskeleton/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2169">
+          <caret line="1700" column="32" lean-forward="false" selection-start-line="1700" selection-start-column="32" selection-end-line="1700" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/build/intermediates/exploded-aar/flowfence/flowfence.client/unspecified/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/res/xml/flowfence_manifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="75" lean-forward="false" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.test/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.smartdevresponder/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.skeleton/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="37" lean-forward="false" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.presencebasedcontrol/src/main/res/xml/flowfence_manifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="75" lean-forward="false" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.frameinjector/src/main/res/xml/flowfence_manifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.study.fencedhr/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.smartplug/src/main/java/br/ufpe/cin/flowfence/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="113" column="50" lean-forward="false" selection-start-line="113" selection-start-column="50" selection-end-line="113" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-438">
+          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -12443,16 +12861,74 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="17" />
+        <state relative-caret-position="-221">
+          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/FlowfenceApplication.java">
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/Sandbox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2833">
-          <caret line="67" column="13" lean-forward="false" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+        <state relative-caret-position="209">
+          <caret line="333" column="79" lean-forward="false" selection-start-line="333" selection-start-column="79" selection-end-line="333" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/aidl/edu/umich/flowfence/internal/ISandboxService.aidl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/service/SandboxManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="46" column="32" lean-forward="false" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.service/src/main/java/edu/umich/flowfence/sandbox/SandboxService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/FlowfenceFramework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1380">
+          <caret line="85" column="32" lean-forward="false" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.common/src/main/java/edu/umich/flowfence/common/QMDescriptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="128" column="9" lean-forward="false" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/QuarentineModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="383" column="13" lean-forward="true" selection-start-line="383" selection-start-column="13" selection-end-line="383" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowfence.client/src/main/java/edu/umich/flowfence/client/SensitiveEditText.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
           <folding />
         </state>
       </provider>

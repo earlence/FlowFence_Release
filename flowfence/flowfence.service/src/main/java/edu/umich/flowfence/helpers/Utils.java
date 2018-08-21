@@ -65,5 +65,5 @@ public abstract class Utils
         }
     }
 
-    public static final String OASIS_NAMESPACE = "http://schemas.android.com/apk/lib/"+BuildConfig.APPLICATION_ID;
+    public static final String FLOWFENCE_NAMESPACE = "http://schemas.android.com/apk/lib/"+BuildConfig.APPLICATION_ID;
 }

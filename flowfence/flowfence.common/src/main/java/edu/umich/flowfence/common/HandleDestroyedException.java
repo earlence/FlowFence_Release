@@ -16,7 +16,7 @@
 
 package edu.umich.flowfence.common;
 
-public class HandleDestroyedException extends OASISException {
+public class HandleDestroyedException extends FlowfenceException {
     private static final long serialVersionUID = 1L;
     public HandleDestroyedException() {
         super();

@@ -29,16 +29,16 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import edu.umich.flowfence.client.OASISConnection;
-import edu.umich.flowfence.client.Soda;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.client.FlowfenceConnection;
+import edu.umich.flowfence.client.QuarentineModule;
+import edu.umich.flowfence.common.QMDescriptor;
 
 public class HRService extends Service {
 
     private static final String TAG = "HRService";
-    OASISConnection oconn = null;
-    Soda.S4<byte [], Integer, Integer, Long, Void> newFrameStatic = null;
-    Soda.S0<Void> pollStatic = null;
+    FlowfenceConnection oconn = null;
+    QuarentineModule.S4<byte [], Integer, Integer, Long, Void> newFrameStatic = null;
+    QuarentineModule.S0<Void> pollStatic = null;
 
 
     Timer thrTimer;
@@ -50,20 +50,17 @@ public class HRService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
-        connectToOASIS();
-
-
+        connectToFlowfence();
 
         // If we get killed, after returning from here, restart
         return START_STICKY;
     }
 
 
-    private void onOASISConnect(OASISConnection conn)
+    private void onFlowfenceConnect(FlowfenceConnection conn)
     {
         oconn = conn;
-        Toast t = Toast.makeText(getApplicationContext(), "connected to OASIS", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(getApplicationContext(), "connected to Flowfence", Toast.LENGTH_SHORT);
         t.show();
 
         resolve();
@@ -82,8 +79,8 @@ public class HRService extends Service {
         if(oconn != null)
         {
             try {
-                newFrameStatic = oconn.resolveStatic(void.class, HRSoda.class, "newFrame", byte [].class, int.class, int.class, long.class);
-                pollStatic = oconn.resolveStatic(void.class, TputSoda.class, "poll");
+                newFrameStatic = oconn.resolveStatic(void.class, HRQM.class, "newFrame", byte [].class, int.class, int.class, long.class);
+                pollStatic = oconn.resolveStatic(void.class, TputQM.class, "poll");
             } catch(Exception e)
             {
                 Log.e(TAG, "error: " + e);
@@ -91,22 +88,22 @@ public class HRService extends Service {
         }
     }
 
-    public void connectToOASIS()
+    public void connectToFlowfence()
     {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.Callback() {
+        Log.i(TAG, "Binding to Flowfence...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.Callback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnect(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to Flowfence");
+                onFlowfenceConnect(conn);
             }
         });
     }
 
     public void setupListener()
     {
-        SodaDescriptor sd = newFrameStatic.getDescriptor();
-        ComponentName cn = new ComponentName("edu.umich.oasis.study.frameinjector", "camFrameChannel");
+        QMDescriptor sd = newFrameStatic.getDescriptor();
+        ComponentName cn = new ComponentName("edu.umich.flowfence.study.frameinjector", "camFrameChannel");
 
         try {
             oconn.getRawInterface().subscribeEventChannel(cn, sd);
@@ -120,7 +117,7 @@ public class HRService extends Service {
     {
          public void run()
          {
-             //execute the TputSoda
+             //execute the TputQM
              try {
                  pollStatic.call();
              } catch(Exception e)

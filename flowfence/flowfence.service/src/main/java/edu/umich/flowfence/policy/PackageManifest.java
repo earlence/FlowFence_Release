@@ -36,11 +36,11 @@ import edu.umich.flowfence.helpers.Utils;
 
 
 public class PackageManifest {
-    private static final String TAG = "OASIS.Policy";
+    private static final String TAG = "FF.Policy";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
-    private static final String MANIFEST_META_DATA = "edu.umich.oasis.manifest";
+    private static final String MANIFEST_META_DATA = "edu.umich.flowfence.manifest";
 
     private final HashMap<String, Source> sourceMap;
     private final HashMap<String, EventChannel> channelMap;
@@ -77,7 +77,7 @@ public class PackageManifest {
         // the compiler's generated code tried to close it.
         try (XmlResourceParser parser = _parser) {
             while (parser.next() != XmlPullParser.START_TAG);
-            parser.require(XmlPullParser.START_TAG, "", "OASISManifest");
+            parser.require(XmlPullParser.START_TAG, "", "FlowfenceManifest");
 
             while (parser.nextTag() != XmlPullParser.END_TAG) {
                 switch (parser.getName()) {
@@ -95,7 +95,7 @@ public class PackageManifest {
                 }
             }
 
-            parser.require(XmlPullParser.END_TAG, "", "OASISManifest");
+            parser.require(XmlPullParser.END_TAG, "", "FlowfenceManifest");
         }
     }
 

@@ -24,15 +24,15 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import edu.umich.flowfence.client.OASISConnection;
-import edu.umich.flowfence.client.Soda;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.client.FlowfenceConnection;
+import edu.umich.flowfence.client.QuarentineModule;
+import edu.umich.flowfence.common.QMDescriptor;
 
 public class FaceOpsService extends Service {
     private static final String TAG = "FaceOpsService";
-    OASISConnection oconn = null;
+    FlowfenceConnection oconn = null;
 
-    Soda.S4<Integer, Integer, Bitmap, Long, Void> bmpRxStatic = null;
+    QuarentineModule.S4<Integer, Integer, Bitmap, Long, Void> bmpRxStatic = null;
 
     public FaceOpsService()
     {
@@ -41,16 +41,16 @@ public class FaceOpsService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        connectToOASIS();
+        connectToFlowfence();
 
         // If we get killed, after returning from here, restart
         return START_STICKY;
     }
 
-    private void onOASISConnect(OASISConnection conn)
+    private void onFlowfenceConnect(FlowfenceConnection conn)
     {
         oconn = conn;
-        Toast t = Toast.makeText(getApplicationContext(), "connected to OASIS", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(getApplicationContext(), "connected to FlowFence", Toast.LENGTH_SHORT);
         t.show();
 
         resolve();
@@ -62,7 +62,7 @@ public class FaceOpsService extends Service {
         if(oconn != null)
         {
             try {
-                bmpRxStatic = oconn.resolveStatic(void.class, FRDCSoda.class, "bmpRx", int.class, int.class, Bitmap.class, long.class);
+                bmpRxStatic = oconn.resolveStatic(void.class, FRDCQM.class, "bmpRx", int.class, int.class, Bitmap.class, long.class);
 
             } catch(Exception e)
             {
@@ -71,22 +71,22 @@ public class FaceOpsService extends Service {
         }
     }
 
-    public void connectToOASIS()
+    public void connectToFlowfence()
     {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.Callback() {
+        Log.i(TAG, "Binding to FlowFence...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.Callback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnect(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to FlowFence");
+                onFlowfenceConnect(conn);
             }
         });
     }
 
     public void setupListener()
     {
-        SodaDescriptor sd = bmpRxStatic.getDescriptor();
-        ComponentName cn = new ComponentName("edu.umich.oasis.study.caminjector", "cameraBMPChannel");
+        QMDescriptor sd = bmpRxStatic.getDescriptor();
+        ComponentName cn = new ComponentName("edu.umich.flowfence.study.caminjector", "cameraBMPChannel");
 
         try {
             oconn.getRawInterface().subscribeEventChannel(cn, sd);

@@ -16,9 +16,9 @@
 
 package edu.umich.flowfence.policy;
 
-import edu.umich.flowfence.common.OASISException;
+import edu.umich.flowfence.common.FlowfenceException;
 
-public class PolicyParseException extends OASISException {
+public class PolicyParseException extends FlowfenceException {
     private static final long serialVersionUID = 1L;
 
     public PolicyParseException() {

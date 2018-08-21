@@ -22,7 +22,7 @@ import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import edu.umich.flowfence.common.IDynamicAPI;
-import edu.umich.flowfence.common.OASISContext;
+import edu.umich.flowfence.common.FlowfenceContext;
 
 public class GMTest {
     private static class State {
@@ -30,14 +30,14 @@ public class GMTest {
         public float heading;
     }
 
-    private static final String PACKAGE = "com.gm.oasis.ecu.receiver";
-    private static final String STORE = "com.gm.oasis.ecu.nav";
+    private static final String PACKAGE = "com.gm.flowfence.ecu.receiver";
+    private static final String STORE = "com.gm.flowfence.ecu.nav";
     private static final String SPEED_KEY = "speed";
     private static final String HEADING_KEY = "heading";
 
     private static State getState() {
         try {
-            SharedPreferences prefs = OASISContext.getInstance()
+            SharedPreferences prefs = FlowfenceContext.getInstance()
                     .createPackageContext(PACKAGE, 0)
                     .getSharedPreferences(STORE, Context.MODE_WORLD_READABLE);
 
@@ -53,7 +53,7 @@ public class GMTest {
 
     public static void toastValue() {
         State s = getState();
-        IDynamicAPI toast = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("toast");
+        IDynamicAPI toast = (IDynamicAPI) FlowfenceContext.getInstance().getTrustedAPI("toast");
         toast.invoke("showText", String.format("%.1f mph @ %.1f deg", s.speed, s.heading), Toast.LENGTH_LONG);
     }
 
@@ -63,7 +63,7 @@ public class GMTest {
 
     public static void pushValue() {
         State s = getState();
-        IDynamicAPI push = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("push");
+        IDynamicAPI push = (IDynamicAPI) FlowfenceContext.getInstance().getTrustedAPI("push");
 
         int index = (int)((s.heading/22.5f)+0.5f);
         String direction = DIRECTIONS[index%16];
@@ -84,7 +84,7 @@ public class GMTest {
     }
 
     public static void pushNonValue() {
-        IDynamicAPI push = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("push");
+        IDynamicAPI push = (IDynamicAPI) FlowfenceContext.getInstance().getTrustedAPI("push");
         push.invoke("sendPush", "Hello, world!", "This data is not tainted.");
     }
 }

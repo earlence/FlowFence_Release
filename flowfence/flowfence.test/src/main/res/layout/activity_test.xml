@@ -18,10 +18,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reconnect to OASIS"
+            android:text="Reconnect to FlowFence"
             android:id="@+id/reconnect"
             android:enabled="true"
-            android:onClick="connectToOASIS"
+            android:onClick="connectToFlowfence"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"/>

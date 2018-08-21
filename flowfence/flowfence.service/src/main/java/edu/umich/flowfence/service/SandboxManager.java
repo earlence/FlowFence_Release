@@ -16,36 +16,31 @@
 
 package edu.umich.flowfence.service;
 
-import android.os.ConditionVariable;
-import android.os.Debug;
 import android.util.Log;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.json.JSONException;
 
 import java.util.ArrayDeque;
 import java.util.BitSet;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import edu.umich.flowfence.common.OASISConstants;
+import edu.umich.flowfence.common.FlowfenceConstants;
 import edu.umich.flowfence.common.TaintSet;
 
 public class SandboxManager {
-    private static final String TAG = "OASIS.SandboxManager";
+    private static final String TAG = "SandboxManager";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
-    private static final int SANDBOX_COUNT = OASISConstants.NUM_SANDBOXES;
+    private static final int SANDBOX_COUNT = FlowfenceConstants.NUM_SANDBOXES;
 
     private static final float COST_START_PROCESS = 50.0f;
     private static final float COST_LOAD_CODE = 10.0f;
-    private static final float COST_RESOLVE_SODA = 3.0f;
+    private static final float COST_RESOLVE_QM = 3.0f;
     private static final float COST_MARSHAL_OUT = 1.0f;
     private static final float COST_MARSHAL_IN = 1.0f;
 
@@ -437,7 +432,7 @@ public class SandboxManager {
 
         // Start out with the hot spare.
         float cheapestCost = !mHotSpares.isEmpty() ?
-                COST_LOAD_CODE + COST_RESOLVE_SODA + 0.01f +
+                COST_LOAD_CODE + COST_RESOLVE_QM + 0.01f +
                         COST_MARSHAL_OUT * numUnmarshalledHandles + COST_MARSHAL_IN * numHandles :
                 Float.POSITIVE_INFINITY;
         if (localLOGD) {
@@ -450,7 +445,7 @@ public class SandboxManager {
         if (localLOGD) {
             Log.d(TAG, String.format("Inbound taint: %s", inboundTaint));
         }
-        final String packageName = record.getSODA().getDescriptor().definingClass.getPackageName();
+        final String packageName = record.getQM().getDescriptor().definingClass.getPackageName();
         for (Sandbox sb : mIdleSandboxes.keySet()) {
             String assignedPackage = sb.getAssignedPackage();
             if (assignedPackage != null && !assignedPackage.equals(packageName)) {
@@ -473,9 +468,9 @@ public class SandboxManager {
                 cost += COST_LOAD_CODE;
             }
 
-            if (!record.getSODA().isResolvedIn(sb)) {
-                // Need to resolve the SODA in this sandbox.
-                cost += COST_RESOLVE_SODA;
+            if (!record.getQM().isResolvedIn(sb)) {
+                // Need to resolve the QM in this sandbox.
+                cost += COST_RESOLVE_QM;
             }
 
             if (mustMarshalOut) {
@@ -533,7 +528,7 @@ public class SandboxManager {
         mIdleSandboxes.put(sb, ObjectUtils.NULL);
 
         if (record != null) {
-            String packageName = record.getSODA().getDescriptor().definingClass.getPackageName();
+            String packageName = record.getQM().getDescriptor().definingClass.getPackageName();
             String assignedName = sb.getAssignedPackage();
             if ((assignedName != null && !assignedName.equals(packageName)) ||
                     !record.getInboundTaints().isSubsetOf(sb.getTaints())) {

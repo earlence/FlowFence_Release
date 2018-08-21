@@ -26,7 +26,7 @@ This is a "Smart home app". It listens for presence values from the PresenceKV s
 if presence == home then turn on lights
 else if presence == away then turn off lights
 
-For now, it uses timed soda invocation to keep checking for change in presence values
+For now, it uses timed QM invocation to keep checking for change in presence values
 in the KV store
  */
 

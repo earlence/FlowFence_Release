@@ -16,14 +16,14 @@
 
 package edu.umich.flowfence.internal;
 
-import edu.umich.flowfence.internal.ResolvedSodaExceptionResult;
-import edu.umich.flowfence.common.SodaDescriptor;
-import edu.umich.flowfence.common.SodaDetails;
+import edu.umich.flowfence.internal.ResolvedQMExceptionResult;
+import edu.umich.flowfence.common.QMDescriptor;
+import edu.umich.flowfence.common.QMDetails;
 import android.os.Debug;
 
 interface ISandboxService
 {
-    ResolvedSodaExceptionResult resolveSoda(in SodaDescriptor desc, in boolean bestMatch, inout SodaDetails details);
+    ResolvedQMExceptionResult resolveQM(in QMDescriptor desc, in boolean bestMatch, inout QMDetails details);
 
 	// Process management
     int getPid();

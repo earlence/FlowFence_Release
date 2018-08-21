@@ -21,11 +21,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,44 +38,40 @@ import android.widget.Toast;
 
 import org.apache.commons.lang3.time.StopWatch;
 
-import java.lang.reflect.Method;
-
-import edu.umich.flowfence.client.CallRunner;
-import edu.umich.flowfence.client.OASISConnection;
+import edu.umich.flowfence.client.FlowfenceConnection;
 import edu.umich.flowfence.client.Sealed;
-import edu.umich.flowfence.client.Soda;
-import edu.umich.flowfence.common.IOASISService;
-import edu.umich.flowfence.common.OASISConstants;
-import edu.umich.flowfence.common.ResolveFlags;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.client.QuarentineModule;
+import edu.umich.flowfence.common.FlowfenceConstants;
+import edu.umich.flowfence.common.IFlowfenceService;
+import edu.umich.flowfence.common.QMDescriptor;
 
 public class TestActivity extends Activity {
 
-    OASISConnection connection;
+    FlowfenceConnection connection;
 
-    Soda.S0<TestSoda> init0;
-    Soda.S1<String, TestSoda> init1;
+    QuarentineModule.S0<TestQM> init0;
+    QuarentineModule.S1<String, TestQM> init1;
 
-    Soda.S2<String, String, String> concat;
+    QuarentineModule.S2<String, String, String> concat;
 
-    Soda.S1<TestSoda, String> getState;
-    Soda.S2<TestSoda, String, String> swapState;
-    Soda.S2<TestSoda, String, Void> log;
-    Soda.S2<String, String, Void> logStatic;
+    QuarentineModule.S1<TestQM, String> getState;
+    QuarentineModule.S2<TestQM, String, String> swapState;
+    QuarentineModule.S2<TestQM, String, Void> log;
+    QuarentineModule.S2<String, String, Void> logStatic;
 
-    Soda.S1<String, String> throwStatic;
-    Soda.S2<TestSoda, String, Void> throwInstance;
+    QuarentineModule.S1<String, String> throwStatic;
+    QuarentineModule.S2<TestQM, String, Void> throwInstance;
 
-    Soda.S2<String, Boolean, Void> putValueSoda;
-    Soda.S0<Void> toastValueSoda;
-    Soda.S0<Void> pushValueSoda;
-    Soda.S0<Void> toastECUSoda;
-    Soda.S0<Void> pushECUSoda;
-    Soda.S0<Void> pushOtherSoda;
+    QuarentineModule.S2<String, Boolean, Void> putValueQM;
+    QuarentineModule.S0<Void> toastValueQM;
+    QuarentineModule.S0<Void> pushValueQM;
+    QuarentineModule.S0<Void> toastECUQM;
+    QuarentineModule.S0<Void> pushECUQM;
+    QuarentineModule.S0<Void> pushOtherQM;
 
-    Soda.S1<Boolean, Void> nop;
+    QuarentineModule.S1<Boolean, Void> nop;
 
-    Soda.S1<Long, String> sleep;
+    QuarentineModule.S1<Long, String> sleep;
 
     EditText kvsValueField;
     CheckBox shouldTaintBox;
@@ -87,47 +81,47 @@ public class TestActivity extends Activity {
     EditText perfPassCount;
     CheckBox taintPerfBox;
 
-    private static final String TAG = "OASIS.TestActivity";
+    private static final String TAG = "FF.TestActivity";
 
     public void runTest(View ignored) {
         try {
             setButtonsEnabled(false);
-            OASISConnection conn = connection;
+            FlowfenceConnection conn = connection;
 
             // start resolving
-            init0 = conn.resolveConstructor(TestSoda.class);
-            init1 = conn.resolveConstructor(TestSoda.class, String.class);
+            init0 = conn.resolveConstructor(TestQM.class);
+            init1 = conn.resolveConstructor(TestQM.class, String.class);
 
-            concat = conn.resolveStatic(String.class, TestSoda.class, "concat",
+            concat = conn.resolveStatic(String.class, TestQM.class, "concat",
                                         String.class, String.class);
 
-            getState = conn.resolveInstance(String.class, TestSoda.class, "getState");
-            swapState = conn.resolveInstance(String.class, TestSoda.class, "swapState",
+            getState = conn.resolveInstance(String.class, TestQM.class, "getState");
+            swapState = conn.resolveInstance(String.class, TestQM.class, "swapState",
                                              String.class);
 
-            log = conn.resolveInstance(void.class, TestSoda.class, "log",
+            log = conn.resolveInstance(void.class, TestQM.class, "log",
                                        String.class);
-            logStatic = conn.resolveStatic(void.class, TestSoda.class, "log",
+            logStatic = conn.resolveStatic(void.class, TestQM.class, "log",
                                            String.class, String.class);
 
-            throwStatic = conn.resolveStatic(String.class, TestSoda.class, "throwStatic",
+            throwStatic = conn.resolveStatic(String.class, TestQM.class, "throwStatic",
                                              String.class);
-            throwInstance = conn.resolveInstance(void.class, TestSoda.class, "throwInstance",
+            throwInstance = conn.resolveInstance(void.class, TestQM.class, "throwInstance",
                                                  String.class);
-            sleep = conn.resolveStatic(String.class, TestSoda.class, "sleep",
+            sleep = conn.resolveStatic(String.class, TestQM.class, "sleep",
                                        long.class);
             Log.i(TAG, "Done resolving");
 
             ComponentName cn = new ComponentName(getPackageName(), "testChannel");
-            SodaDescriptor sd = logStatic.getDescriptor();
+            QMDescriptor sd = logStatic.getDescriptor();
             conn.getRawInterface().subscribeEventChannel(cn, sd);
 
             Log.i(TAG, "Constructing with init0");
-            Sealed<TestSoda> obj1 = init0.call();
+            Sealed<TestQM> obj1 = init0.call();
             obj1.buildCall(log).arg("obj1").call();
 
             Log.i(TAG, "Constructing with init1");
-            Sealed<TestSoda> obj2 = init1.arg("<foobar>").call();
+            Sealed<TestQM> obj2 = init1.arg("<foobar>").call();
             Sealed<String> obj2State = getState.arg(obj2).call();
 
             logStatic.arg("obj2State").arg(obj2State).call();
@@ -177,12 +171,12 @@ public class TestActivity extends Activity {
         try {
             setButtonsEnabled(false);
 
-            if (putValueSoda == null) {
-                putValueSoda = connection.resolveStatic(void.class, KeyValueTest.class,
+            if (putValueQM == null) {
+                putValueQM = connection.resolveStatic(void.class, KeyValueTest.class,
                                                         "setValue", String.class, boolean.class);
             }
 
-            putValueSoda.arg(kvsValueField.getText().toString())
+            putValueQM.arg(kvsValueField.getText().toString())
                         .arg(shouldTaintBox.isChecked())
                         .call();
 
@@ -198,12 +192,12 @@ public class TestActivity extends Activity {
         try {
             setButtonsEnabled(false);
 
-            if (toastValueSoda == null) {
-                toastValueSoda = connection.resolveStatic(void.class, KeyValueTest.class,
+            if (toastValueQM == null) {
+                toastValueQM = connection.resolveStatic(void.class, KeyValueTest.class,
                                                           "toastValue");
             }
 
-            toastValueSoda.call();
+            toastValueQM.call();
         } catch (Exception e) {
             Log.wtf(TAG, "Exception in toastValue()", e);
         } finally {
@@ -216,12 +210,12 @@ public class TestActivity extends Activity {
         try {
             setButtonsEnabled(false);
 
-            if (pushValueSoda == null) {
-                pushValueSoda = connection.resolveStatic(void.class, KeyValueTest.class,
+            if (pushValueQM == null) {
+                pushValueQM = connection.resolveStatic(void.class, KeyValueTest.class,
                                                          "pushValue");
             }
 
-            pushValueSoda.call();
+            pushValueQM.call();
         } catch (Exception e) {
             Log.wtf(TAG, "Exception in pushValue()", e);
         } finally {
@@ -234,12 +228,12 @@ public class TestActivity extends Activity {
         try {
             setButtonsEnabled(false);
 
-            if (toastECUSoda == null) {
-                toastECUSoda = connection.resolveStatic(void.class, GMTest.class,
+            if (toastECUQM == null) {
+                toastECUQM = connection.resolveStatic(void.class, GMTest.class,
                                                         "toastValue");
             }
 
-            toastECUSoda.call();
+            toastECUQM.call();
         } catch (Exception e) {
             Log.wtf(TAG, "Exception in toastECU()", e);
         } finally {
@@ -252,12 +246,12 @@ public class TestActivity extends Activity {
         try {
             setButtonsEnabled(false);
 
-            if (pushECUSoda == null) {
-                pushECUSoda = connection.resolveStatic(void.class, GMTest.class,
+            if (pushECUQM == null) {
+                pushECUQM = connection.resolveStatic(void.class, GMTest.class,
                                                        "pushValue");
             }
 
-            pushECUSoda.call();
+            pushECUQM.call();
         } catch (Exception e) {
             Log.wtf(TAG, "Exception in pushECU()", e);
         } finally {
@@ -270,12 +264,12 @@ public class TestActivity extends Activity {
         try {
             setButtonsEnabled(false);
 
-            if (pushOtherSoda == null) {
-                pushOtherSoda = connection.resolveStatic(void.class, GMTest.class,
+            if (pushOtherQM == null) {
+                pushOtherQM = connection.resolveStatic(void.class, GMTest.class,
                                                          "pushNonValue");
             }
 
-            pushOtherSoda.call();
+            pushOtherQM.call();
         } catch (Exception e) {
             Log.wtf(TAG, "Exception in pushOther()", e);
         } finally {
@@ -324,19 +318,19 @@ public class TestActivity extends Activity {
         task.execute(numPasses);
     }
 
-    public void connectToOASIS(View ignored) {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.DisconnectCallback() {
+    public void connectToFlowfence(View ignored) {
+        Log.i(TAG, "Binding to FlowFence...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.DisconnectCallback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnectStateChange(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to FlowFence");
+                onFlowfenceConnectStateChange(conn);
             }
 
             @Override
-            public void onDisconnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Unbound from OASIS");
-                onOASISConnectStateChange(null);
+            public void onDisconnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Unbound from FlowFence");
+                onFlowfenceConnectStateChange(null);
             }
         });
     }
@@ -353,22 +347,22 @@ public class TestActivity extends Activity {
         }
     }
 
-    private void onOASISConnectStateChange(OASISConnection conn) {
+    private void onFlowfenceConnectStateChange(FlowfenceConnection conn) {
         connection = conn;
-        putValueSoda = null;
-        toastValueSoda = null;
-        pushValueSoda = null;
-        toastECUSoda = null;
-        pushECUSoda = null;
-        pushOtherSoda = null;
+        putValueQM = null;
+        toastValueQM = null;
+        pushValueQM = null;
+        toastECUQM = null;
+        pushECUQM = null;
+        pushOtherQM = null;
         nop = null;
         setButtonsEnabled(conn != null);
     }
 
-    private synchronized Soda.S1<Boolean, Void> getNop()
+    private synchronized QuarentineModule.S1<Boolean, Void> getNop()
             throws RemoteException, ClassNotFoundException {
         if (nop == null) {
-            nop = connection.resolveStatic(void.class, TestSoda.class, "nop", boolean.class);
+            nop = connection.resolveStatic(void.class, TestQM.class, "nop", boolean.class);
         }
         return nop;
     }
@@ -386,8 +380,8 @@ public class TestActivity extends Activity {
         taintPerfBox = (CheckBox)findViewById(R.id.perf_taint);
 
         // Set up adapter for sandbox count spinner
-        CharSequence[] countList = new CharSequence[OASISConstants.NUM_SANDBOXES + 1];
-        for (int i = 0; i <= OASISConstants.NUM_SANDBOXES; i++) {
+        CharSequence[] countList = new CharSequence[FlowfenceConstants.NUM_SANDBOXES + 1];
+        for (int i = 0; i <= FlowfenceConstants.NUM_SANDBOXES; i++) {
             countList[i] = getResources().getQuantityString(R.plurals.sandbox_plurals, i, i);
         }
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this,
@@ -395,7 +389,7 @@ public class TestActivity extends Activity {
                                                                 countList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sandboxCount.setAdapter(adapter);
-        sandboxCount.setSelection(OASISConstants.NUM_SANDBOXES);
+        sandboxCount.setSelection(FlowfenceConstants.NUM_SANDBOXES);
 
         adapter = ArrayAdapter.createFromResource(this, R.array.sandbox_count_labels,
                                                   android.R.layout.simple_spinner_item);
@@ -403,7 +397,7 @@ public class TestActivity extends Activity {
         sandboxCountType.setAdapter(adapter);
 
         setButtonsEnabled(false);
-        connectToOASIS(null);
+        connectToFlowfence(null);
     }
 
     @Override
@@ -460,10 +454,10 @@ public class TestActivity extends Activity {
 
         @Override
         protected String doInBackground(Integer... params) {
-            IOASISService svc = connection.getRawInterface();
+            IFlowfenceService svc = connection.getRawInterface();
             int numPasses = params[0];
             try {
-                Soda.S1<Boolean, Void> nop = getNop();
+                QuarentineModule.S1<Boolean, Void> nop = getNop();
                 StopWatch stopwatch = new StopWatch();
                 nop.arg(shouldTaint).call();
 

@@ -36,7 +36,7 @@ import edu.umich.flowfence.service.FlowfenceApplication;
 import edu.umich.flowfence.service.Sandbox;
 
 public final class Policy {
-    private static final String TAG = "OASIS.Policy";
+    private static final String TAG = "FF.Policy";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
     private static final String TAG_NAME = "policy";

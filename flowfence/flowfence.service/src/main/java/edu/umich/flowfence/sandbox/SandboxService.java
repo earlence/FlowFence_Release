@@ -29,7 +29,6 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
-import android.os.SystemClock;
 import android.util.Log;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -37,22 +36,22 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.HashMap;
 
 import dalvik.system.PathClassLoader;
-import edu.umich.flowfence.common.IOASISService;
-import edu.umich.flowfence.common.SodaDescriptor;
-import edu.umich.flowfence.common.SodaDetails;
+import edu.umich.flowfence.common.IFlowfenceService;
+import edu.umich.flowfence.common.QMDescriptor;
+import edu.umich.flowfence.common.QMDetails;
 import edu.umich.flowfence.internal.ISandboxService;
 import edu.umich.flowfence.internal.ITrustedAPI;
-import edu.umich.flowfence.internal.ResolvedSodaExceptionResult;
+import edu.umich.flowfence.internal.ResolvedQMExceptionResult;
 
 public abstract class SandboxService extends Service
 {
-    public static final String SERVICE_FORMAT = "edu.umich.oasis.sandbox.SandboxService$Impl%02X";
-    public static final String EXTRA_TRUSTED_API = "edu.umich.oasis.service.ITrustedAPI";
-    public static final String EXTRA_ROOT_SERVICE = "edu.umich.oasis.service.IOASISService";
-    public static final String EXTRA_KNOWN_PACKAGES = "edu.umich.oasis.service.KnownPackages";
-    public static final String EXTRA_SANDBOX_ID = "edu.umich.oasis.service.SandboxID";
+    public static final String SERVICE_FORMAT = "edu.umich.flowfence.sandbox.SandboxService$Impl%02X";
+    public static final String EXTRA_TRUSTED_API = "edu.umich.flowfence.service.ITrustedAPI";
+    public static final String EXTRA_ROOT_SERVICE = "edu.umich.flowfence.service.IFlowfenceService";
+    public static final String EXTRA_KNOWN_PACKAGES = "edu.umich.flowfence.service.KnownPackages";
+    public static final String EXTRA_SANDBOX_ID = "edu.umich.flowfence.service.SandboxID";
 
-    private static final String TAG = "OASIS.SandboxService";
+    private static final String TAG = "FF.SandboxService";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -85,7 +84,7 @@ public abstract class SandboxService extends Service
     }
 
     private ITrustedAPI mTrustedAPI;
-    private IOASISService mRootService;
+    private IFlowfenceService mRootService;
     private int mID;
 
     @Override
@@ -107,7 +106,7 @@ public abstract class SandboxService extends Service
             throw new IllegalArgumentException("FlowfenceService not found in extras");
         }
         mTrustedAPI = ITrustedAPI.Stub.asInterface(api);
-        mRootService = IOASISService.Stub.asInterface(root);
+        mRootService = IFlowfenceService.Stub.asInterface(root);
         mID = extras.getInt(EXTRA_SANDBOX_ID, -1);
 
         if (localLOGV) {
@@ -129,7 +128,7 @@ public abstract class SandboxService extends Service
                 }
 
                 // Run through a fake transaction, to preload the appropriate classes.
-                SodaDescriptor preloadDesc = SodaDescriptor.forStatic(
+                QMDescriptor preloadDesc = QMDescriptor.forStatic(
                         SandboxService.this, SandboxService.class, "resolveStub");
 
                 Binder testBinder = new Binder() {
@@ -142,7 +141,7 @@ public abstract class SandboxService extends Service
 
                 ISandboxService proxy = ISandboxService.Stub.asInterface(testBinder);
                 try {
-                    proxy.resolveSoda(preloadDesc, false, null);
+                    proxy.resolveQM(preloadDesc, false, null);
                 } catch (Exception e) {
                     Log.w(TAG, "Couldn't preload resolve", e);
                 }
@@ -212,19 +211,19 @@ public abstract class SandboxService extends Service
         }
     }
 
-    //this is the public interface of a sandbox to OASIS Service
+    //this is the public interface of a sandbox to FlowFence Service
     private final ISandboxService.Stub mBinder = new ISandboxService.Stub()
     {
         @Override
-        public ResolvedSodaExceptionResult resolveSoda(SodaDescriptor desc, boolean bestMatch,
-                                                       SodaDetails details) throws RemoteException {
+        public ResolvedQMExceptionResult resolveQM(QMDescriptor desc, boolean bestMatch,
+                                                     QMDetails details) throws RemoteException {
 
-            ResolvedSodaExceptionResult r = new ResolvedSodaExceptionResult();
+            ResolvedQMExceptionResult r = new ResolvedQMExceptionResult();
             try {
                 if (localLOGD) {
                     Log.d(TAG, "Sandbox #"+mID+": Resolving "+desc);
                 }
-                ResolvedSoda resolved = new ResolvedSoda(SandboxService.this, desc, bestMatch);
+                ResolvedQM resolved = new ResolvedQM(SandboxService.this, desc, bestMatch);
                 resolved.getDetails(details);
                 r.setResult(resolved);
             } catch (Exception e) {

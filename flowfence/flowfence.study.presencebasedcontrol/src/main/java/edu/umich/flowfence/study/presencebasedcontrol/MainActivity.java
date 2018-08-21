@@ -27,7 +27,7 @@ This app receives location updates thru FireBase from a phone
 "in the field", and pushes the latest location value to a KV store
 for "Smart Home Apps" to access and control devices.
 We don't want location updates to be leaked, so we
-set an oasis policy that only allows the flow:
+set an flowfence policy that only allows the flow:
 location -> smartthings
  */
 

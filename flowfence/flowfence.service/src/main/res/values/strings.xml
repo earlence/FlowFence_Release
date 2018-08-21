@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">OASIS Trusted Service</string>
-    <string name="bind_permission_label">Interact with OASIS</string>
-    <string name="bind_permission_desc">Allows the app to connect to OASIS and submit SODAs.</string>
-    <string name="debug_permission_label">Debug OASIS</string>
-    <string name="debug_permission_desc">Allows the app to debug OASIS calls, which may leak sensitive information.</string>
+    <string name="app_name">FlowFence Trusted Service</string>
+    <string name="bind_permission_label">Interact with FlowFence</string>
+    <string name="bind_permission_desc">Allows the app to connect to FlowFence and submit QMs.</string>
+    <string name="debug_permission_label">Debug FlowFence</string>
+    <string name="debug_permission_desc">Allows the app to debug FlowFence calls, which may leak sensitive information.</string>
 
     <string name="default_permission_denied_message">Policy prevents sending data from "%1$s" to "%2$s"</string>
     <string name="default_permission_audit_message">Sent data from "%1$s" to "%2$s"</string>

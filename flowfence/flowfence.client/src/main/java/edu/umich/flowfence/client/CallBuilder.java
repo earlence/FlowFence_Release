@@ -17,7 +17,7 @@
 package edu.umich.flowfence.client;
 
 /**
- * A marker interface for things that participate in the SODA call builder pattern.
+ * A marker interface for things that participate in the QM call builder pattern.
  * This can either be an ArgBuilder (to receive an argument), or a CallRunner (to kick off a call).
  */
 public interface CallBuilder {

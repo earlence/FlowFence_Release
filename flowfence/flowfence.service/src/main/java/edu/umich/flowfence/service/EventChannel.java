@@ -40,7 +40,7 @@ import java.util.Set;
 import edu.umich.flowfence.common.CallFlags;
 import edu.umich.flowfence.common.CallParam;
 import edu.umich.flowfence.common.ParceledPayload;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.common.QMDescriptor;
 import edu.umich.flowfence.common.TaintSet;
 import edu.umich.flowfence.events.IEventChannelReceiver;
 import edu.umich.flowfence.events.IEventChannelSender;
@@ -48,7 +48,7 @@ import edu.umich.flowfence.helpers.Utils;
 import edu.umich.flowfence.policy.PolicyParseException;
 
 public final class EventChannel {
-    private static final String TAG = "OASIS.EventChannel";
+    private static final String TAG = "FF.EventChannel";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -70,7 +70,7 @@ public final class EventChannel {
     private final boolean mExportsSubscribe;
     private final boolean mExportsFire;
     private final NamespaceSharedPrefs mPrefs;
-    private Map<SodaRef, TaintSet> mInvocationList = new HashMap<>();
+    private Map<QMRef, TaintSet> mInvocationList = new HashMap<>();
     // TODO: transient receivers
 
     public EventChannel(String packageName, XmlResourceParser parser, Resources res)
@@ -79,15 +79,15 @@ public final class EventChannel {
 
         parser.require(XmlPullParser.START_TAG, "", "event-channel");
 
-        String channelName = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "name");
+        String channelName = parser.getAttributeValue(Utils.FLOWFENCE_NAMESPACE, "name");
         if (channelName == null) {
-            throw new PolicyParseException("Missing oasis:name attribute on channel");
+            throw new PolicyParseException("Missing flowfence:name attribute on channel");
         }
         mChannelName = new ComponentName(packageName, channelName);
 
-        int exports = parser.getAttributeListValue(Utils.OASIS_NAMESPACE, "exported", exportedOptions, -1);
+        int exports = parser.getAttributeListValue(Utils.FLOWFENCE_NAMESPACE, "exported", exportedOptions, -1);
         if (exports == -1) {
-            Log.w(TAG, "Can't understand oasis:exported attribute, assuming no export");
+            Log.w(TAG, "Can't understand flowfence:exported attribute, assuming no export");
             exports = 0;
         }
 
@@ -102,16 +102,16 @@ public final class EventChannel {
         mPrefs = NamespaceSharedPrefs.get(prefs, NS_TAINT_SET, NS_DESCRIPTOR_TAINT);
     }
 
-    private synchronized Map<SodaRef, TaintSet> getInvocationList() throws Exception {
+    private synchronized Map<QMRef, TaintSet> getInvocationList() throws Exception {
         if (mInvocationList == null) {
             Set<String> stringDescs = mPrefs.getStringSet(NS_SUBSCRIBERS, KEY_SUBSCRIBERS,
                     Collections.<String>emptySet());
 
-            Map<SodaRef, TaintSet> invList = new HashMap<>(stringDescs.size());
+            Map<QMRef, TaintSet> invList = new HashMap<>(stringDescs.size());
 
             for (String descStr : stringDescs) {
-                SodaDescriptor desc = SodaDescriptor.parse(descStr);
-                SodaRef ref = mApplication.resolveSODA(desc, 0);
+                QMDescriptor desc = QMDescriptor.parse(descStr);
+                QMRef ref = mApplication.resolveQM(desc, 0);
                 TaintSet ts = mPrefs.getTaint(NS_DESCRIPTOR_TAINT, descStr, TaintSet.EMPTY);
                 invList.put(ref, ts);
             }
@@ -122,7 +122,7 @@ public final class EventChannel {
         return mInvocationList;
     }
 
-    public synchronized void subscribe(SodaDescriptor desc, SodaRef ref, TaintSet ts) throws Exception {
+    public synchronized void subscribe(QMDescriptor desc, QMRef ref, TaintSet ts) throws Exception {
         String packageName = desc.definingClass.getPackageName();
         if (!mExportsSubscribe && !packageName.equals(mChannelName.getPackageName())) {
             throw new SecurityException("Package "+packageName+" can't subscribe to channel "+mChannelName);
@@ -136,7 +136,7 @@ public final class EventChannel {
             Log.i(TAG, "Subscribing "+descString+" to channel "+mChannelName);
 
             if (ref == null) {
-                ref = mApplication.resolveSODA(desc, 0);
+                ref = mApplication.resolveQM(desc, 0);
             }
 
             getInvocationList().put(ref, ts);
@@ -156,7 +156,7 @@ public final class EventChannel {
         }
     }
 
-    public synchronized void unsubscribe(SodaDescriptor desc, SodaRef ref, TaintSet ts) throws Exception {
+    public synchronized void unsubscribe(QMDescriptor desc, QMRef ref, TaintSet ts) throws Exception {
         String descString = desc.toString();
         Set<String> currentCopy = new HashSet<>(mPrefs.getStringSet(NS_SUBSCRIBERS,
                 KEY_SUBSCRIBERS, Collections.<String>emptySet()));
@@ -169,7 +169,7 @@ public final class EventChannel {
                 if (ref == null) {
                     // The resolution will always be cached if it's on the invocation list
                     // and we've previously initialized the list.
-                    ref = mApplication.resolveSODA(desc, 0);
+                    ref = mApplication.resolveQM(desc, 0);
                 }
                 mInvocationList.remove(ref);
             }
@@ -223,7 +223,7 @@ public final class EventChannel {
             }
 
             callParamList = Collections.unmodifiableList(callParamList);
-            Map<SodaRef, TaintSet> invocationList;
+            Map<QMRef, TaintSet> invocationList;
             try {
                 invocationList = getInvocationList();
             } catch (Exception e) {
@@ -232,8 +232,8 @@ public final class EventChannel {
             }
 
             List<CallRecord> records = new ArrayList<>(invocationList.size());
-            for (Map.Entry<SodaRef, TaintSet> receiver : invocationList.entrySet()) {
-                SodaRef ref = receiver.getKey();
+            for (Map.Entry<QMRef, TaintSet> receiver : invocationList.entrySet()) {
+                QMRef ref = receiver.getKey();
                 try {
                     TaintSet callTaint = ts;
                     TaintSet subscriptionTaint = receiver.getValue();

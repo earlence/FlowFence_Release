@@ -29,5 +29,5 @@ public final class CallFlags {
     public static final int FILTER_EXCEPTIONS   = 0x10000000; // TODO
     public static final int OVERRIDE_SANDBOX    = 0x08000000;
 
-    public static final int SANDBOX_NUM_MASK    = (Integer.highestOneBit(OASISConstants.NUM_SANDBOXES-1) << 1) - 1;
+    public static final int SANDBOX_NUM_MASK    = (Integer.highestOneBit(FlowfenceConstants.NUM_SANDBOXES-1) << 1) - 1;
 }

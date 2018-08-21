@@ -20,14 +20,14 @@ import android.content.ComponentName;
 import edu.umich.flowfence.common.IHandleDebug;
 import edu.umich.flowfence.common.ParamInfo;
 import edu.umich.flowfence.common.ParceledPayloadExceptionResult;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.common.QMDescriptor;
 import edu.umich.flowfence.common.TaintSet;
 
 interface IHandle {
 	void release();
 	IHandle withTaint(in TaintSet newTaints);
 
-	SodaDescriptor getSodaDescriptor();
+	QMDescriptor getQMDescriptor();
 	int getParamIndex();
 	ParamInfo getParamInfo();
 

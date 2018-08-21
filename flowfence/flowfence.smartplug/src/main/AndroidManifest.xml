@@ -27,7 +27,7 @@
 
             <meta-data
             android:name="edu.umich.flowfence.manifest"
-            android:resource="@xml/oasis_manifest"/>
+            android:resource="@xml/flowfence_manifest"/>
     </application>
 
 </manifest>

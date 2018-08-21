@@ -26,7 +26,7 @@ public abstract class ParcelHelper
 {
     private ParcelHelper() { }
 
-    private static final String TAG = "OASIS.ParcelHelper";
+    private static final String TAG = "FF.ParcelHelper";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 

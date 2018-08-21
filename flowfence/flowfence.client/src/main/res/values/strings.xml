@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="oasis_component_name">edu.umich.oasis.service/.OASISService</string>
-    <string name="oasis_framework_missing_title">OASIS Not Installed</string>
-    <string name="oasis_framework_missing_message">"%1$s" requires OASIS, but it is not installed. The app may crash or misbehave.</string>
-    <string name="oasis_framework_error_title">OASIS Install Error</string>
-    <string name="oasis_framework_error_message">OASIS installation failed for "%1$s":\n\n%2$s</string>
-    <string name="oasis_framework_force_close">Force close</string>
-    <string name="oasis_framework_install">Install OASIS</string>
-    <string name="oasis_framework_continue">Continue anyway</string>
-    <string name="oasis_install_intent">https://google.com/</string>
+    <string name="flowfence_component_name">edu.umich.flowfence.service/.FlowfenceService</string>
+    <string name="flowfence_framework_missing_title">FlowFence Not Installed</string>
+    <string name="flowfence_framework_missing_message">"%1$s" requires FlowFence, but it is not installed. The app may crash or misbehave.</string>
+    <string name="flowfence_framework_error_title">FlowFence Install Error</string>
+    <string name="flowfence_framework_error_message">FlowFence installation failed for "%1$s":\n\n%2$s</string>
+    <string name="flowfence_framework_force_close">Force close</string>
+    <string name="flowfence_framework_install">Install FlowFence</string>
+    <string name="flowfence_framework_continue">Continue anyway</string>
+    <string name="flowfence_install_intent">https://google.com/</string>
 </resources>

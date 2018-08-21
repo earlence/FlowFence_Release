@@ -18,12 +18,9 @@ package edu.umich.flowfence.client;
 
 import android.os.Binder;
 import android.os.IBinder;
-import android.os.Parcel;
 import android.os.RemoteException;
 
 import org.apache.commons.lang3.ClassUtils;
-
-import java.util.Objects;
 
 import edu.umich.flowfence.common.*;
 
@@ -89,7 +86,7 @@ public final class Sealed<T> implements Cloneable {
     }
 
     public <TNextBuilder extends CallBuilder,
-            TArgBuilder extends Soda.SArgBase<?, ? super T, TNextBuilder>>
+            TArgBuilder extends QuarentineModule.SArgBase<?, ? super T, TNextBuilder>>
     TNextBuilder buildCall(TArgBuilder builder) {
         return builder.arg(this);
     }

@@ -32,7 +32,7 @@ import edu.umich.flowfence.service.FlowfenceApplication;
 import edu.umich.flowfence.service.R;
 
 public abstract class Rule {
-    private static final String TAG = "OASIS.Policy";
+    private static final String TAG = "FF.Policy";
 
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
@@ -234,7 +234,7 @@ public abstract class Rule {
             @Override
             public Rule createInstance(Policy policy, XmlResourceParser parser, Resources resources)
                     throws XmlPullParserException, IOException {
-                String message = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "message");
+                String message = parser.getAttributeValue(Utils.FLOWFENCE_NAMESPACE, "message");
                 if (message == null) {
                     message = FlowfenceApplication.getInstance().getResources()
                             .getString(R.string.default_permission_denied_message);
@@ -265,7 +265,7 @@ public abstract class Rule {
             @Override
             public Rule createInstance(Policy policy, XmlResourceParser parser, Resources resources)
                     throws XmlPullParserException, IOException {
-                String message = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "message");
+                String message = parser.getAttributeValue(Utils.FLOWFENCE_NAMESPACE, "message");
                 if (message == null) {
                     message = FlowfenceApplication.getInstance().getResources()
                             .getString(R.string.default_permission_audit_message);

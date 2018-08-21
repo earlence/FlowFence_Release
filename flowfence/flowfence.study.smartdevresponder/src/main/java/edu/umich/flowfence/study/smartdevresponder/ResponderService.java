@@ -25,18 +25,18 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import edu.umich.flowfence.client.OASISConnection;
+import edu.umich.flowfence.client.FlowfenceConnection;
 import edu.umich.flowfence.client.Sealed;
-import edu.umich.flowfence.client.Soda;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.client.QuarentineModule;
+import edu.umich.flowfence.common.QMDescriptor;
 
 public class ResponderService extends Service {
     private static final String TAG = "ResponderService";
 
-    OASISConnection oconn = null;
-    Soda.S0<Void> pollPresence = null; //takes a "this", and returns a void
-    Soda.S0<ResponderSoda> ctor = null; //returns an instance of the class
-    Sealed<ResponderSoda> sodaInst = null;
+    FlowfenceConnection oconn = null;
+    QuarentineModule.S0<Void> pollPresence = null; //takes a "this", and returns a void
+    QuarentineModule.S0<ResponderQM> ctor = null; //returns an instance of the class
+    Sealed<ResponderQM> qmInst = null;
 
     TimerTask timerTask;
     Timer timer;
@@ -48,20 +48,20 @@ public class ResponderService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        connectToOASIS();
+        connectToFlowfence();
 
         // If we get killed, after returning from here, restart
         return START_STICKY;
     }
 
-    public void connectToOASIS()
+    public void connectToFlowfence()
     {
-        Log.i(TAG, "Binding to OASIS...");
-        OASISConnection.bind(this, new OASISConnection.Callback() {
+        Log.i(TAG, "Binding to Flowfence...");
+        FlowfenceConnection.bind(this, new FlowfenceConnection.Callback() {
             @Override
-            public void onConnect(OASISConnection conn) throws Exception {
-                Log.i(TAG, "Bound to OASIS");
-                onOASISConnect(conn);
+            public void onConnect(FlowfenceConnection conn) throws Exception {
+                Log.i(TAG, "Bound to Flowfence");
+                onFlowfenceConnect(conn);
             }
         });
     }
@@ -72,10 +72,10 @@ public class ResponderService extends Service {
         {
             try {
 
-                //ctor = oconn.resolveConstructor(ResponderSoda.class);
-                //sodaInst = ctor.call();
+                //ctor = oconn.resolveConstructor(ResponderQM.class);
+                //qmInst = ctor.call();
 
-                pollPresence = oconn.resolveStatic(void.class, ResponderSoda.class, "pollPresenceAndCompute");
+                pollPresence = oconn.resolveStatic(void.class, ResponderQM.class, "pollPresenceAndCompute");
 
             } catch(Exception e)
             {
@@ -84,10 +84,10 @@ public class ResponderService extends Service {
         }
     }
 
-    private void onOASISConnect(OASISConnection conn)
+    private void onFlowfenceConnect(FlowfenceConnection conn)
     {
         oconn = conn;
-        Toast t = Toast.makeText(getApplicationContext(), "connected to OASIS", Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(getApplicationContext(), "connected to Flowfence", Toast.LENGTH_SHORT);
         t.show();
 
 
@@ -105,8 +105,8 @@ public class ResponderService extends Service {
 
     void setupListener()
     {
-        SodaDescriptor sd = pollPresence.getDescriptor();
-        ComponentName cn = new ComponentName("edu.umich.oasis.study.presencebasedcontrol", "presenceUpdateChannel");
+        QMDescriptor sd = pollPresence.getDescriptor();
+        ComponentName cn = new ComponentName("edu.umich.flowfence.study.presencebasedcontrol", "presenceUpdateChannel");
 
         try {
             oconn.getRawInterface().subscribeEventChannel(cn, sd);
@@ -147,8 +147,8 @@ public class ResponderService extends Service {
             //}
 
             try {
-                Log.i(TAG, "attempting SODA call");
-                pollPresence.arg(sodaInst).call();
+                Log.i(TAG, "attempting QM call");
+                pollPresence.arg(qmInst).call();
             } catch(Exception e)
             {
                 Log.i(TAG, "error: " + e);

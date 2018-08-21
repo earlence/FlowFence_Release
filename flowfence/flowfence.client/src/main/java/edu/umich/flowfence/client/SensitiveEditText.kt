@@ -20,7 +20,7 @@ class SensitiveEditText: EditText {
     constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(context, attributeSet, defStyle){ constructorDone = true }
 
     val TAG = SensitiveEditText::class.java.simpleName
-    var connection: OASISConnection? = null
+    var connection: FlowfenceConnection? = null
 
     override fun getText(): Editable {
         val stackTrace: Array<StackTraceElement> = Thread.currentThread().stackTrace
@@ -50,7 +50,7 @@ class SensitiveEditText: EditText {
     // Set value via Quarentine Module
     fun setValue(value: String){
         if(connection == null){
-            Log.i(TAG, "Please bind the FlowFence connection to this component.")
+            Log.d(TAG, "Please bind the FlowFence connection to this component.")
         }
         else {
             val constructor = connection!!.resolveConstructor(SensitiveViewQM::class.java)

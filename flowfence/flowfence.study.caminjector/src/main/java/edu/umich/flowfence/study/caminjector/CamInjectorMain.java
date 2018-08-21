@@ -123,9 +123,9 @@ public class CamInjectorMain extends Activity {
                 else
                     test = mService.ds.getNonRef();
 
-                mService.newBmp(test, -1, CamSoda.OPCODE_RECOG);
+                mService.newBmp(test, -1, CamQM.OPCODE_RECOG);
 
-                //FRDCSoda will have already reset the recognition db
+                //FRDCQM will have already reset the recognition db
             }
         }
     }
@@ -143,14 +143,14 @@ public class CamInjectorMain extends Activity {
     public void enrollSingleImage(int index)
     {
         Bitmap _bmp = mService.ds.getBitmap(index);
-        mService.newBmp(_bmp, -1, CamSoda.OPCODE_ENROLL);
+        mService.newBmp(_bmp, -1, CamQM.OPCODE_ENROLL);
     }
 
     public void enrollAllImages()
     {
         for (int i = 0; i < mService.numImages; i++) {
             Bitmap _bmp = mService.ds.getBitmap(i);
-            mService.newBmp(_bmp, -1, CamSoda.OPCODE_ENROLLTEST);
+            mService.newBmp(_bmp, -1, CamQM.OPCODE_ENROLLTEST);
         }
     }
 

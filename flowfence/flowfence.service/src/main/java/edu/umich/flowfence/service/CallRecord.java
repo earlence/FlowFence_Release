@@ -33,14 +33,14 @@ import edu.umich.flowfence.common.CallFlags;
 import edu.umich.flowfence.common.CallParam;
 import edu.umich.flowfence.common.CallResult;
 import edu.umich.flowfence.common.HandleDestroyedException;
-import edu.umich.flowfence.common.OASISConstants;
+import edu.umich.flowfence.common.FlowfenceConstants;
 import edu.umich.flowfence.common.TaintSet;
-import edu.umich.flowfence.internal.IResolvedSoda;
+import edu.umich.flowfence.internal.IQMCallback;
+import edu.umich.flowfence.internal.IResolvedQM;
 import edu.umich.flowfence.internal.ISandboxObject;
-import edu.umich.flowfence.internal.ISodaCallback;
 
-/*package*/ final class CallRecord extends ISodaCallback.Stub implements SandboxManager.AsyncCallback {
-    private static final String TAG = "OASIS.CallRecord";
+/*package*/ final class CallRecord extends IQMCallback.Stub implements SandboxManager.AsyncCallback {
+    private static final String TAG = "FF.CallRecord";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -64,7 +64,7 @@ import edu.umich.flowfence.internal.ISodaCallback;
     // Lock: protects everything.
     // CV: unblocked when all data ready.
     private final ConditionVariable mSync = new ConditionVariable();
-    private final SodaRef mSoda;
+    private final QMRef mQM;
     private final List<CallParam> mCallParams;
     private final SparseArray<Handle> mOutParams;
     private final HashSet<Handle> mPendingPredecessors;
@@ -76,8 +76,8 @@ import edu.umich.flowfence.internal.ISodaCallback;
     private int mState;
     private TaintSet mInboundTaints;
 
-    public CallRecord(SodaRef soda, int flags, List<CallParam> callParams, TaintSet extraTaint) {
-        mSoda = soda;
+    public CallRecord(QMRef qm, int flags, List<CallParam> callParams, TaintSet extraTaint) {
+        mQM = qm;
         mPendingPredecessors = new HashSet<>();
         mAllPredecessors = new HashSet<>();
         mCallParams = new ArrayList<>(callParams.size());
@@ -98,7 +98,7 @@ import edu.umich.flowfence.internal.ISodaCallback;
             for (int i = 0; i < callParams.size(); i++) {
                 CallParam param = callParams.get(i);
 
-                // If this param was from a previous SODA, take a dependency on it.
+                // If this param was from a previous QM, take a dependency on it.
                 // Otherwise, just use the param as-is.
                 int paramFlags = param.getHeader();
                 switch (param.getType()) {
@@ -140,8 +140,8 @@ import edu.umich.flowfence.internal.ISodaCallback;
         return mFlags;
     }
 
-    /*package*/ SodaRef getSODA() {
-        return mSoda;
+    /*package*/ QMRef getQM() {
+        return mQM;
     }
 
     /*package*/ void onDataReady(Handle handle) {
@@ -169,7 +169,7 @@ import edu.umich.flowfence.internal.ISodaCallback;
 
             TaintSet.Builder tsb = mExtraTaint.asBuilder();
 
-            tsb.unionWith(mSoda.getRequiredTaints());
+            tsb.unionWith(mQM.getRequiredTaints());
 
             for (Handle h : getPredecessors()) {
                 tsb.unionWith(h.getTaint());
@@ -189,7 +189,7 @@ import edu.umich.flowfence.internal.ISodaCallback;
     @Override
     public Sandbox tryFindSandbox(SandboxManager manager) {
         if ((mFlags & CallFlags.OVERRIDE_SANDBOX) != 0) {
-            int sandboxId = (mFlags & CallFlags.SANDBOX_NUM_MASK) % OASISConstants.NUM_SANDBOXES;
+            int sandboxId = (mFlags & CallFlags.SANDBOX_NUM_MASK) % FlowfenceConstants.NUM_SANDBOXES;
             return manager.tryGetSandboxById(sandboxId, this);
         } else {
             return manager.tryGetSandboxForCall(this);
@@ -211,21 +211,21 @@ import edu.umich.flowfence.internal.ISodaCallback;
         synchronized (mSync) {
             // Resolve first.
             Throwable throwable = null;
-            IResolvedSoda resolvedSoda = null;
+            IResolvedQM resolvedQM = null;
             try {
                 if (localLOGV) {
-                    Log.v(TAG, "Resolving "+getSODA().getDescriptor());
+                    Log.v(TAG, "Resolving "+ getQM().getDescriptor());
                 }
-                resolvedSoda = mSoda.resolveFor(sandbox);
+                resolvedQM = mQM.resolveFor(sandbox);
                 if (localLOGV) {
-                    Log.v(TAG, "Resolved "+getSODA().getDescriptor());
+                    Log.v(TAG, "Resolved "+ getQM().getDescriptor());
                 }
             } catch (Throwable t) {
                 throwable = t;
             }
 
             if (localLOGD) {
-                Log.d(TAG, String.format("Preparing call for %s", mSoda.getDescriptor()));
+                Log.d(TAG, String.format("Preparing call for %s", mQM.getDescriptor()));
             }
 
             // Prepare arguments.
@@ -264,8 +264,8 @@ import edu.umich.flowfence.internal.ISodaCallback;
                     }
                     // Taint sandbox now, if necessary.
                     sandbox.addTaint(inboundTaints);
-                    // Call on resolved SODA.
-                    resolvedSoda.call(mFlags, this, outboundParams);
+                    // Call on resolved QM.
+                    resolvedQM.call(mFlags, this, outboundParams);
                     outboundParams.clear();
                     mCallParams.clear();
                 } catch (Throwable t) {
@@ -335,7 +335,7 @@ import edu.umich.flowfence.internal.ISodaCallback;
     public String toString() {
         synchronized (mSync) {
             return String.format("CallRecord{#%d %s %s}", mRecordId,
-                    STATE_DESCRIPTIONS[mState], mSoda.getDescriptor());
+                    STATE_DESCRIPTIONS[mState], mQM.getDescriptor());
         }
     }
 }

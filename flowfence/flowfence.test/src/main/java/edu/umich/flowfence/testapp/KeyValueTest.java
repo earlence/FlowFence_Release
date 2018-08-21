@@ -21,7 +21,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import edu.umich.flowfence.common.IDynamicAPI;
-import edu.umich.flowfence.common.OASISContext;
+import edu.umich.flowfence.common.FlowfenceContext;
 import edu.umich.flowfence.common.TaintSet;
 import edu.umich.flowfence.common.TaintableSharedPreferencesEditor;
 
@@ -30,16 +30,16 @@ public class KeyValueTest {
     private static final String KEY_NAME = "testValue";
 
     public static String getValue() {
-        SharedPreferences prefs = OASISContext.getInstance()
+        SharedPreferences prefs = FlowfenceContext.getInstance()
                 .getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
         return prefs.getString(KEY_NAME, "");
     }
 
-    private static final String TAINT = "edu.umich.oasis.testapp/test";
+    private static final String TAINT = "edu.umich.flowfence.testapp/test";
     private static final TaintSet TAINT_SET = new TaintSet.Builder().addTaint(TAINT).build();
 
     public static void setValue(String value, boolean addTaint) {
-        SharedPreferences prefs = OASISContext.getInstance()
+        SharedPreferences prefs = FlowfenceContext.getInstance()
                 .getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
@@ -54,13 +54,13 @@ public class KeyValueTest {
 
     public static void toastValue() {
         String value = getValue();
-        IDynamicAPI toast = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("toast");
+        IDynamicAPI toast = (IDynamicAPI) FlowfenceContext.getInstance().getTrustedAPI("toast");
         toast.invoke("showText", "KVS value: '" + value + "'", Toast.LENGTH_LONG);
     }
 
     public static void pushValue() {
         String value = getValue();
-        IDynamicAPI push = (IDynamicAPI)OASISContext.getInstance().getTrustedAPI("push");
+        IDynamicAPI push = (IDynamicAPI) FlowfenceContext.getInstance().getTrustedAPI("push");
 
         push.invoke("sendPush", "Test Push", "KVS value = "+value);
     }

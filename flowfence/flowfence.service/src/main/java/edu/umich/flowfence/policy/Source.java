@@ -29,7 +29,7 @@ import java.io.IOException;
 import edu.umich.flowfence.helpers.Utils;
 
 public class Source {
-    private static final String TAG = "FlowFence.Policy";
+    private static final String TAG = "FF.Policy";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -42,13 +42,13 @@ public class Source {
         parser.require(XmlPullParser.START_TAG, "", "source");
         int depth = parser.getDepth();
 
-        String sourceTag = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "name");
+        String sourceTag = parser.getAttributeValue(Utils.FLOWFENCE_NAMESPACE, "name");
         if (sourceTag == null) {
-            throw new PolicyParseException("Missing oasis:name attribute on source");
+            throw new PolicyParseException("Missing flowfence:name attribute on source");
         }
         sourceName = new ComponentName(currentPackage, sourceTag);
 
-        String label = parser.getAttributeValue(Utils.OASIS_NAMESPACE, "label");
+        String label = parser.getAttributeValue(Utils.FLOWFENCE_NAMESPACE, "label");
         if (label == null) {
             label = sourceName.flattenToString();
         }

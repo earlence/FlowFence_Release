@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class ParceledPayload implements Parcelable {
-    private static final String TAG = "OASIS.ParceledPayload";
+    private static final String TAG = "FF.ParceledPayload";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 

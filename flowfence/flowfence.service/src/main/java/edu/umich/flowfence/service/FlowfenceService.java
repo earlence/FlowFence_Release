@@ -24,7 +24,7 @@ import edu.umich.flowfence.smartthings.SmartThingsService;
 
 public final class FlowfenceService extends Service
 {
-    private static final String TAG = "OASIS.Service";
+    private static final String TAG = "FF.Service";
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
@@ -59,18 +59,8 @@ public final class FlowfenceService extends Service
     private boolean wasStarted;
 
     public synchronized void addRef() {
-        /*if (startCount++ == 0) {
-            Log.i(TAG, "Unbinding with SODAs still running; starting service");
-            startService(new Intent(this, FlowfenceService.class));
-            wasStarted = true;
-        }*/
     }
 
     public synchronized void release() {
-        /*if (--startCount == 0 && wasStarted) {
-            Log.i(TAG, "All references dropped; stopping service");
-            stopSelf();
-            wasStarted = false;
-        }*/
     }
 }

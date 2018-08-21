@@ -37,12 +37,12 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 import edu.umich.flowfence.common.IEventChannelAPI;
+import edu.umich.flowfence.common.IFlowfenceService;
 import edu.umich.flowfence.common.INetworkAPI;
-import edu.umich.flowfence.common.IOASISService;
 import edu.umich.flowfence.common.ISensitiveViewAPI;
 import edu.umich.flowfence.common.ITaintAPI;
 import edu.umich.flowfence.common.IDynamicAPI;
-import edu.umich.flowfence.common.OASISContext;
+import edu.umich.flowfence.common.FlowfenceContext;
 import edu.umich.flowfence.common.ParceledPayload;
 import edu.umich.flowfence.common.RemoteCallException;
 import edu.umich.flowfence.common.TaintSet;
@@ -54,13 +54,13 @@ import edu.umich.flowfence.kvs.IRemoteSharedPrefs;
 import edu.umich.flowfence.service.BuildConfig;
 import edu.umich.flowfence.service.FlowfenceService;
 
-/*package*/ final class SandboxContext extends OASISContext {
-    private static final String TAG = "OASIS.Context";
+/*package*/ final class SandboxContext extends FlowfenceContext {
+    private static final String TAG = "FF.Context";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
     private final ITrustedAPI mCallout;
-    private final IOASISService mRootService;
+    private final IFlowfenceService mRootService;
     private final ClassLoader mLoader;
     private final String mPackageName;
     private final Context mBaseContext;
@@ -87,7 +87,7 @@ import edu.umich.flowfence.service.FlowfenceService;
     }
 
     /*package*/ SandboxContext(Context base, String packageName, ClassLoader loader,
-                               ITrustedAPI callout, IOASISService rootService) {
+                               ITrustedAPI callout, IFlowfenceService rootService) {
         super(base);
         this.mBaseContext = base;
         this.mPackageName = packageName;
@@ -96,17 +96,17 @@ import edu.umich.flowfence.service.FlowfenceService;
         this.mRootService = Objects.requireNonNull(rootService);
     }
 
-    public synchronized void beginSoda() {
-        OASISContext.setInstance(this);
+    public synchronized void beginQM() {
+        FlowfenceContext.setInstance(this);
     }
 
-    public synchronized void endSoda() {
-        OASISContext.setInstance(null);
+    public synchronized void endQM() {
+        FlowfenceContext.setInstance(null);
     }
 
     private void checkNotFinished() {
-        if (!OASISContext.isInSoda()) {
-            throw new IllegalStateException("Cannot use context after SODA complete");
+        if (!FlowfenceContext.isInQM()) {
+            throw new IllegalStateException("Cannot use context after QM complete");
         }
     }
 

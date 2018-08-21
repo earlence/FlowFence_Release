@@ -45,19 +45,19 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import edu.umich.flowfence.common.OASISConstants;
-import edu.umich.flowfence.common.SodaDetails;
+import edu.umich.flowfence.common.FlowfenceConstants;
+import edu.umich.flowfence.common.QMDescriptor;
+import edu.umich.flowfence.common.QMDetails;
 import edu.umich.flowfence.common.TaintSet;
-import edu.umich.flowfence.internal.IResolvedSoda;
+import edu.umich.flowfence.internal.IResolvedQM;
 import edu.umich.flowfence.internal.ISandboxObject;
 import edu.umich.flowfence.internal.ISandboxService;
-import edu.umich.flowfence.internal.ResolvedSodaExceptionResult;
-import edu.umich.flowfence.common.SodaDescriptor;
+import edu.umich.flowfence.internal.ResolvedQMExceptionResult;
 import edu.umich.flowfence.sandbox.SandboxService;
 
 public final class Sandbox implements Comparable<Sandbox> {
 
-    private static final String TAG = "OASIS.Sandbox";
+    private static final String TAG = "FF.Sandbox";
     private static final boolean localLOGV = Log.isLoggable(TAG, Log.VERBOSE);
     private static final boolean localLOGD = Log.isLoggable(TAG, Log.DEBUG);
 
@@ -176,7 +176,7 @@ public final class Sandbox implements Comparable<Sandbox> {
         }
 
         if (sb.getRunningCallRecord() == null) {
-            throw new IllegalStateException("Not currently running a SODA in this sandbox");
+            throw new IllegalStateException("Not currently running a QM in this sandbox");
         }
         return sb;
     }
@@ -214,7 +214,7 @@ public final class Sandbox implements Comparable<Sandbox> {
     }
     //endregion
 
-    private static final Sandbox[] s_mSandboxesById = new Sandbox[OASISConstants.NUM_SANDBOXES];
+    private static final Sandbox[] s_mSandboxesById = new Sandbox[FlowfenceConstants.NUM_SANDBOXES];
     private static final Bundle s_mExtrasBundle = new Bundle(2);
 
     private static final Set<String> s_mKnownPackages = Collections.newSetFromMap(new ConcurrentHashMap<String, Boolean>());
@@ -602,7 +602,7 @@ public final class Sandbox implements Comparable<Sandbox> {
 
     /*package*/ void beginExecute(CallRecord record) {
         synchronized (mSync) {
-            SodaDescriptor desc = record.getSODA().getDescriptor();
+            QMDescriptor desc = record.getQM().getDescriptor();
             checkConnected();
             checkAssignedPackageLocked(desc);
             mAssignedPackage = desc.definingClass.getPackageName();
@@ -643,7 +643,7 @@ public final class Sandbox implements Comparable<Sandbox> {
         }
     }
 
-    private void checkAssignedPackageLocked(SodaDescriptor descriptor) {
+    private void checkAssignedPackageLocked(QMDescriptor descriptor) {
         String packageName = descriptor.definingClass.getPackageName();
         if (mAssignedPackage != null && !mAssignedPackage.equals(packageName)) {
             throw new SandboxInUseException(String.format(
@@ -752,12 +752,12 @@ public final class Sandbox implements Comparable<Sandbox> {
         }
     }
 
-    public IResolvedSoda resolve(SodaDescriptor descriptor, boolean bestMatch, SodaDetails details) throws Exception {
-        ResolvedSodaExceptionResult result;
+    public IResolvedQM resolve(QMDescriptor descriptor, boolean bestMatch, QMDetails details) throws Exception {
+        ResolvedQMExceptionResult result;
         synchronized (mSync) {
             checkConnected();
             checkAssignedPackageLocked(descriptor);
-            result = getService().resolveSoda(descriptor, bestMatch, details);
+            result = getService().resolveQM(descriptor, bestMatch, details);
         }
         result.throwChecked();
         return result.getResult();
