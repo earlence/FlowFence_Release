@@ -38,3 +38,4 @@ captures/
 *.DS_Store
 
 # idea
+.idea
