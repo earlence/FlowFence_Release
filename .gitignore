@@ -33,3 +33,20 @@ proguard/
 
 #Memory captures
 captures/
+
+# MAC
+*.DS_Store
+
+# idea
+.idea
+
+#Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild

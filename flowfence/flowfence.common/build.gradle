@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    provided fileTree(dir: '../libs/android-4.4-nohide', include: ['*.jar'])
+    compile 'org.apache.commons:commons-lang3:3.4'
+}
+
+gradle.projectsEvaluated {
+    def overrideDir = file('../libs/android-4.4-nohide')
+    def overrideFiles = files { overrideDir.listFiles() }
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xbootclasspath:${overrideFiles.join(':')}"
+    }
+}
+
+configurations {
+    api.extendsFrom compile
+    api.transitive = false
+}
+
+task jar(type: Jar) {
+    from 'build/intermediates/classes/release/'
+    archiveName 'flowfence.common.jar'
+    dependsOn 'bundleRelease'
+}
+artifacts {
+    api(jar) {
+        name 'flowfence.common.jar'
+        type 'jar'
+        builtBy jar
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FlowfenceManifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flowfence="http://schemas.android.com/apk/lib/edu.umich.flowfence.service">
+
+    <source
+        flowfence:name="UI"
+        flowfence:label="TAINT_UI">
+        <policy>
+            <allow flowfence:sink="TOAST" />
+            <allow flowfence:sink="NETWORK" flowfence:filter="https://flowfence-testserver-211220.appspot.com"/>
+            <drop/>
+        </policy>
+    </source>
+
+
+</FlowfenceManifest>
