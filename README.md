@@ -68,7 +68,8 @@ Building a Hello World App
 In the following, we describe the process of creating a simple app which toasts a value to the UI using FlowFence.
 
 1. Start by creating the project and importing the necessary FlowFence's dependencies. This can be done by including the libraries flowfence.common and flowfence.client as dependencies of your project, as seen in the image below.
-[[https://github.com/davinomjr/FlowFence_Release/blob/master/images/flowfence-dependencies-file.png]]
+
+![FlowFence dependencies(https://github.com/davinomjr/FlowFence_Release/blob/master/images/flowfence-dependencies-file.png)
 
 2. To use FlowFence's TrustedAPI and service, we need first to connect to it. This can be done by first declaring a variable of FlowfenceConnection, and then binding the app to the FlowFence service. The following code shows how to do it:
 ```
