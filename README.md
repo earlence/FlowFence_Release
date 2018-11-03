@@ -62,6 +62,51 @@ The app demonstrates implemented features on this forked version of FlowFence si
 * Possible to define sensitive UI data and enforce policy using FlowFence infrastructure.
 * Network REST API implemented with fine-grained policies, i.e., you can now filter URL endpoints to a SOURCE -> NETWORK flow.
 
+--------------------
+Building a Hello World App
+--------------------
+In the following, we describe the process of creating a simple app which toasts a value to the UI using FlowFence.
+
+1. Start by creating the project and importing the necessary FlowFence's dependencies. This can be done by including the libraries flowfence.common and flowfence.client as dependencies of your project, as seen in the image below.
+
+![FlowFence dependencies(https://github.com/davinomjr/FlowFence_Release/blob/master/images/flowfence-dependencies-file.png)
+
+2. To use FlowFence's TrustedAPI and service, we need first to connect to it. This can be done by first declaring a variable of FlowfenceConnection, and then binding the app to the FlowFence service. The following code shows how to do it:
+```
+FlowfenceConnection connection;
+
+public void connectToFlowfence() {
+    Log.i(TAG, "Binding to FlowFence...");
+    FlowfenceConnection.bind(this, new FlowfenceConnection.DisconnectCallback() {
+        @Override
+        public void onConnect(FlowfenceConnection conn) throws Exception {
+             Log.i(TAG, "Bound to FlowFence");
+            connection = conn;
+        }
+
+        @Override
+        public void onDisconnect(FlowfenceConnection conn) throws Exception {
+            Log.i(TAG, "Unbound from FlowFence");
+            connection = null;
+        }
+    });
+}
+```
+
+3. Finally, we create a Quarantine Module which will run through FlowFence using the connection we created. Code below exemplifies a simple QM, which we run with FlowFence.
+```
+public class HelloWorldQM {
+    public static void toastHelloWorld(){
+        IDynamicAPI toast = (IDynamicAPI) FlowfenceContext.getInstance().getTrustedAPI("toast");
+        toast.invoke("showText", "Hello World!", Toast.LENGTH_LONG);
+    }
+}
+
+private void toastHelloWorld(){
+    QuarentineModule.S0<Void> toastMethod = connection.resolveStatic(void.class, HelloWorldQM.class,"toastHelloWorld");
+    toastMethod.call();
+}
+```
 
 
 -------------------

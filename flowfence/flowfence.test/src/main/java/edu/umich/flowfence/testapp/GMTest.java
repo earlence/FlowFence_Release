@@ -39,9 +39,14 @@ public class GMTest {
         try {
             SharedPreferences prefs = FlowfenceContext.getInstance()
                     .createPackageContext(PACKAGE, 0)
-                    .getSharedPreferences(STORE, Context.MODE_WORLD_READABLE);
+                    .getSharedPreferences(STORE, Context.MODE_PRIVATE);
 
             State s = new State();
+
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putFloat(SPEED_KEY, 5.0f);
+            editor.putFloat(HEADING_KEY,0.0f);
+
             s.speed = prefs.getFloat(SPEED_KEY, 0.0f);
             s.heading = prefs.getFloat(HEADING_KEY, 0.0f);
             return s;

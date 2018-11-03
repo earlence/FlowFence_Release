@@ -95,7 +95,7 @@ public class TestActivity extends Activity {
             concat = conn.resolveStatic(String.class, TestQM.class, "concat",
                                         String.class, String.class);
 
-            getState = conn.resolveInstance(String.class, TestQM.class, "getState");
+            getState = conn.resolveInstance(String.class, TestQM.class, "getconnecState");
             swapState = conn.resolveInstance(String.class, TestQM.class, "swapState",
                                              String.class);
 
@@ -334,6 +334,8 @@ public class TestActivity extends Activity {
             }
         });
     }
+
+
 
     private void setButtonsEnabled(boolean enabled) {
         int childCount = rootLayout.getChildCount();

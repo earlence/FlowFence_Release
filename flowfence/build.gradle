@@ -2,11 +2,11 @@
 buildscript {
     ext.kotlin_version = '1.2.51'
     repositories {
-        jcenter()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
@@ -19,11 +19,11 @@ apply plugin: "cz.malohlava.visteg"
 
 allprojects {
     repositories {
-        jcenter()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        jcenter()
     }
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {

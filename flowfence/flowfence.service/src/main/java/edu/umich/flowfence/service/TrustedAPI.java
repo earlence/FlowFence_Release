@@ -139,7 +139,7 @@ public final class TrustedAPI extends ITrustedAPI.Stub {
     }
 
     private static final String PUSH_ENDPOINT = "https://api.pushbullet.com/v2/pushes";
-    private static final String API_KEY = "aoINfE6LHxf1w9lJw0Oed4a35PdcGf3f";
+    private static final String API_KEY = "o.WxjxNCf1IOgyi8UyOo1VaoefG0cwzWWN";
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @Override
